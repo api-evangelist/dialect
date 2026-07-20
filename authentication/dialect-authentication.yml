@@ -1,0 +1,47 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/dialect-alerts-openapi.json, openapi/dialect-blinks-openapi.json, openapi/dialect-markets-openapi.json
+docs:
+- https://docs.dialect.to/alerts/send/api/authentication
+- https://docs.dialect.to/alerts/integrate-inbox/api/authentication
+- https://docs.dialect.to/alerts/api-keys
+notes: >-
+  Three key surfaces: app-level Alerts calls use x-dialect-api-key; Blinks calls use
+  x-blink-client-key; Markets calls use x-dialect-client-key (public demo key pk_demo).
+  Subscriber-scoped inbox calls use a JWT bearer obtained via Solana wallet
+  message/transaction signing (prepare -> sign -> verify).
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: subscriber
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: Bearer token authentication for subscriber calls.
+  sources:
+  - openapi/dialect-alerts-openapi.json
+- name: application
+  type: apiKey
+  in: header
+  parameter: x-dialect-api-key
+  description: API key to authorize app-level requests.
+  sources:
+  - openapi/dialect-alerts-openapi.json
+- name: clientKey
+  type: apiKey
+  in: header
+  parameter: x-blink-client-key
+  description: Client key to authorize requests.
+  sources:
+  - openapi/dialect-blinks-openapi.json
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: x-dialect-client-key
+  description: Client key for the Markets API
+  sources:
+  - openapi/dialect-markets-openapi.json
