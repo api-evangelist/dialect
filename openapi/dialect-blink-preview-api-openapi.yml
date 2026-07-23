@@ -1,0 +1,120 @@
+openapi: 3.1.0
+info:
+  title: Dialect Alerts V2 Blink Blink Preview API
+  description: Dialect Alerts API supporting both subscriber and app authentication methods.
+  version: 2.2.0-beta
+servers:
+- url: https://alerts-api.dial.to
+  description: Dialect Production
+- url: https://alerts.dialectapi.to
+  description: Dialect Production
+security: []
+tags:
+- name: Blink Preview
+paths:
+  /v1/blink-preview:
+    get:
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlinkPreviewResponse'
+        '502':
+          description: Failed to fetch data from Blink Provider
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionError'
+      operationId: generateBlinkPreview
+      summary: Get Blink Preview
+      tags:
+      - Blink Preview
+      description: Retrieve a small, marketing-optimized preview with different images, titles, and CTA
+      parameters:
+      - in: query
+        name: apiUrl
+        schema:
+          $ref: '#/components/schemas/BlinkPreviewQuery'
+        required: true
+components:
+  schemas:
+    ActionError:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
+      description: Error
+    BlinkProvider:
+      type: object
+      properties:
+        name:
+          type: string
+        icon:
+          type: string
+      required:
+      - name
+      description: Blink Provider
+    BlinkPreviewQuery:
+      type: string
+      format: uri
+      description: Blink API URL
+      default: https://jito.dial.to/stake
+      example: https://jito.dial.to/stake
+    BlinkPreviewResponse:
+      type: object
+      properties:
+        image:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        cta:
+          type: string
+        context:
+          $ref: '#/components/schemas/BlinkContext'
+        links:
+          type: object
+          properties:
+            blink:
+              type: string
+            dataTable:
+              type: string
+          required:
+          - blink
+      required:
+      - image
+      - title
+      - description
+      - context
+      - links
+      description: Blink Preview Response
+    BlinkContext:
+      type: object
+      properties:
+        url:
+          type: string
+        websiteUrl:
+          type: string
+        category:
+          type: string
+        provider:
+          $ref: '#/components/schemas/BlinkProvider'
+      required:
+      - url
+      description: Blink Context
+  securitySchemes:
+    subscriber:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token authentication for subscriber calls.
+    application:
+      type: apiKey
+      description: API key to authorize app-level requests.
+      name: x-dialect-api-key
+      in: header

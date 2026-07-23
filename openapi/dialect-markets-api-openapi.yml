@@ -1,0 +1,1061 @@
+openapi: 3.1.0
+info:
+  title: Dialect Alerts V2 Blink Markets API
+  description: Dialect Alerts API supporting both subscriber and app authentication methods.
+  version: 2.2.0-beta
+servers:
+- url: https://alerts-api.dial.to
+  description: Dialect Production
+- url: https://alerts.dialectapi.to
+  description: Dialect Production
+security: []
+tags:
+- name: Markets
+paths:
+  /v0/markets:
+    get:
+      operationId: markets-positions.marketsV0Api.listMarkets
+      summary: List all markets
+      description: 'Returns real-time market data from supported protocols, such as Jupiter, Kamino, MarginFi, Lulo and many more. For more information, please check our [Protocol Support Roadmap](/markets/supported-protocols).
+
+
+        Note: Some providers (e.g. Kamino) may return large responses with 100+ markets. For better performance in the API playground, consider filtering by both `type` and `provider` parameters.'
+      tags:
+      - Markets
+      parameters:
+      - name: type
+        in: query
+        schema:
+          type: string
+          description: Comma separated list of market types (`lending`, `yield`, `loop`, `perpetual`, `prediction`).
+        allowEmptyValue: true
+        allowReserved: true
+      - name: provider
+        in: query
+        schema:
+          type: string
+          description: Comma separated list of provider IDs (`marginfi`, `kamino`, `lulo`, `jupiter`, `defituna`, `carrot`, `dflow`).
+        allowEmptyValue: true
+        allowReserved: true
+      - name: asset
+        in: query
+        schema:
+          type: string
+          description: Filter by token mint address (comma-separated). Not supported for prediction markets. Requires an explicit type filter that excludes prediction (e.g. type=lending,yield,loop,perpetual).
+        allowEmptyValue: true
+        allowReserved: true
+      - name: cursor
+        in: query
+        schema:
+          type: string
+          description: Cursor for pagination
+        allowEmptyValue: true
+        allowReserved: true
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 200
+          default: 50
+          description: 'Number of markets to return (default: 50, max: 200)'
+        allowEmptyValue: true
+        allowReserved: true
+      - name: filters
+        in: query
+        schema:
+          type: string
+          description: 'URL-encoded JSON object for filtering. For prediction markets: {"prediction":{"status":"open"|"closed"|"settled"}} or {"prediction":{"status":["open","closed"]}}. Accepts single status or array. Default status is "open" for prediction markets.'
+        allowEmptyValue: true
+        allowReserved: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  markets:
+                    type: array
+                    items:
+                      anyOf:
+                      - $ref: '#/components/schemas/LendingMarket'
+                      - $ref: '#/components/schemas/YieldMarket'
+                      - $ref: '#/components/schemas/LoopMarket'
+                      - $ref: '#/components/schemas/PerpetualMarket'
+                      - type: object
+                        properties:
+                          id:
+                            type: string
+                          type:
+                            const: prediction
+                          provider:
+                            type: object
+                            properties:
+                              id:
+                                enum:
+                                - kamino
+                                - lulo
+                                - marginfi
+                                - jupiter
+                                - defituna
+                                - carrot
+                                - dflow
+                              name:
+                                type: string
+                              icon:
+                                type: string
+                            required:
+                            - id
+                            - name
+                            - icon
+                          websiteUrl:
+                            type: string
+                            format: uri
+                          bundleId:
+                            type: string
+                            description: Identifier for positions bundled into one logical structure, such as position or market
+                          title:
+                            type: string
+                          subtitle:
+                            type: string
+                          status:
+                            enum:
+                            - open
+                            - closed
+                            - settled
+                            type: string
+                          result:
+                            type: string
+                          volume:
+                            type: number
+                          openInterest:
+                            type: number
+                          yesBid:
+                            type: number
+                          noBid:
+                            type: number
+                          yesAsk:
+                            type: number
+                          noAsk:
+                            type: number
+                          openTime:
+                            type: number
+                          closeTime:
+                            type: number
+                          expirationTime:
+                            type: number
+                          yesToken:
+                            type: object
+                            properties:
+                              address:
+                                type: string
+                              symbol:
+                                type: string
+                              decimals:
+                                type: number
+                              icon:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              name:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                            required:
+                            - address
+                            - symbol
+                            - decimals
+                            - icon
+                            - name
+                          noToken:
+                            type: object
+                            properties:
+                              address:
+                                type: string
+                              symbol:
+                                type: string
+                              decimals:
+                                type: number
+                              icon:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                              name:
+                                anyOf:
+                                - type: string
+                                - type: 'null'
+                            required:
+                            - address
+                            - symbol
+                            - decimals
+                            - icon
+                            - name
+                          additionalData:
+                            type: object
+                            propertyNames:
+                              type: string
+                            additionalProperties: {}
+                        required:
+                        - id
+                        - type
+                        - provider
+                        - title
+                        - status
+                  cursor:
+                    anyOf:
+                    - type: string
+                    - type: 'null'
+                    description: Cursor for the next page, null if no more results
+                required:
+                - markets
+                - cursor
+  /v0/marketsByType:
+    get:
+      operationId: markets-positions.marketsV0Api.listMarketsGroupedByType
+      summary: List all markets grouped by type
+      description: 'Supported providers: MarginFi Lending, Kamino Lending, Kamino Multiply, Kamino Leverage, Lulo. Temporarily without `prediction` type.'
+      tags:
+      - Markets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  lending:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LendingMarket'
+                  yield:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/YieldMarket'
+                  loop:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LoopMarket'
+                  perpetual:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PerpetualMarket'
+                required:
+                - lending
+                - yield
+                - loop
+                - perpetual
+  /v0/markets/history:
+    get:
+      operationId: markets-positions.marketsV0Api.marketsHistory
+      summary: Get historical market snapshots
+      description: Fetch market snapshots within a time range for one or more markets. Optionally interpolate to a uniform time grid.
+      tags:
+      - Markets
+      parameters:
+      - name: marketIds
+        in: query
+        required: true
+        schema:
+          type: string
+          description: Market ID can be found in our /markets list endpoint and /positions endpoint.
+          default: jupiter.earn.USDC
+        allowEmptyValue: true
+        allowReserved: true
+      - name: startTime
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+          x-native-type: date
+          description: Start time of the snapshot. Date or datetime in RFC 3339 format
+          default: '2025-12-01T00:00:00Z'
+        allowEmptyValue: true
+        allowReserved: true
+      - name: endTime
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+          x-native-type: date
+          description: End time of the snapshot. Date or datetime in RFC 3339 format. Defaults to current time if not provided
+        allowEmptyValue: true
+        allowReserved: true
+      - name: resolution
+        in: query
+        required: false
+        schema:
+          enum:
+          - 1h
+          - 1d
+          type: string
+        allowEmptyValue: true
+        allowReserved: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      markets:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            history:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  timestamp:
+                                    type: string
+                                    format: date-time
+                                    x-native-type: date
+                                  depositApy:
+                                    anyOf:
+                                    - type: number
+                                    - type: 'null'
+                                  totalDeposit:
+                                    anyOf:
+                                    - type: number
+                                    - type: 'null'
+                                  totalDepositUsd:
+                                    anyOf:
+                                    - type: number
+                                    - type: 'null'
+                                required:
+                                - timestamp
+                          required:
+                          - id
+                          - history
+                    required:
+                    - markets
+                required:
+                - data
+components:
+  schemas:
+    LendingMarket:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          const: lending
+        productName:
+          type: string
+        provider:
+          type: object
+          properties:
+            id:
+              enum:
+              - kamino
+              - lulo
+              - marginfi
+              - jupiter
+              - defituna
+              - carrot
+              - dflow
+            name:
+              type: string
+            icon:
+              type: string
+          required:
+          - id
+          - name
+          - icon
+        token:
+          type: object
+          properties:
+            address:
+              type: string
+            symbol:
+              type: string
+            decimals:
+              type: number
+            icon:
+              anyOf:
+              - type: string
+              - type: 'null'
+          required:
+          - address
+          - symbol
+          - decimals
+          - icon
+        borrowToken:
+          type: object
+          properties:
+            address:
+              type: string
+            symbol:
+              type: string
+            decimals:
+              type: number
+            icon:
+              anyOf:
+              - type: string
+              - type: 'null'
+          required:
+          - address
+          - symbol
+          - decimals
+          - icon
+        websiteUrl:
+          type: string
+          format: uri
+        depositApy:
+          type: number
+          description: Total percentage ratio APY **including** rewards
+        baseDepositApy:
+          type: number
+          description: APY percentage ratio excluding rewards
+        baseDepositApy30d:
+          type: number
+          description: 30-day average APY percentage ratio excluding rewards
+        baseDepositApy90d:
+          type: number
+          description: 90-day average APY percentage ratio excluding rewards
+        baseDepositApy180d:
+          type: number
+          description: 180-day average APY percentage ratio excluding rewards
+        borrowApy:
+          type: number
+          description: Total percentage ratio APY **including** rewards
+        baseBorrowApy:
+          type: number
+          description: APY percentage ratio excluding rewards
+        baseBorrowApy30d:
+          type: number
+          description: 30-day average APY percentage ratio excluding rewards
+        baseBorrowApy90d:
+          type: number
+          description: 90-day average APY percentage ratio excluding rewards
+        baseBorrowApy180d:
+          type: number
+          description: 180-day average APY percentage ratio excluding rewards
+        totalDeposit:
+          type: number
+        totalDepositUsd:
+          type: number
+        totalBorrow:
+          type: number
+        totalBorrowUsd:
+          type: number
+        maxDeposit:
+          type: number
+        maxBorrow:
+          type: number
+        rewards:
+          type: array
+          items:
+            anyOf:
+            - type: object
+              properties:
+                type:
+                  const: deposit
+                apy:
+                  type: number
+                token:
+                  type: object
+                  properties:
+                    address:
+                      type: string
+                    symbol:
+                      type: string
+                    decimals:
+                      type: number
+                    icon:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                  required:
+                  - address
+                  - symbol
+                  - decimals
+                  - icon
+                marketAction:
+                  type: string
+              required:
+              - type
+              - apy
+              - token
+              - marketAction
+              title: Deposit Reward
+              description: Reward for depositing
+            - type: object
+              properties:
+                type:
+                  const: borrow
+                apy:
+                  type: number
+                token:
+                  type: object
+                  properties:
+                    address:
+                      type: string
+                    symbol:
+                      type: string
+                    decimals:
+                      type: number
+                    icon:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                  required:
+                  - address
+                  - symbol
+                  - decimals
+                  - icon
+                marketAction:
+                  type: string
+              required:
+              - type
+              - apy
+              - token
+              - marketAction
+              title: Borrow Reward
+              description: Reward for borrowing
+        maxLtv:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Maximum Loan-to-Value allowed when borrowing, expressed as a percentage ratio of deposited value
+        liquidationLtv:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Loan-to-Value percentage ratio of deposited value at which the position becomes liquidatable
+        liquidationPenalty:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Percentage ratio of deposited value taken as a penalty and given to liquidators when position is liquidated
+        additionalData:
+          type: object
+          propertyNames:
+            type: string
+          additionalProperties: {}
+        actions:
+          type: object
+          properties:
+            deposit:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            withdraw:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            borrow:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            repay:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            repayWithCollateral:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            claimRewards:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+      required:
+      - id
+      - type
+      - productName
+      - provider
+      - token
+      - depositApy
+      - baseDepositApy
+      - borrowApy
+      - baseBorrowApy
+      - totalDeposit
+      - totalBorrow
+      - maxBorrow
+      - actions
+    YieldMarket:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          const: yield
+        productName:
+          type: string
+        provider:
+          type: object
+          properties:
+            id:
+              enum:
+              - kamino
+              - lulo
+              - marginfi
+              - jupiter
+              - defituna
+              - carrot
+              - dflow
+            name:
+              type: string
+            icon:
+              type: string
+          required:
+          - id
+          - name
+          - icon
+        token:
+          type: object
+          properties:
+            address:
+              type: string
+            symbol:
+              type: string
+            decimals:
+              type: number
+            icon:
+              anyOf:
+              - type: string
+              - type: 'null'
+          required:
+          - address
+          - symbol
+          - decimals
+          - icon
+        websiteUrl:
+          type: string
+          format: uri
+        depositApy:
+          type: number
+        baseDepositApy:
+          type: number
+        baseDepositApy30d:
+          type: number
+        baseDepositApy90d:
+          type: number
+        baseDepositApy180d:
+          type: number
+        totalDeposit:
+          type: number
+        totalDepositUsd:
+          type: number
+        rewards:
+          type: array
+          items:
+            anyOf:
+            - type: object
+              properties:
+                type:
+                  const: deposit
+                apy:
+                  type: number
+                token:
+                  type: object
+                  properties:
+                    address:
+                      type: string
+                    symbol:
+                      type: string
+                    decimals:
+                      type: number
+                    icon:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                  required:
+                  - address
+                  - symbol
+                  - decimals
+                  - icon
+                marketAction:
+                  type: string
+              required:
+              - type
+              - apy
+              - token
+              - marketAction
+              title: Deposit Reward
+              description: Reward for depositing
+            - type: object
+              properties:
+                type:
+                  const: borrow
+                apy:
+                  type: number
+                token:
+                  type: object
+                  properties:
+                    address:
+                      type: string
+                    symbol:
+                      type: string
+                    decimals:
+                      type: number
+                    icon:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                  required:
+                  - address
+                  - symbol
+                  - decimals
+                  - icon
+                marketAction:
+                  type: string
+              required:
+              - type
+              - apy
+              - token
+              - marketAction
+              title: Borrow Reward
+              description: Reward for borrowing
+        additionalData:
+          type: object
+          propertyNames:
+            type: string
+          additionalProperties: {}
+        actions:
+          type: object
+          properties:
+            deposit:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            withdraw:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            withdrawComplete:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            claimRewards:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+      required:
+      - id
+      - type
+      - productName
+      - provider
+      - token
+      - depositApy
+      - baseDepositApy
+      - actions
+    PerpetualMarket:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          const: perpetual
+        productName:
+          type: string
+        provider:
+          type: object
+          properties:
+            id:
+              enum:
+              - kamino
+              - lulo
+              - marginfi
+              - jupiter
+              - defituna
+              - carrot
+              - dflow
+            name:
+              type: string
+            icon:
+              type: string
+          required:
+          - id
+          - name
+          - icon
+        tokenA:
+          type: object
+          properties:
+            address:
+              type: string
+            symbol:
+              type: string
+            decimals:
+              type: number
+            icon:
+              anyOf:
+              - type: string
+              - type: 'null'
+          required:
+          - address
+          - symbol
+          - decimals
+          - icon
+        tokenB:
+          type: object
+          properties:
+            address:
+              type: string
+            symbol:
+              type: string
+            decimals:
+              type: number
+            icon:
+              anyOf:
+              - type: string
+              - type: 'null'
+          required:
+          - address
+          - symbol
+          - decimals
+          - icon
+        websiteUrl:
+          type: string
+          format: uri
+        liquidity:
+          type: object
+          properties:
+            longUsd:
+              type: number
+            shortUsd:
+              type: number
+          required:
+          - longUsd
+          - shortUsd
+        maxLeverage:
+          type: number
+        additionalData:
+          type: object
+          propertyNames:
+            type: string
+          additionalProperties: {}
+        actions:
+          type: object
+          properties:
+            setup:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            openPosition:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            closePosition:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+      required:
+      - id
+      - type
+      - productName
+      - provider
+      - tokenA
+      - tokenB
+      - liquidity
+      - maxLeverage
+      - actions
+    LoopMarket:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          const: loop
+        productName:
+          type: string
+        provider:
+          type: object
+          properties:
+            id:
+              enum:
+              - kamino
+              - lulo
+              - marginfi
+              - jupiter
+              - defituna
+              - carrot
+              - dflow
+            name:
+              type: string
+            icon:
+              type: string
+          required:
+          - id
+          - name
+          - icon
+        tokenA:
+          type: object
+          properties:
+            address:
+              type: string
+            symbol:
+              type: string
+            decimals:
+              type: number
+            icon:
+              anyOf:
+              - type: string
+              - type: 'null'
+          required:
+          - address
+          - symbol
+          - decimals
+          - icon
+        tokenB:
+          type: object
+          properties:
+            address:
+              type: string
+            symbol:
+              type: string
+            decimals:
+              type: number
+            icon:
+              anyOf:
+              - type: string
+              - type: 'null'
+          required:
+          - address
+          - symbol
+          - decimals
+          - icon
+        websiteUrl:
+          type: string
+          format: uri
+        depositApy:
+          type: number
+        depositApy30d:
+          type: number
+        depositApy90d:
+          type: number
+        depositApy180d:
+          type: number
+        maxLeverage:
+          type: number
+          description: Maximum leverage allowed when depositing, expressed as a multiplier
+        maxLtv:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Maximum Loan-to-Value before either full/partial liquidation commences (depending on the provider), expressed as a percentage ratio of deposited value
+        liquidationLtv:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Loan-to-Value percentage ratio of deposited value at which the position becomes liquidatable, fully or partially.
+        additionalData:
+          type: object
+          propertyNames:
+            type: string
+          additionalProperties: {}
+        actions:
+          type: object
+          properties:
+            setup:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            deposit:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            withdraw:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+      required:
+      - id
+      - type
+      - productName
+      - provider
+      - tokenA
+      - tokenB
+      - depositApy
+      - maxLeverage
+      - maxLtv
+      - liquidationLtv
+      - actions
+  securitySchemes:
+    subscriber:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token authentication for subscriber calls.
+    application:
+      type: apiKey
+      description: API key to authorize app-level requests.
+      name: x-dialect-api-key
+      in: header

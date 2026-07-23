@@ -1,0 +1,543 @@
+openapi: 3.1.0
+info:
+  title: Dialect Alerts V2 Blink Send API
+  description: Dialect Alerts API supporting both subscriber and app authentication methods.
+  version: 2.2.0-beta
+servers:
+- url: https://alerts-api.dial.to
+  description: Dialect Production
+- url: https://alerts.dialectapi.to
+  description: Dialect Production
+security: []
+tags:
+- name: Send
+paths:
+  /v2/{appId}/send:
+    post:
+      responses:
+        '202':
+          description: Message sent successfully
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      operationId: postV2ByAppIdSend
+      tags:
+      - Send
+      parameters:
+      - in: path
+        name: appId
+        schema:
+          type: string
+          format: uuid
+          description: Application ID
+          example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+        required: true
+      description: Send an Alert
+      security:
+      - application: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                channels:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                    - PUSH
+                    - IN_APP
+                    - EMAIL
+                    - TELEGRAM
+                  minItems: 1
+                message:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                      minLength: 1
+                      maxLength: 60
+                      description: Alert title
+                      example: Alert Title
+                    body:
+                      type: string
+                      minLength: 1
+                      maxLength: 500
+                      description: Alert body
+                      example: Alert body
+                    image:
+                      type: string
+                      format: uri
+                      minLength: 1
+                      maxLength: 300
+                      description: Public URL of the image to be displayed in the salert. Only jpg, png, and webp formats are supported.
+                      example: https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png
+                    actions:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            const: link
+                          label:
+                            type: string
+                            minLength: 1
+                            maxLength: 30
+                          url:
+                            type: string
+                            format: uri
+                            minLength: 1
+                            maxLength: 300
+                        required:
+                        - type
+                        - label
+                        - url
+                      maxItems: 3
+                      description: Alert actions
+                      example:
+                      - type: link
+                        label: Open Link
+                        url: https://dialect.to
+                  required:
+                  - title
+                  - body
+                topicId:
+                  type:
+                  - string
+                  - 'null'
+                  format: uuid
+                  description: Optional topic ID to categorize the alert. Must be created in advance and belong to the authenticated app. If absent, the alert is uncategorized. If invalid or unauthorized, the request will fail.
+                data:
+                  type: object
+                  propertyNames:
+                    type: string
+                    pattern: ^[a-zA-Z0-9_-]+$
+                    minLength: 1
+                    maxLength: 64
+                  additionalProperties:
+                    type: string
+                    minLength: 1
+                    maxLength: 500
+                  description: Additional application data. For push notifications, this data is be available in the push notification payload and can be used by the app to handle the notification. Common use cases include deep linking, custom actions, or passing context to the app.
+                  example:
+                    type: transaction
+                    transactionId: '123'
+                    amount: '100'
+                push:
+                  type: object
+                  properties:
+                    showNotification:
+                      type: boolean
+                      default: true
+                      description: Whether to show the notification. When false, the notification will be delivered silently without showing any UI notification.
+                    playNotificationSound:
+                      type: boolean
+                      default: true
+                      description: Whether to play notification sound. When false, the notification will be delivered without sound on iOS and best-effort on Android.
+                  description: Push notification specific configuration.
+                  default: {}
+                recipient:
+                  anyOf:
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        const: subscriber
+                      walletAddress:
+                        type: string
+                        description: User wallet address
+                        example: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
+                    required:
+                    - type
+                    - walletAddress
+                    example:
+                      type: subscriber
+                      walletAddress: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        const: subscribers
+                      walletAddresses:
+                        type: array
+                        items:
+                          type: string
+                          description: User wallet address
+                          example: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
+                        minItems: 1
+                        maxItems: 10000
+                    required:
+                    - type
+                    - walletAddresses
+                    example:
+                      type: subscribers
+                      walletAddresses:
+                      - 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
+                      - 7CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH8
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        const: all-subscribers
+                    required:
+                    - type
+                    example:
+                      type: all-subscribers
+              required:
+              - channels
+              - message
+              - recipient
+  /v2/{appId}/send-batch:
+    post:
+      responses:
+        '202':
+          description: Batch messages sent successfully
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      operationId: postV2ByAppIdSend-batch
+      tags:
+      - Send
+      parameters:
+      - in: path
+        name: appId
+        schema:
+          type: string
+          format: uuid
+          description: Application ID
+          example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+        required: true
+      description: Batch send multiple Alerts
+      security:
+      - application: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                alerts:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      channels:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                          - PUSH
+                          - IN_APP
+                          - EMAIL
+                          - TELEGRAM
+                        minItems: 1
+                      message:
+                        type: object
+                        properties:
+                          title:
+                            type: string
+                            minLength: 1
+                            maxLength: 60
+                            description: Alert title
+                            example: Alert Title
+                          body:
+                            type: string
+                            minLength: 1
+                            maxLength: 500
+                            description: Alert body
+                            example: Alert body
+                          image:
+                            type: string
+                            format: uri
+                            minLength: 1
+                            maxLength: 300
+                            description: Public URL of the image to be displayed in the salert. Only jpg, png, and webp formats are supported.
+                            example: https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png
+                          actions:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  const: link
+                                label:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 30
+                                url:
+                                  type: string
+                                  format: uri
+                                  minLength: 1
+                                  maxLength: 300
+                              required:
+                              - type
+                              - label
+                              - url
+                            maxItems: 3
+                            description: Alert actions
+                            example:
+                            - type: link
+                              label: Open Link
+                              url: https://dialect.to
+                        required:
+                        - title
+                        - body
+                      topicId:
+                        type:
+                        - string
+                        - 'null'
+                        format: uuid
+                        description: Optional topic ID to categorize the alert. Must be created in advance and belong to the authenticated app. If absent, the alert is uncategorized. If invalid or unauthorized, the request will fail.
+                      data:
+                        type: object
+                        propertyNames:
+                          type: string
+                          pattern: ^[a-zA-Z0-9_-]+$
+                          minLength: 1
+                          maxLength: 64
+                        additionalProperties:
+                          type: string
+                          minLength: 1
+                          maxLength: 500
+                        description: Additional application data. For push notifications, this data is be available in the push notification payload and can be used by the app to handle the notification. Common use cases include deep linking, custom actions, or passing context to the app.
+                        example:
+                          type: transaction
+                          transactionId: '123'
+                          amount: '100'
+                      push:
+                        type: object
+                        properties:
+                          showNotification:
+                            type: boolean
+                            default: true
+                            description: Whether to show the notification. When false, the notification will be delivered silently without showing any UI notification.
+                          playNotificationSound:
+                            type: boolean
+                            default: true
+                            description: Whether to play notification sound. When false, the notification will be delivered without sound on iOS and best-effort on Android.
+                        description: Push notification specific configuration.
+                        default: {}
+                      recipient:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            const: subscriber
+                          walletAddress:
+                            type: string
+                            description: User wallet address
+                            example: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
+                        required:
+                        - type
+                        - walletAddress
+                        example:
+                          type: subscriber
+                          walletAddress: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
+                    required:
+                    - channels
+                    - message
+                    - recipient
+                  minItems: 1
+                  maxItems: 500
+              required:
+              - alerts
+  /v2/{appId}/subscribers:
+    get:
+      responses:
+        '200':
+          description: List of subscribers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subscribers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        walletAddress:
+                          type: string
+                          description: User wallet address
+                          example: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
+                      required:
+                      - walletAddress
+                  offset:
+                    type: number
+                    description: The offset used for pagination
+                    example: 0
+                  limit:
+                    type: number
+                    description: The limit used for pagination
+                    example: 100
+                  count:
+                    type: number
+                    description: The number of items returned in this response
+                    example: 25
+                required:
+                - subscribers
+                - offset
+                - limit
+                - count
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '401':
+          description: Unauthorized
+      operationId: getV2ByAppIdSubscribers
+      tags:
+      - Send
+      parameters:
+      - in: query
+        name: offset
+        schema:
+          type: number
+          minimum: 0
+          default: 0
+          description: Pagination offset
+          example: 10
+      - in: query
+        name: limit
+        schema:
+          type: number
+          minimum: 1
+          maximum: 1000
+          default: 100
+          description: Pagination limit
+          example: 100
+      - in: query
+        name: walletAddress
+        schema:
+          anyOf:
+          - type: string
+            description: User wallet address
+            example: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
+          - type: array
+            items:
+              type: string
+              description: User wallet address
+              example: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
+          description: WalletAddress or an array of WalletAddresses. If empty or omitted, targets all wallets.
+          example: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
+      - in: path
+        name: appId
+        schema:
+          type: string
+          format: uuid
+          description: Application ID
+          example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+        required: true
+      description: Get all subscribers for the app
+      security:
+      - application: []
+  /v2/{appId}/topics:
+    get:
+      responses:
+        '200':
+          description: List of topics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          description: Unique identifier for the topic
+                          example: 123e4567-e89b-12d3-a456-426614174000
+                        name:
+                          type: string
+                          description: Name of the topic
+                          example: Price Alerts
+                        description:
+                          type: string
+                          description: Description of the topic
+                          example: Receive alerts when prices drop below a certain threshold
+                        slug:
+                          type: string
+                          description: Human-readable slug of the topic
+                          example: price-alerts
+                      required:
+                      - id
+                      - name
+                      - slug
+                    description: List of alert topics for the app
+                required:
+                - items
+        '401':
+          description: Unauthorized
+      operationId: getV2ByAppIdTopics
+      tags:
+      - Send
+      parameters:
+      - in: path
+        name: appId
+        schema:
+          type: string
+          format: uuid
+          description: Application ID
+          example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+        required: true
+      description: Get all topics for the app
+      security:
+      - application: []
+components:
+  securitySchemes:
+    subscriber:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token authentication for subscriber calls.
+    application:
+      type: apiKey
+      description: API key to authorize app-level requests.
+      name: x-dialect-api-key
+      in: header

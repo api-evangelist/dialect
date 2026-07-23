@@ -1,0 +1,513 @@
+openapi: 3.1.0
+info:
+  title: Dialect Alerts V2 Blink Channels API
+  description: Dialect Alerts API supporting both subscriber and app authentication methods.
+  version: 2.2.0-beta
+servers:
+- url: https://alerts-api.dial.to
+  description: Dialect Production
+- url: https://alerts.dialectapi.to
+  description: Dialect Production
+security: []
+tags:
+- name: Channels
+paths:
+  /v2/channel/email/prepare:
+    post:
+      responses:
+        '200':
+          description: Unverified email channel created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                    - EMAIL
+                    - TELEGRAM
+                  value:
+                    type: string
+                  verified:
+                    type: boolean
+                  subscribed:
+                    type: boolean
+                  subscribedApps:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          description: Application ID
+                          example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+                        name:
+                          type: string
+                          minLength: 1
+                          description: Application name
+                          example: Dialect
+                        icon:
+                          type: string
+                          format: uri
+                          description: Icon URL
+                          example: https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png
+                      required:
+                      - id
+                      - name
+                required:
+                - id
+                - type
+                - value
+                - verified
+                - subscribed
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: Unauthorized
+        '409':
+          description: Channel already exists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+      operationId: postV2ChannelEmailPrepare
+      tags:
+      - Channels
+      parameters: []
+      description: Prepare email channel for a subscriber
+      security:
+      - subscriber: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              _def:
+                unknownKeys: strip
+                catchall:
+                  _def:
+                    typeName: ZodNever
+                  ~standard:
+                    version: 1
+                    vendor: zod
+                typeName: ZodObject
+              ~standard:
+                version: 1
+                vendor: zod
+              _cached: null
+  /v2/channel/telegram/prepare:
+    post:
+      responses:
+        '200':
+          description: Telegram channel prepared successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                    - EMAIL
+                    - TELEGRAM
+                  value:
+                    type: string
+                  verified:
+                    type: boolean
+                  subscribed:
+                    type: boolean
+                  subscribedApps:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          description: Application ID
+                          example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+                        name:
+                          type: string
+                          minLength: 1
+                          description: Application name
+                          example: Dialect
+                        icon:
+                          type: string
+                          format: uri
+                          description: Icon URL
+                          example: https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png
+                      required:
+                      - id
+                      - name
+                  verification:
+                    type: object
+                    properties:
+                      link:
+                        type: string
+                    required:
+                    - link
+                required:
+                - id
+                - type
+                - value
+                - verified
+                - subscribed
+                - verification
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: Unauthorized
+      operationId: postV2ChannelTelegramPrepare
+      tags:
+      - Channels
+      parameters: []
+      description: Prepare telegram channel for a subscriber
+      security:
+      - subscriber: []
+  /v2/channel/email/verify:
+    post:
+      responses:
+        '200':
+          description: Email channel verified successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                    - EMAIL
+                    - TELEGRAM
+                  value:
+                    type: string
+                  verified:
+                    type: boolean
+                  subscribed:
+                    type: boolean
+                  subscribedApps:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          description: Application ID
+                          example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+                        name:
+                          type: string
+                          minLength: 1
+                          description: Application name
+                          example: Dialect
+                        icon:
+                          type: string
+                          format: uri
+                          description: Icon URL
+                          example: https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png
+                      required:
+                      - id
+                      - name
+                required:
+                - id
+                - type
+                - value
+                - verified
+                - subscribed
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - error
+        '401':
+          description: Unauthorized
+        '422':
+          description: Verification error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+      operationId: postV2ChannelEmailVerify
+      tags:
+      - Channels
+      parameters: []
+      description: Verify email channel for a subscriber
+      security:
+      - subscriber: []
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+  /v2/channel/email/resend:
+    post:
+      responses:
+        '201':
+          description: Email verification resent successfully
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: Unauthorized
+        '409':
+          description: Address already verified or does not exist yet
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+        '422':
+          description: Verification error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+      operationId: postV2ChannelEmailResend
+      tags:
+      - Channels
+      parameters: []
+      description: Resend email verification for a subscriber
+      security:
+      - subscriber: []
+  /v2/channel/email/delete:
+    post:
+      responses:
+        '201':
+          description: Email channel deleted successfully
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: Unauthorized
+      operationId: postV2ChannelEmailDelete
+      tags:
+      - Channels
+      parameters: []
+      description: Delete email channel for a subscriber
+      security:
+      - subscriber: []
+  /v2/channel/telegram/delete:
+    post:
+      responses:
+        '200':
+          description: Telegram channel deleted successfully
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '401':
+          description: Unauthorized
+      operationId: postV2ChannelTelegramDelete
+      tags:
+      - Channels
+      parameters: []
+      description: Delete telegram channel for a subscriber
+      security:
+      - subscriber: []
+  /v2/channels:
+    get:
+      responses:
+        '200':
+          description: User channels retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  EMAIL:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                        enum:
+                        - EMAIL
+                        - TELEGRAM
+                      value:
+                        type: string
+                      verified:
+                        type: boolean
+                      subscribed:
+                        type: boolean
+                      subscribedApps:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                              description: Application ID
+                              example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+                            name:
+                              type: string
+                              minLength: 1
+                              description: Application name
+                              example: Dialect
+                            icon:
+                              type: string
+                              format: uri
+                              description: Icon URL
+                              example: https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png
+                          required:
+                          - id
+                          - name
+                    required:
+                    - id
+                    - type
+                    - value
+                    - verified
+                    - subscribed
+                  TELEGRAM:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      type:
+                        type: string
+                        enum:
+                        - EMAIL
+                        - TELEGRAM
+                      value:
+                        type: string
+                      verified:
+                        type: boolean
+                      subscribed:
+                        type: boolean
+                      subscribedApps:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                              description: Application ID
+                              example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+                            name:
+                              type: string
+                              minLength: 1
+                              description: Application name
+                              example: Dialect
+                            icon:
+                              type: string
+                              format: uri
+                              description: Icon URL
+                              example: https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png
+                          required:
+                          - id
+                          - name
+                    required:
+                    - id
+                    - type
+                    - value
+                    - verified
+                    - subscribed
+                additionalProperties: false
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+      operationId: getV2Channels
+      tags:
+      - Channels
+      parameters: []
+      description: Get user's channels and channel subscriptions
+      security:
+      - subscriber: []
+components:
+  securitySchemes:
+    subscriber:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token authentication for subscriber calls.
+    application:
+      type: apiKey
+      description: API key to authorize app-level requests.
+      name: x-dialect-api-key
+      in: header

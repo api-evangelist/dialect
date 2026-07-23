@@ -1,0 +1,1325 @@
+openapi: 3.1.0
+info:
+  title: Dialect Alerts V2 Blink Inbox API
+  description: Dialect Alerts API supporting both subscriber and app authentication methods.
+  version: 2.2.0-beta
+servers:
+- url: https://alerts-api.dial.to
+  description: Dialect Production
+- url: https://alerts.dialectapi.to
+  description: Dialect Production
+security: []
+tags:
+- name: Inbox
+paths:
+  /v2/auth:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  walletAddress:
+                    type: string
+                    description: User wallet address
+                    example: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
+                required:
+                - walletAddress
+        '401':
+          description: Unauthorized
+      operationId: getV2Auth
+      tags:
+      - Inbox
+      parameters:
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+      description: Returns the currently authenticated user based on session data. If unauthorized, returns 401.
+  /v2/auth/solana/prepare:
+    post:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Message to be signed by the user
+                    example: 'Sign this message to authenticate. Nonce: 1638471298347'
+                required:
+                - message
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+      operationId: postV2AuthSolanaPrepare
+      tags:
+      - Inbox
+      parameters:
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+      description: Prepares a message for the user to sign for authentication using a Solana wallet.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                walletAddress:
+                  type: string
+                  description: User wallet address
+                  example: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
+              required:
+              - walletAddress
+  /v2/auth/solana/verify:
+    post:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    minLength: 1
+                  subscriber:
+                    type: object
+                    properties:
+                      walletAddress:
+                        type: string
+                        description: User wallet address
+                        example: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
+                    required:
+                    - walletAddress
+                required:
+                - token
+                - subscriber
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '401':
+          description: Unauthorized
+      operationId: postV2AuthSolanaVerify
+      tags:
+      - Inbox
+      parameters:
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+      description: Verifies the signed message and authenticates the user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Message signed by the user, provided by /prepare endpoint
+                  example: 'Sign this message to authenticate. Nonce: 1638471298347'
+                signature:
+                  type: string
+                  description: Base58-encoded signature of the message
+                  example: 2VYoXjcwKE...
+              required:
+              - message
+              - signature
+  /v2/auth/solana-tx/prepare:
+    post:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transaction:
+                    type: string
+                    description: Base64-encoded transaction to be signed by the user
+                required:
+                - transaction
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+      operationId: postV2AuthSolana-txPrepare
+      tags:
+      - Inbox
+      parameters:
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+      description: Prepares a transaction for the user to sign for authentication using a Solana wallet.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                walletAddress:
+                  type: string
+                  description: User wallet address
+                  example: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
+              required:
+              - walletAddress
+  /v2/auth/solana-tx/verify:
+    post:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    minLength: 1
+                  subscriber:
+                    type: object
+                    properties:
+                      walletAddress:
+                        type: string
+                        description: User wallet address
+                        example: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
+                    required:
+                    - walletAddress
+                required:
+                - token
+                - subscriber
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '401':
+          description: Unauthorized
+      operationId: postV2AuthSolana-txVerify
+      tags:
+      - Inbox
+      parameters:
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+      description: Verifies the signed message and authenticates the user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                transaction:
+                  type: string
+                  description: Signed base64-encoded transaction signed by the user
+              required:
+              - transaction
+  /v2/history:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  alerts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Id uniquely identifying alerts
+                        timestamp:
+                          type: string
+                          description: ISO Timestamp
+                          example: '2024-02-20T15:30:00.000Z'
+                        title:
+                          type: string
+                          minLength: 1
+                          maxLength: 100
+                        body:
+                          type: string
+                          minLength: 1
+                          maxLength: 500
+                        image:
+                          type: string
+                          format: uri
+                          description: Image URL
+                          example: https://www.dialect.to/favicon.ico
+                        actions:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                const: link
+                              label:
+                                type: string
+                                minLength: 1
+                                maxLength: 50
+                              url:
+                                type: string
+                                format: uri
+                                minLength: 1
+                              context:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                    const: position
+                                  apiUrl:
+                                    type: string
+                                    format: uri
+                                  action:
+                                    type: string
+                                    minLength: 1
+                                required:
+                                - type
+                                - apiUrl
+                            required:
+                            - type
+                            - label
+                            - url
+                        data:
+                          type: object
+                          propertyNames:
+                            type: string
+                            pattern: ^[a-zA-Z0-9_-]+$
+                            minLength: 1
+                            maxLength: 64
+                          additionalProperties:
+                            type: string
+                            minLength: 1
+                            maxLength: 500
+                          description: Additional application data. For push notifications, this data is be available in the push notification payload and can be used by the app to handle the notification. Common use cases include deep linking, custom actions, or passing context to the app.
+                          example:
+                            type: transaction
+                            transactionId: '123'
+                            amount: '100'
+                        topic:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                              minLength: 1
+                              description: Topic ID
+                              example: 123e4567-e89b-12d3-a456-426614174000
+                            name:
+                              type: string
+                              minLength: 1
+                              description: Topic name
+                              example: Product Announcements
+                            slug:
+                              type: string
+                              minLength: 1
+                              description: Topic slug
+                              example: product-announcements
+                          required:
+                          - id
+                          - name
+                          - slug
+                        app:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                              description: Application ID
+                              example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+                            name:
+                              type: string
+                              minLength: 1
+                              description: Application name
+                              example: Dialect
+                            icon:
+                              type: string
+                              format: uri
+                              description: Icon URL
+                              example: https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png
+                          required:
+                          - id
+                          - name
+                      required:
+                      - id
+                      - timestamp
+                      - title
+                      - body
+                  summary:
+                    type: object
+                    properties:
+                      unreadCount:
+                        type: number
+                        description: Total number of unread alerts
+                        example: 5
+                      lastRead:
+                        type: object
+                        properties:
+                          timestamp:
+                            type: string
+                            format: date-time
+                            description: ISO Timestamp
+                            example: '2024-02-20T15:30:00.000Z'
+                        required:
+                        - timestamp
+                    required:
+                    - unreadCount
+                  limit:
+                    type: number
+                    minimum: 1
+                    maximum: 20
+                    default: 10
+                    description: Pagination limit
+                    example: 10
+                  cursor:
+                    type: string
+                    contentEncoding: base64
+                    description: Pagination cursor
+                required:
+                - alerts
+                - summary
+                - limit
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '422':
+          description: Constraint validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+      operationId: getV2History
+      tags:
+      - Inbox
+      parameters:
+      - in: query
+        name: appId
+        schema:
+          type: string
+          format: uuid
+          description: Application ID
+          example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+      - in: query
+        name: limit
+        schema:
+          type: number
+          minimum: 1
+          maximum: 20
+          default: 10
+          description: Pagination limit
+          example: 10
+      - in: query
+        name: cursor
+        schema:
+          type: string
+          contentEncoding: base64
+          description: Pagination cursor
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+        required: true
+      description: Fetches alert history for a user, including unread count and last unread alert data.
+      security:
+      - subscriber: []
+  /v2/history/summary:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  unreadCount:
+                    type: number
+                    description: Total number of unread alerts
+                    example: 5
+                  lastRead:
+                    type: object
+                    properties:
+                      timestamp:
+                        type: string
+                        format: date-time
+                        description: ISO Timestamp
+                        example: '2024-02-20T15:30:00.000Z'
+                    required:
+                    - timestamp
+                required:
+                - unreadCount
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '403':
+          description: Forbidden
+        '422':
+          description: Constraint validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+      operationId: getV2HistorySummary
+      tags:
+      - Inbox
+      parameters:
+      - in: query
+        name: appId
+        schema:
+          type: string
+          format: uuid
+          description: Application ID
+          example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+        required: true
+      description: Fetches summary of alert history for a user, including unread count and last unread alert data.
+      security:
+      - subscriber: []
+  /v2/history/read:
+    post:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '403':
+          description: Forbidden
+        '422':
+          description: Constraint validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+      operationId: postV2HistoryRead
+      tags:
+      - Inbox
+      parameters:
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+        required: true
+      description: Marks alerts as read.
+      security:
+      - subscriber: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                appId:
+                  type: string
+                  format: uuid
+                  description: Application ID
+                  example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+  /v2/history/clear:
+    post:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '403':
+          description: Forbidden
+        '422':
+          description: Constraint validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+      operationId: postV2HistoryClear
+      tags:
+      - Inbox
+      parameters:
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+        required: true
+      description: Clears all alerts for the given user and specified apps. This is a global action and applies across all clients.
+      security:
+      - subscriber: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                appId:
+                  anyOf:
+                  - type: string
+                    format: uuid
+                    description: Application ID
+                    example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+                  - type: array
+                    items:
+                      type: string
+                      format: uuid
+                      description: Application ID
+                      example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+                  description: App ID or an array of App IDs. If empty or omitted, targets all apps available (owned or whitelisted) for the client.
+                  example: 123e4567-e89b-12d3-a456-426614174000
+  /v2/push/subscribe:
+    post:
+      responses:
+        '202':
+          description: Subscription accepted
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '401':
+          description: Unauthorized
+        '422':
+          description: Constraint validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+      operationId: postV2PushSubscribe
+      tags:
+      - Inbox
+      parameters:
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+      description: Allows a wallet to subscribe to push alerts. By specifying the appId, the wallet can subscribe to a specific application. If no appId is provided, the wallet will subscribe to pushes triggered by all IN_APP subscriptions and apps associated with the client key.
+      security:
+      - subscriber: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                appId:
+                  type: string
+                  format: uuid
+                  description: Application ID
+                  example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+                deviceId:
+                  type: string
+                fcmToken:
+                  type: string
+                  minLength: 1
+              required:
+              - fcmToken
+  /v2/push/unsubscribe:
+    post:
+      responses:
+        '202':
+          description: Unsubscription accepted
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '401':
+          description: Unauthorized
+        '422':
+          description: Constraint validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+      operationId: postV2PushUnsubscribe
+      tags:
+      - Inbox
+      parameters:
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+      description: Allows a wallet to unsubscribe from push alerts. By specifying the appId, the wallet can unsubscribe from a specific application. If no appId is provided, the wallet will unsubscribe from pushes triggered by all IN_APP subscriptions and apps associated with the client key.
+      security:
+      - subscriber: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                appId:
+                  type: string
+                  format: uuid
+                  description: Application ID
+                  example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+                deviceId:
+                  type: string
+                fcmToken:
+                  type: string
+                  minLength: 1
+              required:
+              - fcmToken
+  /v2/subscribe:
+    post:
+      responses:
+        '201':
+          description: Subscription successful
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '401':
+          description: Unauthorized
+        '422':
+          description: Constraint validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+      operationId: postV2Subscribe
+      tags:
+      - Inbox
+      parameters:
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+        required: true
+      description: Allows a wallet to subscribe to alerts for a given application.
+      security:
+      - subscriber: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                appId:
+                  anyOf:
+                  - type: string
+                    format: uuid
+                    description: Application ID
+                    example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+                  - type: array
+                    items:
+                      type: string
+                      format: uuid
+                      description: Application ID
+                      example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+                  description: App ID or an array of App IDs. If empty or omitted, targets all apps available (owned or whitelisted) for the client.
+                  example: 123e4567-e89b-12d3-a456-426614174000
+                channel:
+                  anyOf:
+                  - type: string
+                    enum:
+                    - IN_APP
+                    - EMAIL
+                    - TELEGRAM
+                  - type: array
+                    items:
+                      type: string
+                      enum:
+                      - IN_APP
+                      - EMAIL
+                      - TELEGRAM
+                  description: Channel or an array of channels (IN_APP, TELEGRAM, EMAIL). If empty or omitted, targets all channels available for the subscriber
+                  example: IN_APP
+  /v2/unsubscribe:
+    post:
+      responses:
+        '201':
+          description: Unsubscription successful
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '401':
+          description: Unauthorized
+        '422':
+          description: Constraint validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                - message
+      operationId: postV2Unsubscribe
+      tags:
+      - Inbox
+      parameters:
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+        required: true
+      description: Unsubscribes a wallet to alerts for a given application.
+      security:
+      - subscriber: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                appId:
+                  anyOf:
+                  - type: string
+                    format: uuid
+                    description: Application ID
+                    example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+                  - type: array
+                    items:
+                      type: string
+                      format: uuid
+                      description: Application ID
+                      example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+                  description: App ID or an array of App IDs. If empty or omitted, targets all apps available (owned or whitelisted) for the client.
+                  example: 123e4567-e89b-12d3-a456-426614174000
+                channel:
+                  anyOf:
+                  - type: string
+                    enum:
+                    - IN_APP
+                    - EMAIL
+                    - TELEGRAM
+                  - type: array
+                    items:
+                      type: string
+                      enum:
+                      - IN_APP
+                      - EMAIL
+                      - TELEGRAM
+                  description: Channel or an array of channels (IN_APP, TELEGRAM, EMAIL). If empty or omitted, targets all channels available for the subscriber
+                  example: IN_APP
+  /v2/topics:
+    get:
+      responses:
+        '200':
+          description: List of alert topics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  byApp:
+                    type: object
+                    propertyNames:
+                      type: string
+                      format: uuid
+                      description: App ID
+                    additionalProperties:
+                      type: object
+                      properties:
+                        items:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                                description: Unique identifier for the topic
+                                example: 123e4567-e89b-12d3-a456-426614174000
+                              name:
+                                type: string
+                                description: Name of the topic
+                                example: Price Alerts
+                              description:
+                                type: string
+                                description: Description of the topic
+                                example: Receive alerts when prices drop below a certain threshold
+                              slug:
+                                type: string
+                                description: Human-readable slug of the topic
+                                example: price-alerts
+                              subscribed:
+                                type: boolean
+                                description: Whether the subscriber has enabled notifications for this topic
+                                example: true
+                            required:
+                            - id
+                            - name
+                            - slug
+                            - subscribed
+                      required:
+                      - items
+                required:
+                - byApp
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      operationId: getV2Topics
+      tags:
+      - Inbox
+      parameters:
+      - in: query
+        name: appId
+        schema:
+          type: string
+          format: uuid
+          description: Application ID
+          example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+        required: true
+      description: Fetches all alert topics for a subscriber, optionally filtered by appId
+      security:
+      - subscriber: []
+  /v2/topics/subscribe:
+    post:
+      responses:
+        '201':
+          description: Topic preference updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden. Client not authorized to edit topics of non-whitelisted apps
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '422':
+          description: Topic not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+      operationId: postV2TopicsSubscribe
+      tags:
+      - Inbox
+      parameters:
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+        required: true
+      description: Enables receiving alerts of a specific topic for a subscriber
+      security:
+      - subscriber: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                topicId:
+                  type: string
+                  format: uuid
+                  description: List of topic IDs to be updated
+                  example: 123e4567-e89b-12d3-a456-426614174000
+              required:
+              - topicId
+  /v2/topics/unsubscribe:
+    post:
+      responses:
+        '201':
+          description: Topic preference updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Request validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                required:
+                - error
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden. Client not authorized to edit topics of non-whitelisted apps
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+        '422':
+          description: Topic not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                required:
+                - error
+      operationId: postV2TopicsUnsubscribe
+      tags:
+      - Inbox
+      parameters:
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+        required: true
+      description: Disables receiving alerts of a specific topic for a subscriber
+      security:
+      - subscriber: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                topicId:
+                  type: string
+                  format: uuid
+                  description: List of topic IDs to be updated
+                  example: 123e4567-e89b-12d3-a456-426614174000
+              required:
+              - topicId
+  /v2/apps:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  apps:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        icon:
+                          type: string
+                          format: uri
+                        subscribed:
+                          type: boolean
+                          description: Whether the subscriber has enabled notifications for at least one channel of this app
+                          example: true
+                        topics:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                                format: uuid
+                                description: Unique identifier for the topic
+                                example: 123e4567-e89b-12d3-a456-426614174000
+                              name:
+                                type: string
+                                description: Name of the topic
+                                example: Price Alerts
+                              description:
+                                type: string
+                                description: Description of the topic
+                                example: Receive alerts when prices drop below a certain threshold
+                              slug:
+                                type: string
+                                description: Human-readable slug of the topic
+                                example: price-alerts
+                              subscribed:
+                                type: boolean
+                                description: Whether the subscriber has enabled notifications for this topic
+                                example: true
+                            required:
+                            - id
+                            - name
+                            - slug
+                            - subscribed
+                          description: Subscriber's topics this app.
+                        channels:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              channel:
+                                type: string
+                                enum:
+                                - IN_APP
+                                - EMAIL
+                                - TELEGRAM
+                              subscribed:
+                                type: boolean
+                            required:
+                            - channel
+                            - subscribed
+                          description: List of channels that the app supports for notifications.
+                      required:
+                      - id
+                      - name
+                      - subscribed
+                      - topics
+                      - channels
+                required:
+                - apps
+        '401':
+          description: Unauthorized
+      operationId: getV2Apps
+      tags:
+      - Inbox
+      parameters:
+      - in: header
+        name: X-Dialect-Client-Key
+        schema:
+          type: string
+          description: Client Key used to uniquely identify the client
+          example: dk_gyh2eqzfkc4mhp5eiahnndkz
+        required: true
+      description: Returns a list of apps that the subscriber can subscribe to, including their subscription status and topics.
+      security:
+      - subscriber: []
+components:
+  securitySchemes:
+    subscriber:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token authentication for subscriber calls.
+    application:
+      type: apiKey
+      description: API key to authorize app-level requests.
+      name: x-dialect-api-key
+      in: header

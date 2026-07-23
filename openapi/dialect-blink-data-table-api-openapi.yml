@@ -1,0 +1,122 @@
+openapi: 3.1.0
+info:
+  title: Dialect Alerts V2 Blink Blink Data Table API
+  description: Dialect Alerts API supporting both subscriber and app authentication methods.
+  version: 2.2.0-beta
+servers:
+- url: https://alerts-api.dial.to
+  description: Dialect Production
+- url: https://alerts.dialectapi.to
+  description: Dialect Production
+security: []
+tags:
+- name: Blink Data Table
+paths:
+  /v1/blink-data-table:
+    get:
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlinkDataTable'
+        '502':
+          description: Failed to fetch data from Blink Provider
+      operationId: getBlinkDataTable
+      summary: Get Blink Data Table
+      tags:
+      - Blink Data Table
+      description: Retrieve structured data in table format. Great for displaying key data, such as APY, available balance, etc.
+      parameters:
+      - in: query
+        name: apiUrl
+        schema:
+          type: string
+          format: uri
+          description: Blink API URL
+          default: https://jito.dial.to/stake
+          example: https://jito.dial.to/stake
+        required: true
+      - in: query
+        name: account
+        schema:
+          type: string
+          description: Wallet address of the user
+        required: false
+components:
+  schemas:
+    BlinkProvider:
+      type: object
+      properties:
+        name:
+          type: string
+        icon:
+          type: string
+      required:
+      - name
+      description: Blink Provider
+    BlinkDataTable:
+      type: object
+      properties:
+        rows:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+              title:
+                type: string
+              value:
+                type: string
+              icon:
+                type: string
+              url:
+                type: string
+            required:
+            - key
+            - title
+            - value
+        context:
+          $ref: '#/components/schemas/BlinkContext'
+        links:
+          type: object
+          properties:
+            blink:
+              type: string
+            preview:
+              type: string
+          required:
+          - blink
+          - preview
+      required:
+      - rows
+      - context
+      - links
+      description: Blink Data Table
+    BlinkContext:
+      type: object
+      properties:
+        url:
+          type: string
+        websiteUrl:
+          type: string
+        category:
+          type: string
+        provider:
+          $ref: '#/components/schemas/BlinkProvider'
+      required:
+      - url
+      description: Blink Context
+  securitySchemes:
+    subscriber:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token authentication for subscriber calls.
+    application:
+      type: apiKey
+      description: API key to authorize app-level requests.
+      name: x-dialect-api-key
+      in: header

@@ -1,0 +1,141 @@
+openapi: 3.1.0
+info:
+  title: Dialect Alerts V2 Blink Blink Lists API
+  description: Dialect Alerts API supporting both subscriber and app authentication methods.
+  version: 2.2.0-beta
+servers:
+- url: https://alerts-api.dial.to
+  description: Dialect Production
+- url: https://alerts.dialectapi.to
+  description: Dialect Production
+security: []
+tags:
+- name: Blink Lists
+paths:
+  /v1/blink-lists/{id}:
+    get:
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlinkList'
+        '401':
+          description: Client Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionError'
+        '404':
+          description: List not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionError'
+      operationId: getBlinkList
+      summary: Get Blink List
+      tags:
+      - Blink Lists
+      description: Retrieve curated list of Blinks by ID from the terminal
+      parameters:
+      - in: query
+        name: account
+        schema:
+          type: string
+          description: Wallet address of the user
+      - schema:
+          type: string
+        in: path
+        name: id
+        required: true
+components:
+  schemas:
+    BlinkList:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlinkListEntry'
+      required:
+      - id
+      - name
+      - entries
+      description: Blink List
+    ActionError:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
+      description: Error
+    BlinkProvider:
+      type: object
+      properties:
+        name:
+          type: string
+        icon:
+          type: string
+      required:
+      - name
+      description: Blink Provider
+    BlinkListEntry:
+      type: object
+      properties:
+        image:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        cta:
+          type: string
+        context:
+          $ref: '#/components/schemas/BlinkContext'
+        links:
+          type: object
+          properties:
+            blink:
+              type: string
+            dataTable:
+              type: string
+          required:
+          - blink
+      required:
+      - image
+      - title
+      - description
+      - context
+      - links
+      description: Blink List Entry
+    BlinkContext:
+      type: object
+      properties:
+        url:
+          type: string
+        websiteUrl:
+          type: string
+        category:
+          type: string
+        provider:
+          $ref: '#/components/schemas/BlinkProvider'
+      required:
+      - url
+      description: Blink Context
+  securitySchemes:
+    subscriber:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token authentication for subscriber calls.
+    application:
+      type: apiKey
+      description: API key to authorize app-level requests.
+      name: x-dialect-api-key
+      in: header
