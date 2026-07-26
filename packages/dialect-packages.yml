@@ -1,0 +1,63 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/dialectlabs
+packages:
+- language: typescript
+  registry: npm
+  name: "@dialectlabs/blinks"
+  url: https://www.npmjs.com/package/@dialectlabs/blinks
+  install: npm install @dialectlabs/blinks
+  version: 0.22.5
+  license: Apache-2.0
+  repository: https://github.com/dialectlabs/blinks
+  description: Core framework for building and rendering Blinks (Blockchain Links).
+  official: true
+- language: typescript
+  registry: npm
+  name: "@dialectlabs/react-sdk"
+  url: https://www.npmjs.com/package/@dialectlabs/react-sdk
+  install: npm install @dialectlabs/react-sdk
+  version: 3.0.0-beta.7
+  repository: https://github.com/dialectlabs/react
+  description: React SDK and hooks for Dialect web3 notifications / inbox integration.
+  official: true
+- language: typescript
+  registry: npm
+  name: "@dialectlabs/react-ui"
+  url: https://www.npmjs.com/package/@dialectlabs/react-ui
+  install: npm install @dialectlabs/react-ui
+  version: 3.0.0-beta.7
+  license: Apache-2.0
+  repository: https://github.com/dialectlabs/react
+  description: Reusable React UI components to integrate web3 alerts (NotificationsButton, feed).
+  official: true
+- language: typescript
+  registry: npm
+  name: "@dialectlabs/react"
+  url: https://www.npmjs.com/package/@dialectlabs/react
+  install: npm install @dialectlabs/react
+  version: 0.5.6
+  license: MIT
+  repository: https://github.com/dialectlabs/react
+  description: React wrappers for Dialect's web3 notifications.
+  official: true
+- language: typescript
+  registry: npm
+  name: "@dialectlabs/sdk"
+  url: https://www.npmjs.com/package/@dialectlabs/sdk
+  install: npm install @dialectlabs/sdk
+  version: 2.0.0-beta.7
+  license: Apache-2.0
+  repository: https://github.com/dialectlabs/sdk
+  description: TypeScript SDK for the Dialect messaging / notifications protocol.
+  official: true
+- language: typescript
+  registry: npm
+  name: "@dialectlabs/monitor"
+  url: https://www.npmjs.com/package/@dialectlabs/monitor
+  install: npm install @dialectlabs/monitor
+  version: 4.0.0-beta.5
+  license: Apache-2.0
+  repository: https://github.com/dialectlabs/monitor
+  description: Open-source framework to extract and transform on-chain data into targeted smart messages / alerts.
+  official: true

@@ -1,28 +1,324 @@
 aid: dialect
 name: Dialect
-description: 'Dialect is a company surfaced as a portfolio company of electric-capital, multicoin-capital
-  and added to the API Evangelist network as a stub for enrichment. Sector: infrastructure. This profile
-  is a lead awaiting the enrichment pipeline.'
+description: 'Dialect is a Web3 UX infrastructure company on Solana that provides onchain
+  transactions and notifications native to any digital experience. Its two flagship products
+  are Blinks (Blockchain Links — one-click, embeddable onchain transactions powered by a
+  Standard Blinks Library of 40+ protocol integrations including Jupiter, Kamino, Drift and
+  DeFiTuna) and the Alerts Stack (real-time, multi-channel notifications across push, email,
+  Telegram and an in-app universal inbox, with event detection for price-change and
+  trending-token signals). Dialect also exposes a Markets & Positions API for real-time DeFi
+  rates, TVL and wallet position tracking, plus a hosted MCP server for agents. The developer
+  surface spans three REST APIs (Alerts V2, Blinks, Markets), TypeScript/React SDKs, a
+  no-code dashboard, and an open-source monitor framework. Backed by Electric Capital and
+  Multicoin Capital.'
 url: https://raw.githubusercontent.com/api-evangelist/dialect/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - electric-capital
 - multicoin-capital
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: enriched
+x-tier-reason: developer-surface-found
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
+image: https://www.dialect.to/favicon.ico
 tags:
 - Company
 - Infrastructure
-apis: []
+- Web3
+- Blockchain
+- Solana
+- Notifications
+- Messaging
+- Alerts
+- DeFi
+- Payments
+- Agents
+- MCP
+apis:
+- aid: dialect:dialect-blink-api
+  name: Dialect Blink API
+  description: The Blink API from Dialect — 2 operation(s) for blink.
+  humanURL: https://docs.dialect.to/alerts
+  baseURL: https://alerts-api.dial.to
+  tags:
+  - Blink
+  properties:
+  - type: OpenAPI
+    url: openapi/dialect-blink-api-openapi.yml
+  - type: Documentation
+    url: https://docs.dialect.to/alerts
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/send-alerts/send-alert
+  - type: Documentation
+    url: https://docs.dialect.to/blinks
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/blink/get-full-blink
+  - type: Documentation
+    url: https://docs.dialect.to/markets-and-positions
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/markets/list-all-markets
+- aid: dialect:dialect-blink-data-table-api
+  name: Dialect Blink Data Table API
+  description: The Blink Data Table API from Dialect — 1 operation(s) for blink data table.
+  humanURL: https://docs.dialect.to/alerts
+  baseURL: https://alerts-api.dial.to
+  tags:
+  - Blink Data Table
+  properties:
+  - type: OpenAPI
+    url: openapi/dialect-blink-data-table-api-openapi.yml
+  - type: Documentation
+    url: https://docs.dialect.to/alerts
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/send-alerts/send-alert
+  - type: Documentation
+    url: https://docs.dialect.to/blinks
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/blink/get-full-blink
+  - type: Documentation
+    url: https://docs.dialect.to/markets-and-positions
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/markets/list-all-markets
+- aid: dialect:dialect-blink-lists-api
+  name: Dialect Blink Lists API
+  description: The Blink Lists API from Dialect — 1 operation(s) for blink lists.
+  humanURL: https://docs.dialect.to/alerts
+  baseURL: https://alerts-api.dial.to
+  tags:
+  - Blink Lists
+  properties:
+  - type: OpenAPI
+    url: openapi/dialect-blink-lists-api-openapi.yml
+  - type: Documentation
+    url: https://docs.dialect.to/alerts
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/send-alerts/send-alert
+  - type: Documentation
+    url: https://docs.dialect.to/blinks
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/blink/get-full-blink
+  - type: Documentation
+    url: https://docs.dialect.to/markets-and-positions
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/markets/list-all-markets
+- aid: dialect:dialect-blink-preview-api
+  name: Dialect Blink Preview API
+  description: The Blink Preview API from Dialect — 1 operation(s) for blink preview.
+  humanURL: https://docs.dialect.to/alerts
+  baseURL: https://alerts-api.dial.to
+  tags:
+  - Blink Preview
+  properties:
+  - type: OpenAPI
+    url: openapi/dialect-blink-preview-api-openapi.yml
+  - type: Documentation
+    url: https://docs.dialect.to/alerts
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/send-alerts/send-alert
+  - type: Documentation
+    url: https://docs.dialect.to/blinks
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/blink/get-full-blink
+  - type: Documentation
+    url: https://docs.dialect.to/markets-and-positions
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/markets/list-all-markets
+- aid: dialect:dialect-channels-api
+  name: Dialect Channels API
+  description: The Channels API from Dialect — 7 operation(s) for channels.
+  humanURL: https://docs.dialect.to/alerts
+  baseURL: https://alerts-api.dial.to
+  tags:
+  - Channels
+  properties:
+  - type: OpenAPI
+    url: openapi/dialect-channels-api-openapi.yml
+  - type: Documentation
+    url: https://docs.dialect.to/alerts
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/send-alerts/send-alert
+  - type: Documentation
+    url: https://docs.dialect.to/blinks
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/blink/get-full-blink
+  - type: Documentation
+    url: https://docs.dialect.to/markets-and-positions
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/markets/list-all-markets
+- aid: dialect:dialect-inbox-api
+  name: Dialect Inbox API
+  description: The Inbox API from Dialect — 17 operation(s) for inbox.
+  humanURL: https://docs.dialect.to/alerts
+  baseURL: https://alerts-api.dial.to
+  tags:
+  - Inbox
+  properties:
+  - type: OpenAPI
+    url: openapi/dialect-inbox-api-openapi.yml
+  - type: Documentation
+    url: https://docs.dialect.to/alerts
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/send-alerts/send-alert
+  - type: Documentation
+    url: https://docs.dialect.to/blinks
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/blink/get-full-blink
+  - type: Documentation
+    url: https://docs.dialect.to/markets-and-positions
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/markets/list-all-markets
+- aid: dialect:dialect-markets-api
+  name: Dialect Markets API
+  description: The Markets API from Dialect — 3 operation(s) for markets.
+  humanURL: https://docs.dialect.to/alerts
+  baseURL: https://alerts-api.dial.to
+  tags:
+  - Markets
+  properties:
+  - type: OpenAPI
+    url: openapi/dialect-markets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.dialect.to/alerts
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/send-alerts/send-alert
+  - type: Documentation
+    url: https://docs.dialect.to/blinks
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/blink/get-full-blink
+  - type: Documentation
+    url: https://docs.dialect.to/markets-and-positions
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/markets/list-all-markets
+- aid: dialect:dialect-positions-api
+  name: Dialect Positions API
+  description: The Positions API from Dialect — 3 operation(s) for positions.
+  humanURL: https://docs.dialect.to/alerts
+  baseURL: https://alerts-api.dial.to
+  tags:
+  - Positions
+  properties:
+  - type: OpenAPI
+    url: openapi/dialect-positions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.dialect.to/alerts
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/send-alerts/send-alert
+  - type: Documentation
+    url: https://docs.dialect.to/blinks
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/blink/get-full-blink
+  - type: Documentation
+    url: https://docs.dialect.to/markets-and-positions
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/markets/list-all-markets
+- aid: dialect:dialect-send-api
+  name: Dialect Send API
+  description: The Send API from Dialect — 4 operation(s) for send.
+  humanURL: https://docs.dialect.to/alerts
+  baseURL: https://alerts-api.dial.to
+  tags:
+  - Send
+  properties:
+  - type: OpenAPI
+    url: openapi/dialect-send-api-openapi.yml
+  - type: Documentation
+    url: https://docs.dialect.to/alerts
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/send-alerts/send-alert
+  - type: Documentation
+    url: https://docs.dialect.to/blinks
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/blink/get-full-blink
+  - type: Documentation
+    url: https://docs.dialect.to/markets-and-positions
+  - type: APIReference
+    url: https://docs.dialect.to/api-reference/markets/list-all-markets
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Packages
+  url: packages/dialect-packages.yml
+- type: SDKs
+  url: packages/dialect-packages.yml
+- type: MCPServer
+  url: mcp/dialect-mcp.yml
+- type: LLMsTxt
+  url: llms/dialect-llms.txt
+- type: Overlay
+  url: overlays/dialect-alerts-overlay.yaml
+- type: Overlay
+  url: overlays/dialect-blinks-overlay.yaml
+- type: Overlay
+  url: overlays/dialect-markets-overlay.yaml
+- type: Conformance
+  url: conformance/dialect-conformance.yml
+- type: ErrorCatalog
+  url: errors/dialect-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/dialect-lifecycle.yml
+- type: ChangeLog
+  url: changelog/dialect-changelog.yml
+- type: Conventions
+  url: conventions/dialect-conventions.yml
+- type: Components
+  url: components/dialect-components.yml
+- type: DataModel
+  url: data-model/dialect-data-model.yml
+- type: Webhooks
+  url: asyncapi/dialect-webhooks.yml
+- type: Sandbox
+  url: sandbox/dialect-sandbox.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DomainSecurity
+  url: security/dialect-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/dialect-agentic-access.yml
+- type: Authentication
+  url: authentication/dialect-authentication.yml
 - type: Website
   url: https://www.dialect.to/
+- type: DeveloperPortal
+  url: https://docs.dialect.to/
+- type: Documentation
+  url: https://docs.dialect.to/
+- type: APIReference
+  url: https://docs.dialect.to/api-reference/send-alerts/send-alert
+- type: GettingStarted
+  url: https://docs.dialect.to/alerts/quick-start
+- type: Blog
+  url: https://www.dialect.to/blog
+- type: GitHubOrganization
+  url: https://github.com/dialectlabs
+- type: SignUp
+  url: https://dashboard.dialect.to
+- type: Login
+  url: https://dashboard.dialect.to
+- type: Support
+  url: https://discord.gg/saydialect
+- type: TermsOfService
+  url: https://legal.dialect.to/tos
+- type: PrivacyPolicy
+  url: https://legal.dialect.to/privacy
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

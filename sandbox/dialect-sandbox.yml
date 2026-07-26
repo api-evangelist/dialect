@@ -1,0 +1,21 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/dialect-markets-openapi.json
+description: >-
+  Dialect does not publish a full separate sandbox environment, but the Markets &
+  Positions API ships a public demo client key that lets developers call read
+  endpoints without registration. Alerts and Blinks require a real API/client key
+  obtained from the dashboard.
+test_values:
+- name: Markets API demo client key
+  header: x-dialect-client-key
+  value: pk_demo
+  scope: Markets & Positions API read endpoints
+  source: openapi/dialect-markets-openapi.json (securitySchemes.apiKey.x-default)
+keys:
+  live_key_source: https://dashboard.dialect.to
+  api_keys_docs: https://docs.dialect.to/alerts/api-keys
+notes: >-
+  Never invent test values. Only the published pk_demo Markets key is captured here.
+  Alerts (x-dialect-api-key) and Blinks (x-blink-client-key) keys are issued per app
+  from the Dialect dashboard.

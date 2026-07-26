@@ -1,0 +1,37 @@
+generated: '2026-07-18'
+method: searched
+spec_type: Webhooks
+source: https://docs.dialect.to/alerts/events/technical-overview
+description: >-
+  Dialect's Events system delivers onchain market events to a configured webhook
+  endpoint as HTTP POST requests carrying a JSON array (batch delivery). Events can
+  also be bundled into the Alerts Stack for direct user notification. Subscribe and
+  configure thresholds in the Dialect dashboard.
+delivery:
+  method: POST
+  format: json-array
+  batch: true
+envelope:
+  fields:
+  - name: event
+    description: The event type identifier.
+  - name: timestamp
+    description: UTC timestamp in ISO 8601 format.
+  - name: token
+    description: Token symbol and mint address details.
+  - name: trigger
+    description: Configuration (threshold) that activated the event.
+events:
+- type: token_price_change
+  docs: https://docs.dialect.to/alerts/events/price-change
+  description: Fires when a token crosses a configured price threshold (market-wide sliding window or personalized).
+- type: token_last_trade_price_change
+  docs: https://docs.dialect.to/alerts/events/price-change
+  description: Fires on last-trade price movement for a token.
+- type: trending_token
+  docs: https://docs.dialect.to/alerts/events/trending-token
+  description: Fires when a newly-launched token graduates from a launchpad and meets strict performance / audit criteria.
+docs:
+- https://docs.dialect.to/alerts/events/technical-overview
+- https://docs.dialect.to/alerts/events/using-events
+- https://docs.dialect.to/alerts/events/index

@@ -1,0 +1,44 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/dialect-alerts-openapi.json, openapi/dialect-blinks-openapi.json, openapi/dialect-markets-openapi.json
+format: http-status-json
+envelope:
+  fields: [statusCode, message, error]
+  blinks_schema: ActionError
+notes: >-
+  Derived from the 4xx/5xx responses declared across the Alerts V2, Blinks and
+  Markets OpenAPI specs. Dialect returns standard HTTP status codes with a JSON body
+  (statusCode/message/error); it does not use RFC 9457 application/problem+json.
+problems:
+- status: 400
+  title: Bad Request
+  meaning: Request validation error (malformed body, invalid params).
+  seen_on: [postV2ByAppIdSend, postV2ByAppIdSend-batch, postV2Subscribe, postV2AuthSolanaVerify, getV2History]
+- status: 401
+  title: Unauthorized
+  meaning: Missing or invalid API key / client key / subscriber JWT.
+  seen_on: [postV2ByAppIdSend, getV2Apps, getBlinkList, getV2Channels]
+- status: 403
+  title: Forbidden
+  meaning: Authenticated but not permitted for this app / resource.
+  seen_on: [postV2ByAppIdSend, getV2History, postV2TopicsSubscribe]
+- status: 404
+  title: Not Found
+  meaning: Referenced resource (e.g. Blink list id) does not exist.
+  seen_on: [getBlinkList]
+- status: 409
+  title: Conflict
+  meaning: State conflict, e.g. an email channel already prepared / pending verification.
+  seen_on: [postV2ChannelEmailPrepare, postV2ChannelEmailResend]
+- status: 422
+  title: Unprocessable Entity
+  meaning: Semantically invalid input (validation of an otherwise well-formed request).
+  seen_on: [getV2History, postV2PushSubscribe, postV2Subscribe, postV2TopicsSubscribe]
+- status: 500
+  title: Internal Server Error
+  meaning: Unexpected server error.
+  seen_on: [getV2Channels]
+- status: 502
+  title: Bad Gateway
+  meaning: Upstream protocol/provider error while building or executing a Blink transaction (ActionError body).
+  seen_on: [getFullBlink, executeBlinkAction, executeChainedAction, generateBlinkPreview, getBlinkDataTable]

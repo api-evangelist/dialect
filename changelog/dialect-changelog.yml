@@ -1,0 +1,35 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.dialect.to/release-notes
+scheme: dated
+cadence: weekly
+current_versions:
+  alerts: v2 (2.2.0-beta)
+  blinks: v1 (0.1.0)
+  markets: v0 (0.0.1)
+entries:
+- date: '2026-04-06'
+  title: Standard Blinks Library Updates
+  highlights: Jupiter now supports Token-2022 program tokens with improved token program detection.
+- date: '2026-03-30'
+  title: Standard Blinks Library Updates
+  highlights: Automated smoke tests rolled out across protocol integrations.
+- date: '2026-03-23'
+  title: Assets API Updates
+  highlights: API key authentication is now enforced on the Assets API.
+- date: '2026-03-16'
+  title: Standard Blinks Library Updates
+  highlights: Automated OpenAPI spec generation deployed across all protocol integrations.
+- date: '2026-03-09'
+  title: Markets API Updates
+  breaking: false
+  highlights: New PnL endpoint returns realized and unrealized profit/loss for prediction-market positions.
+- date: '2026-03-02'
+  title: Developer Tooling
+  highlights: Open-source Next.js DeFi yield dashboard released demonstrating Markets API integration.
+- date: '2026-02-24'
+  title: Standard Blinks Library Updates
+  highlights: Kamino received extended smoke-test coverage for ATA creation flows.
+- date: '2026-02-16'
+  title: 'Prediction Markets: Cost Basis Tracking'
+  highlights: Cost-basis documentation added using average-cost method calculations.

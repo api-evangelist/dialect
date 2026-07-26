@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/dialect-alerts-openapi.json, openapi/dialect-blinks-openapi.json, openapi/dialect-markets-openapi.json
+skills:
+- file: dialect-send-alert.md
+  name: Send a Dialect alert
+  api: openapi/dialect-alerts-openapi.json
+  operations: [postV2ByAppIdSend, postV2ByAppIdSend-batch, getV2ByAppIdSubscribers, getV2ByAppIdTopics]
+- file: dialect-execute-blink.md
+  name: Fetch and execute a Dialect Blink
+  api: openapi/dialect-blinks-openapi.json
+  operations: [getFullBlink, executeBlinkAction, executeChainedAction, generateBlinkPreview, getBlinkDataTable]
+- file: dialect-query-markets.md
+  name: Query Dialect markets and wallet positions
+  api: openapi/dialect-markets-openapi.json
+  operations:
+  - markets-positions.marketsV0Api.listMarkets
+  - markets-positions.marketsV0Api.listMarketsGroupedByType
+  - markets-positions.positionsV0Api.positionsByOwners
+  - markets-positions.positionsV0Api.positionsPnl

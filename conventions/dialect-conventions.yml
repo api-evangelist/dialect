@@ -1,0 +1,51 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/dialect-alerts-openapi.json, openapi/dialect-blinks-openapi.json, openapi/dialect-markets-openapi.json
+docs: https://docs.dialect.to
+authentication:
+  style: api-key-header
+  schemes:
+  - x-dialect-api-key (Alerts app-level)
+  - x-blink-client-key (Blinks)
+  - x-dialect-client-key (Markets; demo pk_demo)
+  - JWT bearer (subscriber inbox, via Solana wallet signing)
+  ref: authentication/dialect-authentication.yml
+idempotency:
+  supported: false
+  notes: No idempotency-key header or parameter is documented in the OpenAPI specs.
+pagination:
+  styles:
+  - cursor
+  - offset-limit
+  params:
+  - cursor
+  - offset
+  - limit
+  notes: >-
+    Alerts history and Markets list/history endpoints accept cursor plus limit; an
+    offset parameter is also present on some Alerts collection endpoints.
+versioning:
+  scheme: uri-path
+  current:
+    alerts: v2
+    blinks: v1
+    markets: v0
+  notes: Version is carried in the URL path (/v2, /v1, /v0). Alerts and Markets are beta.
+error_envelope:
+  alerts_markets:
+    format: json
+    fields: [statusCode, message, error]
+    notes: Standard HTTP status-code JSON error body (no application/problem+json).
+    ref: errors/dialect-problem-types.yml
+  blinks:
+    format: json
+    fields: [message]
+    schema: ActionError
+    notes: Blinks endpoints return 502 with an ActionError { message } on upstream failure.
+rate_limit_signaling:
+  documented: false
+  notes: No rate-limit headers documented in the specs; limits governed per API key / plan.
+request_tracing:
+  documented: false
+events:
+  ref: asyncapi/dialect-webhooks.yml

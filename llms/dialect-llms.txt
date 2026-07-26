@@ -1,0 +1,251 @@
+# Dialect Developer Documentation
+
+## Docs
+
+- [Introduction](https://docs.dialect.to/alerts/alerts-and-monitoring/index.md): Before you can send programmatic alerts to your users, you need to detect when events worth notifying about actually happen. This section covers different strategies for monitoring and detecting events in your application.
+- [Integrate with Existing Systems](https://docs.dialect.to/alerts/alerts-and-monitoring/integrate-existing-system.md): Integrate Dialect's alert sending directly into your existing workflows and event detection systems
+- [Setup Monitoring](https://docs.dialect.to/alerts/alerts-and-monitoring/setup-event-detection.md): Use Dialect's open-source monitor library to detect events and turn them into targeted notifications with sophisticated data-stream processing
+- [Request API Keys](https://docs.dialect.to/alerts/api-keys.md): Get your API keys for Dialect Alerts and start sending notifications to your users in minutes.
+- [Blinks in Alerts](https://docs.dialect.to/alerts/blinks-in-alerts.md): Send actionable alerts with embedded Blinks and let your users complete onchain transactions directly in your app. No more redirects or app switching.
+- [Introduction to Events](https://docs.dialect.to/alerts/events/index.md): Integrate onchain and other market events into your products, as webhooks or bundled with Dialect's Alerts Stack.
+- [Price Change Events](https://docs.dialect.to/alerts/events/price-change.md): Track token price movements with market-wide sliding windows or personalized alerts based on individual trading history. Get instant notifications when tokens hit thresholds, with smart filtering that cuts through market noise.
+- [Technical Overview](https://docs.dialect.to/alerts/events/technical-overview.md): Integrate price alerts and automated trading triggers using webhook events. Build powerful applications by subscribing to real-time market events. Configure price thresholds and receive structured webhook payloads to trigger your application logic.
+- [Trending Token Events](https://docs.dialect.to/alerts/events/trending-token.md): Trending Token events trigger when a newly-launched token graduates from a launchpad and meets strict performance criteria. Get notified of high-potential tokens with built-in audit filters and advanced analytics.
+- [Using Events](https://docs.dialect.to/alerts/events/using-events.md): Learn how to use events to build powerful applications with real-time price alerts and trending token detection. Integrate webhooks, handle events, and deliver timely notifications to your users.
+- [Frequently Asked Questions](https://docs.dialect.to/alerts/faq.md): Common questions and answers about Dialect's Alert Stack.
+- [Alerts](https://docs.dialect.to/alerts/index.md): Get your users the notifications they need, when and where they need them.
+- [Authentication](https://docs.dialect.to/alerts/integrate-inbox/api/authentication.md): Set up wallet-based user authentication for notification inbox integration using JWT tokens and client keys
+- [Integrate alerts inbox via API](https://docs.dialect.to/alerts/integrate-inbox/api/index.md): Build notification inbox functionality using Dialect's REST API. This approach provides flexibility for applications that need server-side user management, custom authentication flows, or integration with non-JavaScript environments.
+- [Notifications](https://docs.dialect.to/alerts/integrate-inbox/api/notifications.md): Retrieve and manage user notification history, read states, and notification data via API for building custom inbox experiences
+- [Push Notifications](https://docs.dialect.to/alerts/integrate-inbox/api/push-notifications.md): Enable mobile push notifications to reach users instantly on their devices, even when your app was closed
+- [Introduction](https://docs.dialect.to/alerts/integrate-inbox/index.md): Integrate notification inboxes into your applications to let users view, manage, and interact with their notifications across multiple apps and channels. Dialect provides flexible integration options to fit different technical requirements and use cases.
+- [Notifications](https://docs.dialect.to/alerts/integrate-inbox/sdk/notifications.md): Standalone notification feed component with complete styling control via CSS variables, perfect for embedding in custom layouts, modals, or sidebars
+- [NotificationsButton](https://docs.dialect.to/alerts/integrate-inbox/sdk/notifications-button.md): Complete, done-for-you notification solution with built-in notification bell button, modal, user settings panel, and notification history
+- [Setup & Configuration](https://docs.dialect.to/alerts/integrate-inbox/sdk/setup-configuration.md): Get the Dialect React SDK installed and configured for notification inbox integration with React hooks support and Solana wallet integration
+- [Universal Inbox 📥](https://docs.dialect.to/alerts/integrate-inbox/universal-inbox.md): A shared, user-controlled, actionable communication layer across the entire Web3 ecosystem.
+- [User Management](https://docs.dialect.to/alerts/integrate-inbox/user-management.md): Manage user subscriptions, notification preferences, channel configurations, and topic organization for your Dialect integration.
+- [Mobile Alert Stack](https://docs.dialect.to/alerts/mobile-alerts/index.md): The complete mobile alerts stack for Web3 applications. Deliver alerts across any platform, in any programming language.
+- [Quick Start](https://docs.dialect.to/alerts/quick-start.md): Get your first notification working in under 15 minutes. Complete flow from dashboard registration to sending your first notification.
+- [Authentication](https://docs.dialect.to/alerts/send/api/authentication.md): Authenticate with Dialect's REST API using your API key for server-side notification sending
+- [Send alerts via API](https://docs.dialect.to/alerts/send/api/index.md): Send alerts directly from your backend using Dialect's REST API with maximum flexibility across any programming language
+- [Push Notifications](https://docs.dialect.to/alerts/send/api/push-notifications.md): Send mobile push notifications by adding PUSH to your channels array to reach users instantly on their mobile devices
+- [Send Messages](https://docs.dialect.to/alerts/send/api/send-messages.md): Send notifications to your users through various channels using the Dialect REST API, covering basic messaging to advanced features like batch operations and rich content
+- [Send Alerts via Dashboard](https://docs.dialect.to/alerts/send/dashboard.md): Send one-off notifications and marketing announcements using Dialect's no-code dashboard interface
+- [Sending Alerts](https://docs.dialect.to/alerts/send/index.md): Learn how to send notifications to your users through Dialect Alerts. There are three main approaches to sending alerts, each suited for different use cases and technical requirements.
+- [Introduction](https://docs.dialect.to/alerts/send/sdk/index.md): Send notifications programmatically from your Node.js and React applications with full type safety and developer experience using the TypeScript SDK
+- [Send Messages](https://docs.dialect.to/alerts/send/sdk/send-messages.md): Send notifications to your users through various channels using the TypeScript SDK with comprehensive examples for targeted delivery, actionable notifications, and broadcast messaging
+- [Setup & Configuration](https://docs.dialect.to/alerts/send/sdk/setup-configuration.md): Install and configure the Dialect TypeScript SDK for sending notifications from your Node.js and React applications
+- [Dashboard Introduction](https://docs.dialect.to/alerts/setup/dashboard-introduction.md): Setup your app, send notifications, and manage your project with no code required. Perfect for one-off messages, testing notifications, or managing your settings and API keys — all through an intuitive interface.
+- [App Registration](https://docs.dialect.to/alerts/setup/register-app.md): Register your application with Dialect and start sending or receiving notifications.
+- [Topics & Channels Logic](https://docs.dialect.to/alerts/setup/topics-channels-subscribers.md): Understanding the core concepts of Dialect's notification system: how topics organize notifications, channels deliver them, and subscribers receive them.
+- [Get Blink Data Table](https://docs.dialect.to/api-reference/blink-data-table/get-blink-data-table.md): Retrieve structured data in table format. Great for displaying key data, such as APY, available balance, etc.
+- [Get Blink List](https://docs.dialect.to/api-reference/blink-lists/get-blink-list.md): Retrieve curated list of Blinks by ID from the terminal
+- [Get Blink Preview](https://docs.dialect.to/api-reference/blink-preview/get-blink-preview.md): Retrieve a small, marketing-optimized preview with different images, titles, and CTA
+- [Execute Blink Action](https://docs.dialect.to/api-reference/blink/execute-blink-action.md): Returns a ready-to-sign transaction
+- [Execute Chained Action](https://docs.dialect.to/api-reference/blink/execute-chained-action.md): Endpoint for action chaining (multi-step workflows)
+- [Get Full Blink](https://docs.dialect.to/api-reference/blink/get-full-blink.md): Retrieve complete interactive Blink with all available actions and metadata
+- [Mint](https://docs.dialect.to/api-reference/deficarrot/earn/mint-get.md): Get a blink for mint operations
+- [Mint](https://docs.dialect.to/api-reference/deficarrot/earn/mint-post.md): Execute a mint operation
+- [Redeem](https://docs.dialect.to/api-reference/deficarrot/earn/redeem-get.md): Get a blink for redeem operations. Please note that the amount you redeem will be the amount of the stable coin you input, not the amount of the CRT token you will receive. Also there might be a small difference in the amount you receive due to the price of the stable coin and the CRT token and a wi…
+- [Redeem](https://docs.dialect.to/api-reference/deficarrot/earn/redeem-post.md): Execute a redeem operation
+- [Lend Deposit](https://docs.dialect.to/api-reference/defituna/lend/deposit-get.md): Get metadata for depositing a token into DeFiTuna.
+- [Lend Deposit](https://docs.dialect.to/api-reference/defituna/lend/deposit-post.md): Generate a transaction for depositing a token into DeFiTuna.
+- [Lend Withdraw](https://docs.dialect.to/api-reference/defituna/lend/withdraw-get.md): Get metadata for withdrawing a token from DeFiTuna.
+- [Lend Withdraw](https://docs.dialect.to/api-reference/defituna/lend/withdraw-post.md): Generate a transaction for withdrawing a token from DeFiTuna.
+- [Strategy Vault Deposit](https://docs.dialect.to/api-reference/drift/vaults/deposit-get.md): Get a blink for depositing to a strategy vault
+- [Strategy Vault Deposit](https://docs.dialect.to/api-reference/drift/vaults/deposit-post.md): Deposit to a strategy vault
+- [Request Withdraw](https://docs.dialect.to/api-reference/drift/vaults/request-withdraw-get.md): Get a blink for requesting withdrawal from a strategy vault
+- [Request Withdraw](https://docs.dialect.to/api-reference/drift/vaults/request-withdraw-post.md): Request withdrawal from a strategy vault
+- [Withdraw](https://docs.dialect.to/api-reference/drift/vaults/withdraw-get.md): Get a blink for withdrawing from a strategy vault
+- [Withdraw](https://docs.dialect.to/api-reference/drift/vaults/withdraw-post.md): Withdraw from a strategy vault
+- [Clear Notification History](https://docs.dialect.to/api-reference/integrate-an-inbox/clear-notification-history.md): Clear all read alerts for the given user and specified apps. This is a global action that applies across all clients
+- [Get Alert Topics](https://docs.dialect.to/api-reference/integrate-an-inbox/get-alert-topics.md): Retrieve available alert topics organized by application with subscription status for granular notification control
+- [Get Authenticated User](https://docs.dialect.to/api-reference/integrate-an-inbox/get-authenticated-user.md): Get authenticated subscriber's wallet address for identity verification and session validation
+- [Get Available Apps](https://docs.dialect.to/api-reference/integrate-an-inbox/get-available-apps.md): Get all applications available to the authenticated user with subscription status, topics, and channel availability
+- [Get Notification History](https://docs.dialect.to/api-reference/integrate-an-inbox/get-notification-history.md): Retrieve user's alert history with pagination, filtering by app, and detailed notification metadata
+- [Get Notification Summary](https://docs.dialect.to/api-reference/integrate-an-inbox/get-notification-summary.md): Get quick summary of user's notification status including unread count and last read timestamp for efficient inbox management
+- [Mark Notifications as Read](https://docs.dialect.to/api-reference/integrate-an-inbox/mark-notifications-as-read.md): Mark alerts as read for the authenticated user to update their notification status
+- [Prepare Solana Authentication](https://docs.dialect.to/api-reference/integrate-an-inbox/prepare-solana-authentication.md): Generate challenge message for Solana wallet-based authentication with nonce and timestamp
+- [Prepare Solana Transaction Authentication](https://docs.dialect.to/api-reference/integrate-an-inbox/prepare-solana-transaction-authentication.md): Generate transaction for Solana wallet-based authentication using transaction signing
+- [Subscribe to Alert Topic](https://docs.dialect.to/api-reference/integrate-an-inbox/subscribe-to-alert-topic.md): Enable receiving alerts for a specific topic to provide granular notification control and better user experience
+- [Subscribe to Alerts](https://docs.dialect.to/api-reference/integrate-an-inbox/subscribe-to-alerts.md): Subscribe to alerts from applications across multiple channels with support for app-specific and bulk subscriptions
+- [Subscribe to Push Notifications](https://docs.dialect.to/api-reference/integrate-an-inbox/subscribe-to-push-notifications.md): Register device for push notifications using Firebase Cloud Messaging (FCM) with support for app-specific or global subscriptions
+- [Unsubscribe from Alert Topic](https://docs.dialect.to/api-reference/integrate-an-inbox/unsubscribe-from-alert-topic.md): Disable receiving alerts for a specific topic to provide granular notification control
+- [Unsubscribe from Alerts](https://docs.dialect.to/api-reference/integrate-an-inbox/unsubscribe-from-alerts.md): Remove subscription to alerts from specified applications and channels with bulk unsubscription support
+- [Unsubscribe from Push Notifications](https://docs.dialect.to/api-reference/integrate-an-inbox/unsubscribe-from-push-notifications.md): Remove device from push notification delivery with support for app-specific or global unsubscription
+- [Verify Solana Authentication](https://docs.dialect.to/api-reference/integrate-an-inbox/verify-solana-authentication.md): Complete Solana wallet authentication by verifying signed message and receive JWT token for session access
+- [Verify Solana Transaction Authentication](https://docs.dialect.to/api-reference/integrate-an-inbox/verify-solana-transaction-authentication.md): Complete Solana wallet authentication by verifying signed transaction and receive JWT token
+- [Borrow](https://docs.dialect.to/api-reference/jupiter/lend-borrow/borrow.md): Get available borrow actions for a position
+- [Borrow](https://docs.dialect.to/api-reference/jupiter/lend-borrow/borrow-1.md): Execute a borrow transaction for the specified vault and amount
+- [Deposit](https://docs.dialect.to/api-reference/jupiter/lend-borrow/deposit.md): Get available deposit actions for a token
+- [Deposit](https://docs.dialect.to/api-reference/jupiter/lend-borrow/deposit-1.md): Execute a deposit transaction for the specified vault and amount
+- [Repay](https://docs.dialect.to/api-reference/jupiter/lend-borrow/repay.md): Get available repay actions for a position
+- [Repay](https://docs.dialect.to/api-reference/jupiter/lend-borrow/repay-1.md): Execute a repay transaction for the specified vault and amount
+- [Withdraw](https://docs.dialect.to/api-reference/jupiter/lend-borrow/withdraw.md): Get available withdraw actions for a token
+- [Withdraw](https://docs.dialect.to/api-reference/jupiter/lend-borrow/withdraw-1.md): Execute a withdraw transaction for the specified vault and amount
+- [Earn Deposit](https://docs.dialect.to/api-reference/jupiter/lend-earn/earn-deposit.md): Get available deposit actions for a token
+- [Earn Deposit](https://docs.dialect.to/api-reference/jupiter/lend-earn/earn-deposit-1.md): Execute a deposit transaction for the specified token and amount
+- [Earn Withdraw](https://docs.dialect.to/api-reference/jupiter/lend-earn/earn-withdraw.md): Get available withdraw actions for a token
+- [Earn Withdraw](https://docs.dialect.to/api-reference/jupiter/lend-earn/earn-withdraw-1.md): Execute withdraw transaction for the specified token and amount
+- [Swap Token](https://docs.dialect.to/api-reference/jupiter/swap/swap-token.md): Get available swap actions for a token pair
+- [Swap Token Amount](https://docs.dialect.to/api-reference/jupiter/swap/swap-token-amount.md): Get swap action details for a specific token pair and amount
+- [Swap Token Amount](https://docs.dialect.to/api-reference/jupiter/swap/swap-token-amount-1.md): Execute a swap transaction for the specified token pair and amount
+- [Borrow](https://docs.dialect.to/api-reference/kamino/borrow/borrow-get.md): Get a blink for borrow operations on a reserve
+- [Borrow](https://docs.dialect.to/api-reference/kamino/borrow/borrow-post.md): Execute a borrow operation
+- [Claim Rewards](https://docs.dialect.to/api-reference/kamino/borrow/claim-rewards-get.md): Get a blink for claiming rewards on a reserve
+- [Claim Rewards](https://docs.dialect.to/api-reference/kamino/borrow/claim-rewards-post.md): Execute a claim rewards operation
+- [Deposit](https://docs.dialect.to/api-reference/kamino/borrow/deposit-get.md): Get a blink for deposit operations on a reserve
+- [Deposit](https://docs.dialect.to/api-reference/kamino/borrow/deposit-post.md): Execute a deposit operation
+- [Repay](https://docs.dialect.to/api-reference/kamino/borrow/repay-get.md): Get a blink for repay operations on a reserve
+- [Repay](https://docs.dialect.to/api-reference/kamino/borrow/repay-post.md): Execute a repay operation
+- [Repay With Collateral](https://docs.dialect.to/api-reference/kamino/borrow/repay-with-collateral-get.md): Get a blink for repaying debt using collateral
+- [Repay With Collateral](https://docs.dialect.to/api-reference/kamino/borrow/repay-with-collateral-post.md): Execute a repay with collateral operation
+- [Withdraw](https://docs.dialect.to/api-reference/kamino/borrow/withdraw-get.md): Get a blink for withdraw operations on a reserve
+- [Withdraw](https://docs.dialect.to/api-reference/kamino/borrow/withdraw-post.md): Execute a withdraw operation
+- [Claim Farm Rewards](https://docs.dialect.to/api-reference/kamino/farms/claim-rewards-get.md): Get metadata for claiming Kamino farm rewards.
+- [Claim Farm Rewards](https://docs.dialect.to/api-reference/kamino/farms/claim-rewards-post.md): Generate a transaction to claim all rewards for a farm.
+- [Lend Vault Claim Rewards](https://docs.dialect.to/api-reference/kamino/lend/claim-rewards-get.md): Get a blink for claiming rewards operations on a vault
+- [Lend Vault Claim Rewards](https://docs.dialect.to/api-reference/kamino/lend/claim-rewards-post.md): Execute a claim rewards operation
+- [Lend Vault Deposit](https://docs.dialect.to/api-reference/kamino/lend/deposit-get.md): Get a blink for deposit operations on a vault
+- [Lend Vault Deposit](https://docs.dialect.to/api-reference/kamino/lend/deposit-post.md): Execute a deposit operation
+- [Lend Vault Withdraw](https://docs.dialect.to/api-reference/kamino/lend/withdraw-get.md): Get a blink for withdraw operations on a vault
+- [Lend Vault Withdraw](https://docs.dialect.to/api-reference/kamino/lend/withdraw-post.md): Execute a withdraw operation
+- [Leverage Close Position](https://docs.dialect.to/api-reference/kamino/leverage/closeposition-get.md): Get metadata for closing a leverage position.
+- [Leverage Close Position](https://docs.dialect.to/api-reference/kamino/leverage/closeposition-post.md): Generate a transaction for closing a leverage position.
+- [Leverage Open Position](https://docs.dialect.to/api-reference/kamino/leverage/openposition-get.md): Get metadata for opening a leverage position.
+- [Leverage Open Position](https://docs.dialect.to/api-reference/kamino/leverage/openposition-post.md): Generate a transaction for opening a leverage position.
+- [Leverage Setup](https://docs.dialect.to/api-reference/kamino/leverage/setup-get.md): Get metadata for setting up leverage position (LUT creation).
+- [Leverage Setup](https://docs.dialect.to/api-reference/kamino/leverage/setup-post.md): Generate transactions for setting up leverage position (LUT creation).
+- [Liquidity Vault Deposit](https://docs.dialect.to/api-reference/kamino/liquidity/deposit-get.md): Get metadata for depositing into a liquidity vault.
+- [Liquidity Vault Deposit](https://docs.dialect.to/api-reference/kamino/liquidity/deposit-post.md): Generate a transaction for depositing into a liquidity vault.
+- [Liquidity Vault Withdraw](https://docs.dialect.to/api-reference/kamino/liquidity/withdraw-get.md): Get metadata for withdrawing from a liquidity vault.
+- [Liquidity Vault Withdraw](https://docs.dialect.to/api-reference/kamino/liquidity/withdraw-post.md): Generate a transaction for withdrawing from a liquidity vault.
+- [Multiply Deposit](https://docs.dialect.to/api-reference/kamino/multiply/deposit-get.md): Get metadata for depositing with leverage/multiply.
+- [Multiply Deposit](https://docs.dialect.to/api-reference/kamino/multiply/deposit-post.md): Generate a transaction for depositing with leverage/multiply.
+- [Multiply Setup](https://docs.dialect.to/api-reference/kamino/multiply/setup-get.md): Get metadata for setting up multiply position (LUT creation).
+- [Multiply Setup](https://docs.dialect.to/api-reference/kamino/multiply/setup-post.md): Generate transactions for setting up multiply position (LUT creation).
+- [Multiply Withdraw](https://docs.dialect.to/api-reference/kamino/multiply/withdraw-get.md): Get metadata for withdrawing from multiply position.
+- [Multiply Withdraw](https://docs.dialect.to/api-reference/kamino/multiply/withdraw-post.md): Generate a transaction for withdrawing from multiply position.
+- [Deposit](https://docs.dialect.to/api-reference/lulo/deposit/deposit-get.md): Get metadata for depositing a token into Lulo.
+- [Deposit](https://docs.dialect.to/api-reference/lulo/deposit/deposit-post.md): Generate a transaction for depositing a token into Lulo.
+- [Complete Regular Withdrawal](https://docs.dialect.to/api-reference/lulo/withdraw/complete-get.md): Get metadata for withdrawing a token from Lulo Regular after cooldown period.
+- [Complete Regular Withdrawal](https://docs.dialect.to/api-reference/lulo/withdraw/complete-post.md): Generate a transaction for withdrawing a token from Lulo Regular after cooldown period.
+- [Withdraw](https://docs.dialect.to/api-reference/lulo/withdraw/withdraw-get.md): Get metadata for withdrawing a token from Lulo.
+- [Withdraw](https://docs.dialect.to/api-reference/lulo/withdraw/withdraw-post.md): Generate a transaction for withdrawing a token from Lulo.
+- [Delete Email Channel](https://docs.dialect.to/api-reference/manage-channels/delete-email-channel.md): Delete email channel for a subscriber
+- [Delete Telegram Channel](https://docs.dialect.to/api-reference/manage-channels/delete-telegram-channel.md): Delete telegram channel for a subscriber
+- [Get Channels](https://docs.dialect.to/api-reference/manage-channels/get-channels.md): Get user's channels and channel subscriptions
+- [Prepare Email Channel](https://docs.dialect.to/api-reference/manage-channels/prepare-email-channel.md): Prepare email channel for a subscriber
+- [Prepare Telegram Channel](https://docs.dialect.to/api-reference/manage-channels/prepare-telegram-channel.md): Prepare telegram channel for a subscriber
+- [Resend Email Verification](https://docs.dialect.to/api-reference/manage-channels/resend-email-verification.md): Resend email verification for a subscriber
+- [Verify Email Channel](https://docs.dialect.to/api-reference/manage-channels/verify-email-channel.md): Verify email channel for a subscriber
+- [Lend Deposit Token](https://docs.dialect.to/api-reference/marginfi/lend/deposit-get.md): Get metadata for depositing a token into a MarginFi pool.
+- [Lend Deposit Token](https://docs.dialect.to/api-reference/marginfi/lend/deposit-post.md): Generate a transaction for depositing a token into a MarginFi pool.
+- [Lend Withdraw Token](https://docs.dialect.to/api-reference/marginfi/lend/withdraw-get.md): Get metadata for withdrawing a token from a MarginFi pool.
+- [Lend Withdraw Token](https://docs.dialect.to/api-reference/marginfi/lend/withdraw-post.md): Generate a transaction for withdrawing a token from a MarginFi pool.
+- [Get historical market snapshots](https://docs.dialect.to/api-reference/markets/get-historical-market-snapshots.md): Fetch market snapshots within a time range for one or more markets. Optionally interpolate to a uniform time grid.
+- [List all markets](https://docs.dialect.to/api-reference/markets/list-all-markets.md): Returns real-time market data from supported protocols, such as Jupiter, Kamino, MarginFi, Lulo and many more. For more information, please check our [Protocol Support Roadmap](/markets/supported-protocols).
+- [List all markets grouped by type](https://docs.dialect.to/api-reference/markets/list-all-markets-grouped-by-type.md): Supported providers: MarginFi Lending, Kamino Lending, Kamino Multiply, Kamino Leverage, Lulo. Temporarily without `prediction` type.
+- [Launch Success](https://docs.dialect.to/api-reference/meteora/dbc/launch-success.md): Action-chained endpoint called automatically after a successful Launch Token transaction. The previous response provides a `links.next.href` containing the mint, ticker, and name as query params. Returns a success blink with a link to trade the newly launched token.
+- [Launch Token](https://docs.dialect.to/api-reference/meteora/dbc/launch-token-get.md): Get a blink for launching a token on Meteora Dynamic Bonding Curve
+- [Launch Token](https://docs.dialect.to/api-reference/meteora/dbc/launch-token-post.md): Launch a token on Meteora Dynamic Bonding Curve
+- [Add Liquidity](https://docs.dialect.to/api-reference/meteora/dlmm/add-liquidity-get.md): Get a blink for adding liquidity to a DLMM pool
+- [Add Liquidity](https://docs.dialect.to/api-reference/meteora/dlmm/add-liquidity-post.md): Add liquidity to a DLMM pool
+- [Remove Liquidity](https://docs.dialect.to/api-reference/meteora/dlmm/remove-liquidity-get.md): Get a blink for removing liquidity from a DLMM pool
+- [Remove Liquidity](https://docs.dialect.to/api-reference/meteora/dlmm/remove-liquidity-post.md): Remove liquidity from a DLMM pool
+- [Add Liquidity](https://docs.dialect.to/api-reference/orca/pools/add-liquidity-get.md): Get a blink for adding liquidity to a position
+- [Add Liquidity](https://docs.dialect.to/api-reference/orca/pools/add-liquidity-post.md): Add liquidity to a position.
+- [Close Position](https://docs.dialect.to/api-reference/orca/pools/close-position-get.md): Get a blink for closing a position
+- [Close Position](https://docs.dialect.to/api-reference/orca/pools/close-position-post.md): Close a position and withdraw all liquidity.
+- [Open Position](https://docs.dialect.to/api-reference/orca/pools/open-position-get.md): Get a blink for opening a position
+- [Open Position](https://docs.dialect.to/api-reference/orca/pools/open-position-post.md): Open position. If lowerPrice and upperPrice are provided, open a position with a specific price range. If not, open a full range position.
+- [Remove Liquidity](https://docs.dialect.to/api-reference/orca/pools/remove-liquidity-get.md): Get a blink for removing liquidity from a position
+- [Remove Liquidity](https://docs.dialect.to/api-reference/orca/pools/remove-liquidity-post.md): Remove liquidity from a position.
+- [Get historical position snapshots](https://docs.dialect.to/api-reference/positions/get-historical-position-snapshots.md): Fetch position snapshots within a time range for a wallet address. Optionally interpolate using Birdeye price data.
+- [Get PnL data for wallet positions](https://docs.dialect.to/api-reference/positions/get-pnl-data-for-wallet-positions.md): Computes realized and unrealized PnL for all pnl-able positions (currently DFlow prediction only), including closed positions.
+- [List all market positions by wallet address](https://docs.dialect.to/api-reference/positions/list-all-market-positions-by-wallet-address.md): Supported providers & markets: Kamino Lending, Lulo.
+- [Add Liquidity](https://docs.dialect.to/api-reference/raydium/amm/add-liquidity-get.md): Get a blink for adding liquidity to a Standard AMM pool
+- [Add Liquidity](https://docs.dialect.to/api-reference/raydium/amm/add-liquidity-post.md): Add liquidity to a Standard AMM pool
+- [Remove Liquidity](https://docs.dialect.to/api-reference/raydium/amm/remove-liquidity-get.md): Get a blink for removing liquidity from a Standard AMM pool
+- [Remove Liquidity](https://docs.dialect.to/api-reference/raydium/amm/remove-liquidity-post.md): Remove liquidity from a Standard AMM pool
+- [Add Liquidity](https://docs.dialect.to/api-reference/raydium/clmm/add-liquidity-get.md): Get a blink for adding liquidity to a CLMM pool
+- [Add Liquidity](https://docs.dialect.to/api-reference/raydium/clmm/add-liquidity-post.md): Add liquidity to a CLMM pool
+- [Remove Liquidity](https://docs.dialect.to/api-reference/raydium/clmm/remove-liquidity-get.md): Get a blink for removing liquidity from a CLMM pool
+- [Remove Liquidity](https://docs.dialect.to/api-reference/raydium/clmm/remove-liquidity-post.md): Remove liquidity from a CLMM pool
+- [RAY Stake](https://docs.dialect.to/api-reference/raydium/farm/stake-get.md): Stake RAY in Raydium Farm product
+- [RAY Stake](https://docs.dialect.to/api-reference/raydium/farm/stake-post.md): Stake RAY in Raydium Farm product. Either percentage or amount is required.
+- [RAY Unstake](https://docs.dialect.to/api-reference/raydium/farm/unstake-get.md): Unstake RAY in Raydium Farm product
+- [RAY Unstake](https://docs.dialect.to/api-reference/raydium/farm/unstake-post.md): Unstake RAY in Raydium Farm product. Either percentage or amount is required.
+- [Deposit](https://docs.dialect.to/api-reference/save/lending/deposit-get.md): Get a blink to deposit a token into protected or boosted deposits
+- [Deposit](https://docs.dialect.to/api-reference/save/lending/deposit-post.md): Deposit a specific amount of a token to a reserve
+- [Withdraw](https://docs.dialect.to/api-reference/save/lending/withdraw-get.md): Get a blink to withdraw a token from a reserve
+- [Withdraw](https://docs.dialect.to/api-reference/save/lending/withdraw-post.md): Withdraw a specific amount of a token from a reserve
+- [Get App Subscribers](https://docs.dialect.to/api-reference/send-alerts/get-app-subscribers.md): Retrieve paginated list of all subscribers for application management with filtering and pagination support
+- [Get App Topics](https://docs.dialect.to/api-reference/send-alerts/get-app-topics.md): Retrieve all available alert topics for a specific application with detailed topic information including names, descriptions, and slugs for topic-based alert categorization
+- [Send Alert](https://docs.dialect.to/api-reference/send-alerts/send-alert.md): Send alert to one subscriber, multiple subscribers, or all with rich content support including images, actions, and custom data
+- [Send Batch Alerts](https://docs.dialect.to/api-reference/send-alerts/send-batch-alerts.md): Send multiple alerts in a single request for improved performance with up to 500 alerts per batch
+- [Transfer Token](https://docs.dialect.to/api-reference/solana/transfer/transfer-get.md): Get a blink for transferring a token
+- [Transfer Token](https://docs.dialect.to/api-reference/solana/transfer/transfer-post.md): Transfer any Solana tokens to any address
+- [Introduction](https://docs.dialect.to/blinks/blinks-client/index.md): Blinks are distributable experiences that can be embedded anywhere a link can exist. They offer a modern approach to service integration, replacing traditional SDKs with a more streamlined, maintainable solution.
+- [Chrome Extension](https://docs.dialect.to/blinks/blinks-client/integrate/chrome/index.md): Integrate Blinks directly into browser experiences, allowing users to interact with blockchain actions from any website.
+- [Headless Integration](https://docs.dialect.to/blinks/blinks-client/integrate/headless/index.md): Learn how to interact with Blinks via pure REST HTTP.
+- [Blinks](https://docs.dialect.to/blinks/blinks-client/integrate/ui-components/blinks.md): A complete, interactive data structure that includes all necessary information to display and interact with a Blink.
+- [MiniBlinks](https://docs.dialect.to/blinks/blinks-client/integrate/ui-components/miniblinks.md): A way to integrate smaller portions of the full blink into your product. Let you teleport buttons and other single actions between web3 products.
+- [Customize Blink Styles](https://docs.dialect.to/blinks/blinks-client/integrate/ui-components/styling.md): Dialect's Blinks SDK supports customizable styles so you can render Blinks that match the style of your dApp or 3rd party site.
+- [Action Chaining (Multi Step Blinks)](https://docs.dialect.to/blinks/blinks-provider/advanced/action-chaining.md): Create multi-step experiences with blinks using action chaining
+- [Error Handling](https://docs.dialect.to/blinks/blinks-provider/advanced/error-handling.md): Learn how to implement proper error handling in Blinks to provide users with clear feedback and prevent failed transactions.
+- [Forms](https://docs.dialect.to/blinks/blinks-provider/advanced/forms.md): Build blinks with multiple inputs and advanced input types, similar to HTML forms with validation.
+- [Metadata API](https://docs.dialect.to/blinks/blinks-provider/advanced/metadata.md): Share curated information about your dapp, customized to individual users based on their public key
+- [Multiple Transactions (Experimental)](https://docs.dialect.to/blinks/blinks-provider/advanced/multiple-transactions.md): Handle complex operations that require multiple transactions to be executed sequentially
+- [Message Signing](https://docs.dialect.to/blinks/blinks-provider/advanced/sign-message.md): Implement message signing in Blinks to verify and authenticate users without paying transaction fees.
+- [Track Transactions](https://docs.dialect.to/blinks/blinks-provider/advanced/track-tx.md): Track the conversion of your transactions by adding a reference key to your API
+- [Register your Blink](https://docs.dialect.to/blinks/blinks-provider/blink-registry.md): Blinks are a new way to interact with crypto transactions. They present an array of exciting new opportunities, along with new attack vectors for bad actors.
+- [Build your first Blink](https://docs.dialect.to/blinks/blinks-provider/build-your-first-blink.md): Learn how to create a blink that donates SOL to another wallet using NextJS.
+- [Fallbacks](https://docs.dialect.to/blinks/blinks-provider/fallbacks.md): A fallback is your safety net for when a blink fails to load or display as intended.
+- [Feedback Blink](https://docs.dialect.to/blinks/blinks-provider/guides/feedback-blink.md): Learn how to build a message signing blink that collects user feedback and saves it to a database
+- [Guides](https://docs.dialect.to/blinks/blinks-provider/guides/index.md): Practical guides and tutorials for building specific types of Blinks, including real-world examples and implementation patterns.
+- [Tip Blink Monad](https://docs.dialect.to/blinks/blinks-provider/guides/tip-blink.md): Learn how you can tip $MON to another wallet using the Monad Blockchain and blinks
+- [Introduction](https://docs.dialect.to/blinks/blinks-provider/index.md): Blinks are distributable experiences that can be embedded anywhere a link can exist. They represent a modern alternative to traditional SDKs, offering a streamlined, maintainable way to expose your services to the world.
+- [EVM Starter](https://docs.dialect.to/blinks/blinks-starters/evm.md): The blink starter for EVM is the fastest way to start with your blink project across EVM-compatible chains.
+- [Overview](https://docs.dialect.to/blinks/blinks-starters/index.md): Pre-configured templates to help you build Blinks out of the box.
+- [Solana Starter](https://docs.dialect.to/blinks/blinks-starters/solana.md): The blink starter for Solana is the fastest way to start with your blink project.
+- [Blinks](https://docs.dialect.to/blinks/index.md): Blockchain Links that make onchain experiences distributable and actionable everywhere
+- [Welcome to Dialect](https://docs.dialect.to/index.md): The complete UX stack for Web3 - transforming links into blockchain actions and keeping users engaged with real-time notifications
+- [Request Client Keys](https://docs.dialect.to/markets/api-keys.md): Get client keys for the Markets and Positions APIs and fetch real-time market data and track open positions from Solana's top DeFi protocols.
+- [Historical Position Data](https://docs.dialect.to/markets/history.md): Track position value changes over time with historical snapshots from the Markets and Positions API.
+- [Markets and Positions (Beta)](https://docs.dialect.to/markets/index.md): Real-time market data and position tracking from Solana's top protocols with ready-to-use Blinks for seamless DeFi interactions.
+- [Introduction](https://docs.dialect.to/markets/market-types/introduction.md): Get real-time market data in a unified format across Solana's top DeFi protocols.
+- [Lending Markets](https://docs.dialect.to/markets/market-types/lending.md): Get Solana's top lending markets with real-time data and ready-to-use Blinks for seamless DeFi interactions.
+- [Loop Markets](https://docs.dialect.to/markets/market-types/loop.md): Get real-time market data for loop markets in a unified format across Solana's top DeFi protocols.
+- [Perpetual Markets](https://docs.dialect.to/markets/market-types/perpetual.md): Get real-time market data for perpetual leverage positions in a unified format across Solana's top DeFi protocols.
+- [Prediction Markets](https://docs.dialect.to/markets/market-types/prediction.md): Get real-time market data for prediction markets on Solana.
+- [Yield Markets](https://docs.dialect.to/markets/market-types/yield.md): Get Solana's top yield markets with real-time data and ready-to-use Blinks for seamless DeFi interactions.
+- [Using Markets and Blinks](https://docs.dialect.to/markets/quick-start.md): Learn how to go from market data to ready-to-sign blockchain transactions using blinks
+- [Understanding Rewards](https://docs.dialect.to/markets/rewards.md): Learn how reward systems work across different DeFi protocols and how to interpret rewards data in both the Markets API and Positions API.
+- [Supported Protocols](https://docs.dialect.to/markets/supported-protocols.md): We are constantly adding new protocols to the Markets and Positions API. Here is a list of the protocols we are currently supporting.
+- [MCP Integration](https://docs.dialect.to/mcp-server/index.md): Connect AI agents to Dialect's blockchain infrastructure via Model Context Protocol.
+- [Release Notes](https://docs.dialect.to/release-notes/index.md): Latest updates and feature releases from the Dialect team
+- [Request API Keys](https://docs.dialect.to/request-api-keys.md): Get your API keys for Dialect's products.
+- [Request API Keys](https://docs.dialect.to/standard-blinks-library/api-keys.md): Request your API keys to access the Standard Blinks Library APIs and integrate Solana protocols with simple HTTP requests.
+- [Standard Blinks Library](https://docs.dialect.to/standard-blinks-library/index.md): Production-ready APIs to construct transactions for Solana's top protocols. Instantly bring on-chain experiences into your app today.
+- [Getting Started with the Standard Blinks Library](https://docs.dialect.to/standard-blinks-library/quick-start.md): Learn how to integrate Solana's top protocols into your application through pure HTTP requests.
+- [Why Use the Standard Blinks Library?](https://docs.dialect.to/standard-blinks-library/why-sbl.md): Build faster with production-ready APIs. No SDKs, no maintenance burden, just simple HTTP requests.
+
+## OpenAPI Specs
+
+- [markets](https://docs.dialect.to/openapi/markets.json)
+- [kamino](https://docs.dialect.to/openapi/kamino.json)
+- [orca](https://docs.dialect.to/openapi/orca.json)
+- [meteora](https://docs.dialect.to/openapi/meteora.json)
+- [jupiter](https://docs.dialect.to/openapi/jupiter.json)
+- [drift](https://docs.dialect.to/openapi/drift.json)
+- [save](https://docs.dialect.to/openapi/save.json)
+- [raydium](https://docs.dialect.to/openapi/raydium.json)
+- [solana](https://docs.dialect.to/openapi/solana.json)
+- [marginfi](https://docs.dialect.to/openapi/marginfi.json)
+- [lulo](https://docs.dialect.to/openapi/lulo.json)
+- [defituna](https://docs.dialect.to/openapi/defituna.json)
+- [deficarrot](https://docs.dialect.to/openapi/deficarrot.json)
+- [alerts](https://docs.dialect.to/openapi/alerts.json)
+- [blinks](https://docs.dialect.to/openapi/blinks.json)
+- [openapi](https://docs.dialect.to/api-reference/openapi.json)

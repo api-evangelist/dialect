@@ -1,0 +1,29 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.dialect.to/alerts/integrate-inbox/sdk/setup-configuration
+description: >-
+  Dialect ships client-side, embeddable React UI components for adding a web3
+  notification inbox and rendering Blinks in-app. Distinct from the server-side SDKs
+  in packages/.
+families:
+- name: Notification Inbox
+  loader: "@dialectlabs/react-ui"
+  docs: https://docs.dialect.to/alerts/integrate-inbox/sdk/notifications-button
+  components:
+  - name: NotificationsButton
+    description: Done-for-you notification bell button with modal, user settings panel, and history.
+    docs: https://docs.dialect.to/alerts/integrate-inbox/sdk/notifications-button
+  - name: Notifications
+    description: Standalone notification feed component with full CSS-variable styling control for custom layouts / modals / sidebars.
+    docs: https://docs.dialect.to/alerts/integrate-inbox/sdk/notifications
+- name: Blinks
+  loader: "@dialectlabs/blinks"
+  docs: https://docs.dialect.to/blinks
+  components:
+  - name: Blink
+    description: React component that renders a fully interactive Blink (metadata, actions, transaction signing) from a Blink URL.
+    docs: https://docs.dialect.to/blinks
+integration:
+  framework: React
+  wallet: Solana wallet adapter
+  hooks_sdk: "@dialectlabs/react-sdk"

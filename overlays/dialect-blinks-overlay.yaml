@@ -1,0 +1,15 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Dialect blinks
+  version: 1.0.0
+extends: openapi/dialect-blinks-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: true
+    x-apievangelist-provider: dialect
+    x-apievangelist-artifacts:
+      authentication: authentication/dialect-authentication.yml
+      conventions: conventions/dialect-conventions.yml
+      errors: errors/dialect-problem-types.yml
+      lifecycle: lifecycle/dialect-lifecycle.yml

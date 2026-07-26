@@ -1,0 +1,23 @@
+generated: '2026-07-18'
+method: searched
+hosts:
+- https://www.dialect.to
+- https://dial.to
+- https://alerts-api.dial.to
+- https://api.dial.to
+- https://docs.dialect.to
+documents:
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+notes: >-
+  No /.well-known/ discovery documents were served on any Dialect host at enrichment
+  time (all 404; dial.to apex returned 503 to the probe). Absence is recorded as
+  valid data. No WellKnown/SecurityTxt pointer is emitted.

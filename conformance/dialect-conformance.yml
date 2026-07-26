@@ -1,0 +1,35 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/dialect-alerts-openapi.json, openapi/dialect-blinks-openapi.json, openapi/dialect-markets-openapi.json
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: All three specs declare openapi 3.1.x.
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 security scheme; auth is API-key header + Solana-wallet JWT.
+- id: oidc
+  conforms: false
+- id: jwt-bearer
+  conforms: true
+  evidence: Subscriber inbox calls use http bearer with bearerFormat JWT.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use plain HTTP-status JSON, not application/problem+json.
+- id: json-api
+  conforms: false
+- id: cursor-pagination
+  conforms: true
+  evidence: cursor + limit query params on Alerts history and Markets endpoints.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency-key header/parameter documented.
+- id: webhooks
+  conforms: true
+  evidence: Events delivered as HTTP POST JSON-array webhooks (asyncapi/dialect-webhooks.yml).
+- id: solana-actions
+  conforms: true
+  evidence: Blinks implement the Solana Actions / Blockchain Links spec (LinkedAction, ActionPostRequest, TransactionResponse schemas).
+notes: >-
+  Derived from spec structure. No published third-party compliance certifications
+  (SOC 2 / ISO 27001 / PCI / HIPAA) were found, so no Compliance pointer is emitted.

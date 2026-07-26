@@ -1,0 +1,79 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/dialect-markets-openapi.json, openapi/dialect-blinks-openapi.json, openapi/dialect-alerts-openapi.json
+entities:
+- name: App
+  domain: alerts
+  description: A registered application that sends alerts; owns topics, channels, subscribers.
+  relationships:
+  - has_many: Topic
+  - has_many: Subscriber
+- name: Topic
+  domain: alerts
+  description: A named category of alerts an app publishes; subscribers opt in per topic.
+  relationships:
+  - belongs_to: App
+    via: appId
+- name: Subscriber
+  domain: alerts
+  description: A wallet-identified end user who receives alerts across channels.
+  relationships:
+  - belongs_to: App
+    via: appId
+  - has_many: Channel
+    via: walletAddress
+  - has_many: Notification
+- name: Channel
+  domain: alerts
+  description: A delivery destination (PUSH, IN_APP, EMAIL, TELEGRAM) for a subscriber.
+  relationships:
+  - belongs_to: Subscriber
+- name: Notification
+  domain: alerts
+  description: A delivered alert message in a subscriber's history/inbox.
+  relationships:
+  - belongs_to: Subscriber
+  - belongs_to: Topic
+- name: Blink
+  domain: blinks
+  description: A Blockchain Link — interactive onchain action bundle with metadata and linked actions.
+  relationships:
+  - has_many: LinkedAction
+  - has_one: BlinkPreview
+  - has_one: BlinkDataTable
+- name: LinkedAction
+  domain: blinks
+  description: One executable action within a Blink; returns a ready-to-sign TransactionResponse.
+  relationships:
+  - belongs_to: Blink
+- name: BlinkList
+  domain: blinks
+  description: A curated collection of Blinks referenced by id.
+  relationships:
+  - has_many: BlinkListEntry
+- name: Market
+  domain: markets
+  description: A DeFi market on a supported Solana protocol; subtypes LendingMarket, YieldMarket, LoopMarket, PerpetualMarket.
+  relationships:
+  - has_many: Position
+    via: marketIds
+- name: Position
+  domain: markets
+  description: A wallet's position in a market (LendingPositionWithMarket, YieldPositionWithMarket) with PnL.
+  relationships:
+  - belongs_to: Market
+    via: marketIds
+  - belongs_to: Wallet
+    via: walletAddress
+id_references:
+  - field: appId
+    refers_to: App
+  - field: walletAddress
+    refers_to: Subscriber/Wallet
+  - field: marketIds
+    refers_to: Market
+  - field: positionIds
+    refers_to: Position
+  - field: topicId
+    refers_to: Topic
+notes: Derived from OpenAPI component schemas and id-reference query/path parameters.

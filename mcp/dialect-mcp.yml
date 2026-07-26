@@ -1,0 +1,32 @@
+generated: '2026-07-18'
+method: searched
+status: published
+source: https://docs.dialect.to/mcp-server
+server:
+  name: dialect
+  transport: http
+  url: https://docs.dialect.to/mcp
+  local_install: npx mint-mcp add dialect
+  clients:
+  - Cursor
+  - Claude Code
+  - Claude Desktop
+description: >-
+  Official hosted MCP server for Dialect. Gives agents access to Blinks creation,
+  the Standard Blinks Library (40+ protocol integrations), the Markets API
+  (real-time rates, TVL, protocol metrics), the Alerts & Notifications stack, and
+  indexed documentation search. Connect over HTTP at https://docs.dialect.to/mcp
+  or install locally with `npx mint-mcp add dialect`.
+capabilities:
+- name: Blinks
+  description: Create custom Blockchain Links with personalized logic and branding.
+- name: Standard Blinks Library
+  description: 40+ pre-built protocol integrations (Jupiter, Kamino, Drift, DeFiTuna, etc.).
+- name: Markets API
+  description: Query real-time rates, TVL, and protocol metrics across Solana DeFi.
+- name: Alerts & Notifications
+  description: Multi-channel alert delivery and onchain event detection.
+- name: Documentation Search
+  description: Indexed guides and examples for context retrieval.
+- name: API Integration
+  description: Complete Dialect endpoint access with usage guidance.

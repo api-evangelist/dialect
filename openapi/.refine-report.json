@@ -1,0 +1,30 @@
+{
+  "provider": "dialect",
+  "sources": [
+    "dialect-blink-api-openapi.yml",
+    "dialect-blink-data-table-api-openapi.yml",
+    "dialect-blink-lists-api-openapi.yml",
+    "dialect-blink-preview-api-openapi.yml",
+    "dialect-channels-api-openapi.yml",
+    "dialect-inbox-api-openapi.yml",
+    "dialect-markets-api-openapi.yml",
+    "dialect-positions-api-openapi.yml",
+    "dialect-send-api-openapi.yml"
+  ],
+  "outputs": [
+    "dialect-blink-api-openapi.yml",
+    "dialect-blink-data-table-api-openapi.yml",
+    "dialect-blink-lists-api-openapi.yml",
+    "dialect-blink-preview-api-openapi.yml",
+    "dialect-channels-api-openapi.yml",
+    "dialect-inbox-api-openapi.yml",
+    "dialect-markets-api-openapi.yml",
+    "dialect-positions-api-openapi.yml",
+    "dialect-send-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

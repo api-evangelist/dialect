@@ -1,0 +1,26 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.dialect.to/release-notes
+versioning:
+  scheme: uri-path
+  current:
+    alerts: v2
+    blinks: v1
+    markets: v0
+  stability:
+    alerts: beta (2.2.0-beta)
+    blinks: stable (0.1.0)
+    markets: beta (0.0.1)
+release_notes: https://docs.dialect.to/release-notes
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal deprecation / Sunset-header policy is published.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+deprecated_operations: []
+notes: >-
+  Dialect publishes dated release notes at docs.dialect.to/release-notes. No public
+  status page, SLA, or formal deprecation policy was found at enrichment time.
