@@ -1,0 +1,434 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dialect Alerts V2 Blink Inbox API",
+    "version": "2.2.0-beta"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inbox",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getV2Auth",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v2/auth",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns the currently authenticated user based on session data. If unauthorized, returns 401."
+        },
+        {
+          "info": {
+            "name": "postV2AuthSolanaPrepare",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/auth/solana/prepare",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Prepares a message for the user to sign for authentication using a Solana wallet."
+        },
+        {
+          "info": {
+            "name": "postV2AuthSolanaVerify",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/auth/solana/verify",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verifies the signed message and authenticates the user."
+        },
+        {
+          "info": {
+            "name": "postV2AuthSolana-txPrepare",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/auth/solana-tx/prepare",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Prepares a transaction for the user to sign for authentication using a Solana wallet."
+        },
+        {
+          "info": {
+            "name": "postV2AuthSolana-txVerify",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/auth/solana-tx/verify",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verifies the signed message and authenticates the user."
+        },
+        {
+          "info": {
+            "name": "getV2History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v2/history",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetches alert history for a user, including unread count and last unread alert data."
+        },
+        {
+          "info": {
+            "name": "getV2HistorySummary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v2/history/summary",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetches summary of alert history for a user, including unread count and last unread alert data."
+        },
+        {
+          "info": {
+            "name": "postV2HistoryRead",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/history/read",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Marks alerts as read."
+        },
+        {
+          "info": {
+            "name": "postV2HistoryClear",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/history/clear",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Clears all alerts for the given user and specified apps. This is a global action and applies across all clients."
+        },
+        {
+          "info": {
+            "name": "postV2PushSubscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/push/subscribe",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Allows a wallet to subscribe to push alerts. By specifying the appId, the wallet can subscribe to a specific application. If no appId is provided, the wallet will subscribe to pushes triggered by all IN_APP subscriptions and apps associated with the client key."
+        },
+        {
+          "info": {
+            "name": "postV2PushUnsubscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/push/unsubscribe",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Allows a wallet to unsubscribe from push alerts. By specifying the appId, the wallet can unsubscribe from a specific application. If no appId is provided, the wallet will unsubscribe from pushes triggered by all IN_APP subscriptions and apps associated with the client key."
+        },
+        {
+          "info": {
+            "name": "postV2Subscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/subscribe",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Allows a wallet to subscribe to alerts for a given application."
+        },
+        {
+          "info": {
+            "name": "postV2Unsubscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/unsubscribe",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Unsubscribes a wallet to alerts for a given application."
+        },
+        {
+          "info": {
+            "name": "getV2Topics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v2/topics",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetches all alert topics for a subscriber, optionally filtered by appId"
+        },
+        {
+          "info": {
+            "name": "postV2TopicsSubscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/topics/subscribe",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Enables receiving alerts of a specific topic for a subscriber"
+        },
+        {
+          "info": {
+            "name": "postV2TopicsUnsubscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/topics/unsubscribe",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Disables receiving alerts of a specific topic for a subscriber"
+        },
+        {
+          "info": {
+            "name": "getV2Apps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v2/apps",
+            "headers": [
+              {
+                "name": "X-Dialect-Client-Key",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of apps that the subscriber can subscribe to, including their subscription status and topics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

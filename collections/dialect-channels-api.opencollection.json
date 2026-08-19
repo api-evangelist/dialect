@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dialect Alerts V2 Blink Channels API",
+    "version": "2.2.0-beta"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "postV2ChannelEmailPrepare",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/channel/email/prepare",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Prepare email channel for a subscriber"
+        },
+        {
+          "info": {
+            "name": "postV2ChannelTelegramPrepare",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/channel/telegram/prepare",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Prepare telegram channel for a subscriber"
+        },
+        {
+          "info": {
+            "name": "postV2ChannelEmailVerify",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/channel/email/verify",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Verify email channel for a subscriber"
+        },
+        {
+          "info": {
+            "name": "postV2ChannelEmailResend",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/channel/email/resend",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Resend email verification for a subscriber"
+        },
+        {
+          "info": {
+            "name": "postV2ChannelEmailDelete",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/channel/email/delete",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete email channel for a subscriber"
+        },
+        {
+          "info": {
+            "name": "postV2ChannelTelegramDelete",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/channel/telegram/delete",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete telegram channel for a subscriber"
+        },
+        {
+          "info": {
+            "name": "getV2Channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v2/channels",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get user's channels and channel subscriptions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

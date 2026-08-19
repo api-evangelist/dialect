@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dialect Alerts V2 Blink Send API",
+    "version": "2.2.0-beta"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Send",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "postV2ByAppIdSend",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/:appId/send",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-dialect-api-key",
+              "value": "{{x-dialect-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Send an Alert"
+        },
+        {
+          "info": {
+            "name": "postV2ByAppIdSend-batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v2/:appId/send-batch",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-dialect-api-key",
+              "value": "{{x-dialect-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Batch send multiple Alerts"
+        },
+        {
+          "info": {
+            "name": "getV2ByAppIdSubscribers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v2/:appId/subscribers",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "walletAddress",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-dialect-api-key",
+              "value": "{{x-dialect-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all subscribers for the app"
+        },
+        {
+          "info": {
+            "name": "getV2ByAppIdTopics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v2/:appId/topics",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-dialect-api-key",
+              "value": "{{x-dialect-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all topics for the app"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

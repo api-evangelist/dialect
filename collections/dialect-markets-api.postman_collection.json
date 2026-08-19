@@ -1,0 +1,346 @@
+{
+  "item": [
+    {
+      "id": "4d830c11-81b8-4053-b446-6dc4b11f53ac",
+      "name": "Markets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b616eccf-f535-48e9-b9cc-be7158e0d14e",
+          "name": "List all markets",
+          "request": {
+            "name": "List all markets",
+            "description": {
+              "content": "Returns real-time market data from supported protocols, such as Jupiter, Kamino, MarginFi, Lulo and many more. For more information, please check our [Protocol Support Roadmap](/markets/supported-protocols).\n\nNote: Some providers (e.g. Kamino) may return large responses with 100+ markets. For better performance in the API playground, consider filtering by both `type` and `provider` parameters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "markets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "asset",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b6f6400-d78b-432f-8be6-32c1e9770534",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "asset",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "filters",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"markets\": [\n    {\n      \"id\": \"string\",\n      \"type\": {},\n      \"productName\": \"string\",\n      \"provider\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"token\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 5001.63301795489,\n        \"icon\": \"string\"\n      },\n      \"depositApy\": 2188.3905031055006,\n      \"baseDepositApy\": 5961.737365515287,\n      \"borrowApy\": 669.692392480733,\n      \"baseBorrowApy\": 3903.883872462527,\n      \"totalDeposit\": 3764.9936337943113,\n      \"totalBorrow\": 3104.040982619097,\n      \"maxBorrow\": 3512.019747704811,\n      \"actions\": {\n        \"deposit\": {\n          \"blinkUrl\": \"blink:J|7U$,E\"\n        },\n        \"withdraw\": {\n          \"blinkUrl\": \"blink:3(\"\n        },\n        \"borrow\": {\n          \"blinkUrl\": \"blink:sAbL+i}<C\"\n        },\n        \"repay\": {\n          \"blinkUrl\": \"blink:Wsu\"\n        },\n        \"repayWithCollateral\": {\n          \"blinkUrl\": \"blink:],i`=cxg-b\"\n        },\n        \"claimRewards\": {\n          \"blinkUrl\": \"blink:.@69,*UNe@\"\n        }\n      },\n      \"borrowToken\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 436.7251097340907,\n        \"icon\": \"string\"\n      },\n      \"websiteUrl\": \"http://pUmogLmGFxpnMbzIziPGrAW.dhtUJQBZlP0mv,Ktt9sHNn2Q.qzl6-xFr\",\n      \"baseDepositApy30d\": 1083.7092605901778,\n      \"baseDepositApy90d\": 6658.75363588202,\n      \"baseDepositApy180d\": 8550.211131429254,\n      \"baseBorrowApy30d\": 7622.037449470701,\n      \"baseBorrowApy90d\": 8778.011240121905,\n      \"baseBorrowApy180d\": 7929.43563952919,\n      \"totalDepositUsd\": 765.66686801387,\n      \"totalBorrowUsd\": 7779.694693633463,\n      \"maxDeposit\": 416.61560133273156,\n      \"rewards\": [\n        {\n          \"type\": {},\n          \"apy\": 7729.189416947125,\n          \"token\": {\n            \"address\": \"string\",\n            \"symbol\": \"string\",\n            \"decimals\": 1365.1646916655925,\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"marketAction\": \"string\"\n        },\n        {\n          \"type\": {},\n          \"apy\": 2169.0683239846467,\n          \"token\": {\n            \"address\": \"string\",\n            \"symbol\": \"string\",\n            \"decimals\": 9308.045425552236,\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"marketAction\": \"string\"\n        }\n      ],\n      \"maxLtv\": 0.666469953619414,\n      \"liquidationLtv\": 0.531131875634158,\n      \"liquidationPenalty\": 0.17961139803909154,\n      \"additionalData\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": {},\n      \"productName\": \"string\",\n      \"provider\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"token\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 1420.6381908046494,\n        \"icon\": \"string\"\n      },\n      \"depositApy\": 6519.7817951057905,\n      \"baseDepositApy\": 8373.969207794662,\n      \"borrowApy\": 1187.2445437577871,\n      \"baseBorrowApy\": 5119.32970106785,\n      \"totalDeposit\": 3929.0934608390016,\n      \"totalBorrow\": 4390.912682584403,\n      \"maxBorrow\": 769.8693655271727,\n      \"actions\": {\n        \"deposit\": {\n          \"blinkUrl\": \"blink:v\"\n        },\n        \"withdraw\": {\n          \"blinkUrl\": \"blink:29C\"\n        },\n        \"borrow\": {\n          \"blinkUrl\": \"blink:\"\n        },\n        \"repay\": {\n          \"blinkUrl\": \"blink:Ca*<0ntb\"\n        },\n        \"repayWithCollateral\": {\n          \"blinkUrl\": \"blink:6\"\n        },\n        \"claimRewards\": {\n          \"blinkUrl\": \"blink:qz&3KsHw\"\n        }\n      },\n      \"borrowToken\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 9437.648830867634,\n        \"icon\": \"string\"\n      },\n      \"websiteUrl\": \"http://oVarJW.yhhVF9coSEBoYrHoRopomR9A1NdM7J,ud5KNCFPB\",\n      \"baseDepositApy30d\": 4088.5408151961287,\n      \"baseDepositApy90d\": 6498.1036067553,\n      \"baseDepositApy180d\": 2807.2066075276803,\n      \"baseBorrowApy30d\": 1820.7298836560649,\n      \"baseBorrowApy90d\": 8041.294205435977,\n      \"baseBorrowApy180d\": 6119.977309523345,\n      \"totalDepositUsd\": 5412.3267914949365,\n      \"totalBorrowUsd\": 3252.3384651809206,\n      \"maxDeposit\": 7860.380826872427,\n      \"rewards\": [\n        {\n          \"type\": {},\n          \"apy\": 398.9944654128508,\n          \"token\": {\n            \"address\": \"string\",\n            \"symbol\": \"string\",\n            \"decimals\": 6830.034195168442,\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"marketAction\": \"string\"\n        },\n        {\n          \"type\": {},\n          \"apy\": 6367.239810410642,\n          \"token\": {\n            \"address\": \"string\",\n            \"symbol\": \"string\",\n            \"decimals\": 7354.903991633222,\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"marketAction\": \"string\"\n        }\n      ],\n      \"maxLtv\": 0.5093135403967386,\n      \"liquidationLtv\": 0.4819636890671839,\n      \"liquidationPenalty\": 0.9940729118866379,\n      \"additionalData\": {\n        \"key_0\": {}\n      }\n    }\n  ],\n  \"cursor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6de8b30e-e008-489a-875b-645110c53092",
+          "name": "List all markets grouped by type",
+          "request": {
+            "name": "List all markets grouped by type",
+            "description": {
+              "content": "Supported providers: MarginFi Lending, Kamino Lending, Kamino Multiply, Kamino Leverage, Lulo. Temporarily without `prediction` type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "marketsByType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c326bf9-1df1-46aa-8b09-c347e41fc7de",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "marketsByType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lending\": [\n    {\n      \"id\": \"string\",\n      \"type\": {},\n      \"productName\": \"string\",\n      \"provider\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"token\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 3903.2833067000583,\n        \"icon\": \"string\"\n      },\n      \"depositApy\": 3506.6897575236176,\n      \"baseDepositApy\": 4131.033214964453,\n      \"borrowApy\": 884.2237239859896,\n      \"baseBorrowApy\": 3993.0007327072294,\n      \"totalDeposit\": 5364.996854093075,\n      \"totalBorrow\": 2319.62666867908,\n      \"maxBorrow\": 1944.3272074889173,\n      \"actions\": {\n        \"deposit\": {\n          \"blinkUrl\": \"blink:@iZ\"\n        },\n        \"withdraw\": {\n          \"blinkUrl\": \"blink:g\"\n        },\n        \"borrow\": {\n          \"blinkUrl\": \"blink:iPzn\"\n        },\n        \"repay\": {\n          \"blinkUrl\": \"blink:\"\n        },\n        \"repayWithCollateral\": {\n          \"blinkUrl\": \"blink:UHhb$@K+\"\n        },\n        \"claimRewards\": {\n          \"blinkUrl\": \"blink:ABI\"\n        }\n      },\n      \"borrowToken\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 6057.941248419743,\n        \"icon\": \"string\"\n      },\n      \"websiteUrl\": \"https://KybTiDrSczJKbyoB.szdnMB0bIVGaU5N5Zc1efp\",\n      \"baseDepositApy30d\": 6183.317581851559,\n      \"baseDepositApy90d\": 6571.702652632704,\n      \"baseDepositApy180d\": 1469.5593962933851,\n      \"baseBorrowApy30d\": 1939.1772252865646,\n      \"baseBorrowApy90d\": 8455.60296472887,\n      \"baseBorrowApy180d\": 8556.956085764852,\n      \"totalDepositUsd\": 9449.462638429919,\n      \"totalBorrowUsd\": 2565.5657065246496,\n      \"maxDeposit\": 9547.81245533757,\n      \"rewards\": [\n        {\n          \"type\": {},\n          \"apy\": 9245.166272515666,\n          \"token\": {\n            \"address\": \"string\",\n            \"symbol\": \"string\",\n            \"decimals\": 5518.992091993729,\n            \"icon\": \"string\"\n          },\n          \"marketAction\": \"string\"\n        },\n        {\n          \"type\": {},\n          \"apy\": 8144.811150668567,\n          \"token\": {\n            \"address\": \"string\",\n            \"symbol\": \"string\",\n            \"decimals\": 3464.275529944192,\n            \"icon\": \"string\"\n          },\n          \"marketAction\": \"string\"\n        }\n      ],\n      \"maxLtv\": 0.8778598376605318,\n      \"liquidationLtv\": 0.10600026013174957,\n      \"liquidationPenalty\": 0.4310266724137879,\n      \"additionalData\": {\n        \"key_0\": {}\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": {},\n      \"productName\": \"string\",\n      \"provider\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"token\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 1840.4013954482168,\n        \"icon\": \"string\"\n      },\n      \"depositApy\": 5759.950610867533,\n      \"baseDepositApy\": 5272.263058818997,\n      \"borrowApy\": 5664.099107282471,\n      \"baseBorrowApy\": 9733.722203016709,\n      \"totalDeposit\": 4460.579052822872,\n      \"totalBorrow\": 2880.2538459578755,\n      \"maxBorrow\": 6427.093602438075,\n      \"actions\": {\n        \"deposit\": {\n          \"blinkUrl\": \"blink:(b\"\n        },\n        \"withdraw\": {\n          \"blinkUrl\": \"blink:QTp^?\"\n        },\n        \"borrow\": {\n          \"blinkUrl\": \"blink:.NA@\"\n        },\n        \"repay\": {\n          \"blinkUrl\": \"blink:rWo%f7}\"\n        },\n        \"repayWithCollateral\": {\n          \"blinkUrl\": \"blink:!U|Qy\"\n        },\n        \"claimRewards\": {\n          \"blinkUrl\": \"blink:FX/{V9Yxy\"\n        }\n      },\n      \"borrowToken\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 4427.930594029289,\n        \"icon\": \"string\"\n      },\n      \"websiteUrl\": \"http://LNi.amzRh1oSVJPNOh7m+QJHh0H+d-wOUYWVqpFt65Dcsa2YVUfwYM4+fKQzg-k.cnYR\",\n      \"baseDepositApy30d\": 9590.595295944722,\n      \"baseDepositApy90d\": 7940.116413207945,\n      \"baseDepositApy180d\": 4714.578936015419,\n      \"baseBorrowApy30d\": 574.0046686490352,\n      \"baseBorrowApy90d\": 8295.56613179915,\n      \"baseBorrowApy180d\": 2846.8932888691425,\n      \"totalDepositUsd\": 3877.0336180616437,\n      \"totalBorrowUsd\": 1272.3901671729466,\n      \"maxDeposit\": 5327.5695658406485,\n      \"rewards\": [\n        {\n          \"type\": {},\n          \"apy\": 7993.426607142024,\n          \"token\": {\n            \"address\": \"string\",\n            \"symbol\": \"string\",\n            \"decimals\": 8181.122594178329,\n            \"icon\": \"string\"\n          },\n          \"marketAction\": \"string\"\n        },\n        {\n          \"type\": {},\n          \"apy\": 7773.664231583497,\n          \"token\": {\n            \"address\": \"string\",\n            \"symbol\": \"string\",\n            \"decimals\": 9107.05649267041,\n            \"icon\": \"string\"\n          },\n          \"marketAction\": \"string\"\n        }\n      ],\n      \"maxLtv\": 0.8113104510251535,\n      \"liquidationLtv\": 0.44614488837270705,\n      \"liquidationPenalty\": 0.4372487080258274,\n      \"additionalData\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      }\n    }\n  ],\n  \"yield\": [\n    {\n      \"id\": \"string\",\n      \"type\": {},\n      \"productName\": \"string\",\n      \"provider\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"token\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 8602.089754937755,\n        \"icon\": \"string\"\n      },\n      \"depositApy\": 5656.219080625256,\n      \"baseDepositApy\": 1737.2237260804757,\n      \"actions\": {\n        \"deposit\": {\n          \"blinkUrl\": \"blink:(~d9\"\n        },\n        \"withdraw\": {\n          \"blinkUrl\": \"blink:U><T#1\"\n        },\n        \"withdrawComplete\": {\n          \"blinkUrl\": \"blink:^\\\"sC\"\n        },\n        \"claimRewards\": {\n          \"blinkUrl\": \"blink:7elheCc;%#\"\n        }\n      },\n      \"websiteUrl\": \"http://bKHgrCJrNRTdgvHLeI.uvbscAD9Yr3+CKYsOQQMebL,cl0KWxCQQVwuHL7sGw6GKHwX6g-tLS-AaXN4vPI+c.\",\n      \"baseDepositApy30d\": 5092.563988678354,\n      \"baseDepositApy90d\": 6903.338188906976,\n      \"baseDepositApy180d\": 1182.381565352747,\n      \"totalDeposit\": 9380.408320040297,\n      \"totalDepositUsd\": 2504.051871001783,\n      \"rewards\": [\n        {\n          \"type\": {},\n          \"apy\": 1636.411447372025,\n          \"token\": {\n            \"address\": \"string\",\n            \"symbol\": \"string\",\n            \"decimals\": 3195.024176946606,\n            \"icon\": \"string\"\n          },\n          \"marketAction\": \"string\"\n        },\n        {\n          \"type\": {},\n          \"apy\": 8983.911254727582,\n          \"token\": {\n            \"address\": \"string\",\n            \"symbol\": \"string\",\n            \"decimals\": 6805.300630883424,\n            \"icon\": \"string\"\n          },\n          \"marketAction\": \"string\"\n        }\n      ],\n      \"additionalData\": {\n        \"key_0\": {}\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": {},\n      \"productName\": \"string\",\n      \"provider\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"token\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 1331.085027828367,\n        \"icon\": \"string\"\n      },\n      \"depositApy\": 8200.714583010142,\n      \"baseDepositApy\": 4377.915739932705,\n      \"actions\": {\n        \"deposit\": {\n          \"blinkUrl\": \"blink:09W|dQ{}5\"\n        },\n        \"withdraw\": {\n          \"blinkUrl\": \"blink:^\"\n        },\n        \"withdrawComplete\": {\n          \"blinkUrl\": \"blink::#!Tl3J$\"\n        },\n        \"claimRewards\": {\n          \"blinkUrl\": \"blink:BH%C-F^Yu\"\n        }\n      },\n      \"websiteUrl\": \"http://TBlulWxjDiOr.rljx,duH\",\n      \"baseDepositApy30d\": 6059.730570423266,\n      \"baseDepositApy90d\": 516.5736119954545,\n      \"baseDepositApy180d\": 9260.08940545931,\n      \"totalDeposit\": 2693.878222402666,\n      \"totalDepositUsd\": 2727.77389191578,\n      \"rewards\": [\n        {\n          \"type\": {},\n          \"apy\": 4838.502824278074,\n          \"token\": {\n            \"address\": \"string\",\n            \"symbol\": \"string\",\n            \"decimals\": 9318.235706147789,\n            \"icon\": \"string\"\n          },\n          \"marketAction\": \"string\"\n        },\n        {\n          \"type\": {},\n          \"apy\": 8554.571263353622,\n          \"token\": {\n            \"address\": \"string\",\n            \"symbol\": \"string\",\n            \"decimals\": 436.7824566402334,\n            \"icon\": \"string\"\n          },\n          \"marketAction\": \"string\"\n        }\n      ],\n      \"additionalData\": {\n        \"key_0\": {}\n      }\n    }\n  ],\n  \"loop\": [\n    {\n      \"id\": \"string\",\n      \"type\": {},\n      \"productName\": \"string\",\n      \"provider\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"tokenA\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 6266.047098484444,\n        \"icon\": \"string\"\n      },\n      \"tokenB\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 1185.8746036164491,\n        \"icon\": \"string\"\n      },\n      \"depositApy\": 1078.6695481273723,\n      \"maxLeverage\": 604.0283850601968,\n      \"maxLtv\": 0.8070584856060825,\n      \"liquidationLtv\": 0.6438661707302065,\n      \"actions\": {\n        \"setup\": {\n          \"blinkUrl\": \"blink: v}m110~\"\n        },\n        \"deposit\": {\n          \"blinkUrl\": \"blink:ydn1H\"\n        },\n        \"withdraw\": {\n          \"blinkUrl\": \"blink:!\"\n        }\n      },\n      \"websiteUrl\": \"http://AXrbkgk.yauupkgGEjZVXbAPKUeZA5Cgmp3pHN6O.s26DvBpo4iErSyco+Ii.VtY8sM\",\n      \"depositApy30d\": 3401.426138737962,\n      \"depositApy90d\": 7136.374365204699,\n      \"depositApy180d\": 9703.867859417522,\n      \"additionalData\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": {},\n      \"productName\": \"string\",\n      \"provider\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"tokenA\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 5424.869354507241,\n        \"icon\": \"string\"\n      },\n      \"tokenB\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 6151.472225646826,\n        \"icon\": \"string\"\n      },\n      \"depositApy\": 7769.644158241802,\n      \"maxLeverage\": 4874.955967059275,\n      \"maxLtv\": 0.7585282177249154,\n      \"liquidationLtv\": 0.8224095262932513,\n      \"actions\": {\n        \"setup\": {\n          \"blinkUrl\": \"blink:J\"\n        },\n        \"deposit\": {\n          \"blinkUrl\": \"blink:\"\n        },\n        \"withdraw\": {\n          \"blinkUrl\": \"blink:C-2w,\"\n        }\n      },\n      \"websiteUrl\": \"http://CeEMrbYRRv.pjXWeujvp4b8aVdjelzDfvokRqleQcjI5EpKyr\",\n      \"depositApy30d\": 674.5458954222727,\n      \"depositApy90d\": 6560.726691926276,\n      \"depositApy180d\": 8930.708882305447,\n      \"additionalData\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      }\n    }\n  ],\n  \"perpetual\": [\n    {\n      \"id\": \"string\",\n      \"type\": {},\n      \"productName\": \"string\",\n      \"provider\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"tokenA\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 7747.784790184594,\n        \"icon\": \"string\"\n      },\n      \"tokenB\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 1760.7919463544308,\n        \"icon\": \"string\"\n      },\n      \"liquidity\": {\n        \"longUsd\": 9254.181765337386,\n        \"shortUsd\": 2141.0297878361293\n      },\n      \"maxLeverage\": 2232.292109395172,\n      \"actions\": {\n        \"setup\": {\n          \"blinkUrl\": \"blink::]gmj2\\\\T&R\"\n        },\n        \"openPosition\": {\n          \"blinkUrl\": \"blink:*Of9\"\n        },\n        \"closePosition\": {\n          \"blinkUrl\": \"blink:iJC\"\n        }\n      },\n      \"websiteUrl\": \"http://soQf.weprm+KOpyGnD7aUZ233HIpLH6hEw4pc3m0gf2bD+udV5mu8MP.tFjDieW-BoMG\",\n      \"additionalData\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": {},\n      \"productName\": \"string\",\n      \"provider\": {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"icon\": \"string\"\n      },\n      \"tokenA\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 3608.9314389047854,\n        \"icon\": \"string\"\n      },\n      \"tokenB\": {\n        \"address\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 3837.0382499924817,\n        \"icon\": \"string\"\n      },\n      \"liquidity\": {\n        \"longUsd\": 8855.230069030942,\n        \"shortUsd\": 5428.841646885862\n      },\n      \"maxLeverage\": 6268.672853812657,\n      \"actions\": {\n        \"setup\": {\n          \"blinkUrl\": \"blink:OL\"\n        },\n        \"openPosition\": {\n          \"blinkUrl\": \"blink:\"\n        },\n        \"closePosition\": {\n          \"blinkUrl\": \"blink:iw\"\n        }\n      },\n      \"websiteUrl\": \"https://LuOnaqEFToSdzByQETSUIaIwDZWnGb.ziaN1T+BhMgjr646gA,VHSZGiPr5FmSzTjr-nkYsqejKKzFaOx4e\",\n      \"additionalData\": {\n        \"key_0\": {}\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e446959-13d9-439e-998b-3d1b800ebe86",
+          "name": "Get historical market snapshots",
+          "request": {
+            "name": "Get historical market snapshots",
+            "description": {
+              "content": "Fetch market snapshots within a time range for one or more markets. Optionally interpolate to a uniform time grid.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "markets",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "marketIds",
+                  "value": "jupiter.earn.USDC",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "2025-12-01T00:00:00Z",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "resolution",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "503885fa-84df-4cea-86f7-0d8c5c686c58",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "markets",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "marketIds",
+                      "value": "jupiter.earn.USDC"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "2025-12-01T00:00:00Z"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"markets\": [\n      {\n        \"id\": \"string\",\n        \"history\": [\n          {\n            \"timestamp\": \"1995-05-21T05:50:25.635Z\",\n            \"depositApy\": 3266.6878379364825,\n            \"totalDeposit\": 8037.52866542154,\n            \"totalDepositUsd\": 8368.593887103934\n          },\n          {\n            \"timestamp\": \"2019-10-28T02:14:53.013Z\",\n            \"depositApy\": 4078.24358834738,\n            \"totalDeposit\": 3770.395921557326,\n            \"totalDepositUsd\": 8595.544533298998\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"history\": [\n          {\n            \"timestamp\": \"1951-05-04T15:49:21.531Z\",\n            \"depositApy\": 3813.637135573236,\n            \"totalDeposit\": 7809.518661178767,\n            \"totalDepositUsd\": 1945.9765378541038\n          },\n          {\n            \"timestamp\": \"1960-08-08T06:06:21.455Z\",\n            \"depositApy\": 9050.837332095463,\n            \"totalDeposit\": 8522.51958417559,\n            \"totalDepositUsd\": 2943.928740333842\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://alerts-api.dial.to",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5c169c98-8242-4f31-8006-71c6ff8ebd4f",
+    "name": "Dialect Alerts V2 Blink Markets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Dialect Alerts API supporting both subscriber and app authentication methods.",
+      "type": "text/plain"
+    }
+  }
+}

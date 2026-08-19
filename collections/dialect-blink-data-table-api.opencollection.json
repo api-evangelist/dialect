@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dialect Alerts V2 Blink Blink Data Table API",
+    "version": "2.2.0-beta"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Blink Data Table",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Blink Data Table",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v1/blink-data-table",
+            "params": [
+              {
+                "name": "apiUrl",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "account",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve structured data in table format. Great for displaying key data, such as APY, available balance, etc."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

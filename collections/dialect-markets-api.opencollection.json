@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dialect Alerts V2 Blink Markets API",
+    "version": "2.2.0-beta"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Markets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v0/markets",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "asset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns real-time market data from supported protocols, such as Jupiter, Kamino, MarginFi, Lulo and many more. For more information, please check our [Protocol Support Roadmap](/markets/supported-protocols).\n\nNote: Some providers (e.g. Kamino) may return large responses with 100+ markets. For better performance in the API playground, consider filtering by both `type` and `provider` parameters."
+        },
+        {
+          "info": {
+            "name": "List all markets grouped by type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v0/marketsByType"
+          },
+          "docs": "Supported providers: MarginFi Lending, Kamino Lending, Kamino Multiply, Kamino Leverage, Lulo. Temporarily without `prediction` type."
+        },
+        {
+          "info": {
+            "name": "Get historical market snapshots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v0/markets/history",
+            "params": [
+              {
+                "name": "marketIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "resolution",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch market snapshots within a time range for one or more markets. Optionally interpolate to a uniform time grid."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

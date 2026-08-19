@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dialect Alerts V2 Blink Positions API",
+    "version": "2.2.0-beta"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Positions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all market positions by wallet address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v0/positions/owners",
+            "params": [
+              {
+                "name": "walletAddresses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "bundleIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Supported providers & markets: Kamino Lending, Lulo."
+        },
+        {
+          "info": {
+            "name": "Get historical position snapshots",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v0/positions/history",
+            "params": [
+              {
+                "name": "walletAddress",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "positionIds",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "resolution",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch position snapshots within a time range for a wallet address. Optionally interpolate using Birdeye price data."
+        },
+        {
+          "info": {
+            "name": "Get PnL data for wallet positions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v0/positions/pnl",
+            "params": [
+              {
+                "name": "walletAddresses",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Computes realized and unrealized PnL for all pnl-able positions (currently DFlow prediction only), including closed positions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

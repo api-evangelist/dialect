@@ -1,0 +1,345 @@
+{
+  "item": [
+    {
+      "id": "6d43ee12-4e4a-42fd-b45c-b7d33313acd0",
+      "name": "Positions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4628f281-fe18-479f-8732-1b69a432d086",
+          "name": "List all market positions by wallet address",
+          "request": {
+            "name": "List all market positions by wallet address",
+            "description": {
+              "content": "Supported providers & markets: Kamino Lending, Lulo.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "positions",
+                "owners"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "walletAddresses",
+                  "value": "6JpNV6DK88auwzKVizdeT4Bw3D44sam5GqjcPCJ7y176",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "bundleIds",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "383ecc08-964f-48ae-9778-dbac5d7a8276",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "positions",
+                    "owners"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "walletAddresses",
+                      "value": "6JpNV6DK88auwzKVizdeT4Bw3D44sam5GqjcPCJ7y176"
+                    },
+                    {
+                      "key": "bundleIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"positions\": [\n    {\n      \"id\": \"string\",\n      \"type\": {},\n      \"marketId\": \"string\",\n      \"ownerAddress\": \"string\",\n      \"side\": \"deposit\",\n      \"amount\": 5587.613446099289,\n      \"market\": {\n        \"id\": \"string\",\n        \"type\": {},\n        \"productName\": \"string\",\n        \"provider\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"icon\": \"string\"\n        },\n        \"token\": {\n          \"address\": \"string\",\n          \"symbol\": \"string\",\n          \"decimals\": 7969.710640667179,\n          \"icon\": \"string\"\n        },\n        \"depositApy\": 5422.317488970524,\n        \"baseDepositApy\": 6659.949006495956,\n        \"borrowApy\": 9145.740832418514,\n        \"baseBorrowApy\": 8583.475658754334,\n        \"totalDeposit\": 9661.79087518112,\n        \"totalBorrow\": 7450.4723026947495,\n        \"maxBorrow\": 6095.0448386863045,\n        \"actions\": {\n          \"deposit\": {\n            \"blinkUrl\": \"blink:gm>Ut86\"\n          },\n          \"withdraw\": {\n            \"blinkUrl\": \"blink:)}*{\"\n          },\n          \"borrow\": {\n            \"blinkUrl\": \"blink:-W@\"\n          },\n          \"repay\": {\n            \"blinkUrl\": \"blink:\\\\)c\"\n          },\n          \"repayWithCollateral\": {\n            \"blinkUrl\": \"blink:J\"\n          },\n          \"claimRewards\": {\n            \"blinkUrl\": \"blink:}8 h\"\n          }\n        },\n        \"borrowToken\": {\n          \"address\": \"string\",\n          \"symbol\": \"string\",\n          \"decimals\": 3200.166417692201,\n          \"icon\": \"string\"\n        },\n        \"websiteUrl\": \"https://mPjExkeDQeHxdnKCeRqzNcVcjiohbSLTi.fnxsyygJT8OwRQrdJ5,muoR84D\",\n        \"baseDepositApy30d\": 9381.82119340905,\n        \"baseDepositApy90d\": 8486.572991244959,\n        \"baseDepositApy180d\": 5468.089033767978,\n        \"baseBorrowApy30d\": 7062.142377217669,\n        \"baseBorrowApy90d\": 2013.5624595877089,\n        \"baseBorrowApy180d\": 198.1884005159107,\n        \"totalDepositUsd\": 4565.607521793863,\n        \"totalBorrowUsd\": 7374.934268378193,\n        \"maxDeposit\": 5362.964729460699,\n        \"rewards\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"apy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"marketAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"apy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"marketAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"maxLtv\": 0.6921506469836564,\n        \"liquidationLtv\": 0.11493307135375308,\n        \"liquidationPenalty\": 0.5461056926650167,\n        \"additionalData\": {\n          \"key_0\": {}\n        }\n      },\n      \"bundleId\": \"string\",\n      \"websiteUrl\": \"http://vLytJmbmpzDVVVIKQRtsrhCZ.sfbE64MD,AJWHRG4fA9dXRkoxDpu\",\n      \"rewards\": [\n        {\n          \"tokenAddress\": \"string\",\n          \"amount\": 8082.385294669791,\n          \"amountUsd\": 1000.6178620185547\n        },\n        {\n          \"tokenAddress\": \"string\",\n          \"amount\": 4228.437815472188,\n          \"amountUsd\": 8067.860141760287\n        }\n      ],\n      \"additionalData\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"actions\": {\n        \"deposit\": {\n          \"blinkUrl\": \"blink:\"\n        },\n        \"withdraw\": {\n          \"blinkUrl\": \"blink:L];RXt}T/A\"\n        },\n        \"borrow\": {\n          \"blinkUrl\": \"blink:T[{AI0Vl\"\n        },\n        \"repay\": {\n          \"blinkUrl\": \"blink:wQ\"\n        }\n      },\n      \"amountUsd\": 9389.186797250439,\n      \"ltv\": 59.45644041404153,\n      \"liquidationPrice\": 774.2623250005354\n    },\n    {\n      \"id\": \"string\",\n      \"type\": {},\n      \"marketId\": \"string\",\n      \"ownerAddress\": \"string\",\n      \"side\": \"borrow\",\n      \"amount\": 7946.719611296639,\n      \"market\": {\n        \"id\": \"string\",\n        \"type\": {},\n        \"productName\": \"string\",\n        \"provider\": {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"icon\": \"string\"\n        },\n        \"token\": {\n          \"address\": \"string\",\n          \"symbol\": \"string\",\n          \"decimals\": 7285.155363911963,\n          \"icon\": \"string\"\n        },\n        \"depositApy\": 8395.843642027485,\n        \"baseDepositApy\": 8830.813284814874,\n        \"borrowApy\": 5033.836487717322,\n        \"baseBorrowApy\": 1314.9484444585569,\n        \"totalDeposit\": 1731.9393921820147,\n        \"totalBorrow\": 5815.894307146967,\n        \"maxBorrow\": 2047.1438505771366,\n        \"actions\": {\n          \"deposit\": {\n            \"blinkUrl\": \"blink:OmU<?9g5NC\"\n          },\n          \"withdraw\": {\n            \"blinkUrl\": \"blink:9j</ivci\"\n          },\n          \"borrow\": {\n            \"blinkUrl\": \"blink:\"\n          },\n          \"repay\": {\n            \"blinkUrl\": \"blink:4[j5f\"\n          },\n          \"repayWithCollateral\": {\n            \"blinkUrl\": \"blink:rF5:\"\n          },\n          \"claimRewards\": {\n            \"blinkUrl\": \"blink:@mI!e3v\"\n          }\n        },\n        \"borrowToken\": {\n          \"address\": \"string\",\n          \"symbol\": \"string\",\n          \"decimals\": 8967.794618252792,\n          \"icon\": \"string\"\n        },\n        \"websiteUrl\": \"https://XZp.fnsbCdkwW.Mlr8bPxeltsJ+0v\",\n        \"baseDepositApy30d\": 2533.3216556258485,\n        \"baseDepositApy90d\": 4183.896076636476,\n        \"baseDepositApy180d\": 8211.437673223876,\n        \"baseBorrowApy30d\": 475.35755511117884,\n        \"baseBorrowApy90d\": 7600.718160370511,\n        \"baseBorrowApy180d\": 1833.4772405767642,\n        \"totalDepositUsd\": 2561.0855825273316,\n        \"totalBorrowUsd\": 2266.5267603753405,\n        \"maxDeposit\": 9252.49349639466,\n        \"rewards\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"apy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"marketAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"apy\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"marketAction\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"maxLtv\": 0.06856337446753835,\n        \"liquidationLtv\": 0.4026932615648624,\n        \"liquidationPenalty\": 0.16424618756238774,\n        \"additionalData\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        }\n      },\n      \"bundleId\": \"string\",\n      \"websiteUrl\": \"http://koHMZYNWHBn.nciadA+N524OQtboRO1w,O-V+YJZQwbW1lHuZj7g\",\n      \"rewards\": [\n        {\n          \"tokenAddress\": \"string\",\n          \"amount\": 850.0443680539927,\n          \"amountUsd\": 5942.337997365269\n        },\n        {\n          \"tokenAddress\": \"string\",\n          \"amount\": 1484.255541708992,\n          \"amountUsd\": 3820.786998211041\n        }\n      ],\n      \"additionalData\": {\n        \"key_0\": {}\n      },\n      \"actions\": {\n        \"deposit\": {\n          \"blinkUrl\": \"blink:? a]j\"\n        },\n        \"withdraw\": {\n          \"blinkUrl\": \"blink:]4eF\"\n        },\n        \"borrow\": {\n          \"blinkUrl\": \"blink:NCq/n0`_\\\"\"\n        },\n        \"repay\": {\n          \"blinkUrl\": \"blink:$cpch,^wr#\"\n        }\n      },\n      \"amountUsd\": 5752.352925951044,\n      \"ltv\": 74.47095542939628,\n      \"liquidationPrice\": 3094.246263466257\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95ba7cd3-c728-4777-ab5b-9d49ab0798c3",
+          "name": "Get historical position snapshots",
+          "request": {
+            "name": "Get historical position snapshots",
+            "description": {
+              "content": "Fetch position snapshots within a time range for a wallet address. Optionally interpolate using Birdeye price data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "positions",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "walletAddress",
+                  "value": "6JpNV6DK88auwzKVizdeT4Bw3D44sam5GqjcPCJ7y176",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "2026-01-01T00:00:00Z",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "2026-01-31T23:59:59Z"
+                },
+                {
+                  "disabled": false,
+                  "key": "positionIds",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "resolution",
+                  "value": "1h"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "216d39d5-0b94-4572-87b5-3d6d145e9a3c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "positions",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "walletAddress",
+                      "value": "6JpNV6DK88auwzKVizdeT4Bw3D44sam5GqjcPCJ7y176"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "2026-01-01T00:00:00Z"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "2026-01-31T23:59:59Z"
+                    },
+                    {
+                      "key": "positionIds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resolution",
+                      "value": "1h"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"positions\": [\n      {\n        \"id\": \"string\",\n        \"providerId\": \"string\",\n        \"type\": \"yield\",\n        \"marketId\": \"string\",\n        \"history\": [\n          {\n            \"timestamp\": \"1978-04-29T16:08:11.982Z\",\n            \"amount\": 4408.179268244974,\n            \"amountUsd\": 6145.722215989928,\n            \"amountTokenA\": 6482.471144590767,\n            \"amountTokenAUsd\": 2322.9554909827543,\n            \"amountTokenB\": 7714.966622150358,\n            \"amountTokenBUsd\": 6926.466484256334\n          },\n          {\n            \"timestamp\": \"1967-07-03T15:43:38.761Z\",\n            \"amount\": 8303.114303316275,\n            \"amountUsd\": 3064.649278356466,\n            \"amountTokenA\": 4863.677945623082,\n            \"amountTokenAUsd\": 97.21159994024563,\n            \"amountTokenB\": 9266.770178182554,\n            \"amountTokenBUsd\": 4640.47297419951\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"providerId\": \"string\",\n        \"type\": \"reward\",\n        \"marketId\": \"string\",\n        \"history\": [\n          {\n            \"timestamp\": \"2000-04-23T21:59:14.365Z\",\n            \"amount\": 8407.985062421609,\n            \"amountUsd\": 4634.388827014652,\n            \"amountTokenA\": 6576.4290569017585,\n            \"amountTokenAUsd\": 5906.762229026009,\n            \"amountTokenB\": 3426.6042514486307,\n            \"amountTokenBUsd\": 3420.6444240175338\n          },\n          {\n            \"timestamp\": \"1981-02-16T03:06:27.279Z\",\n            \"amount\": 7104.312599841959,\n            \"amountUsd\": 4337.20693616818,\n            \"amountTokenA\": 8380.587213137536,\n            \"amountTokenAUsd\": 6641.563352486336,\n            \"amountTokenB\": 2377.476295995079,\n            \"amountTokenBUsd\": 6263.797561451236\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36a66b65-333e-4cb0-a0eb-6063a78edcbe",
+          "name": "Get PnL data for wallet positions",
+          "request": {
+            "name": "Get PnL data for wallet positions",
+            "description": {
+              "content": "Computes realized and unrealized PnL for all pnl-able positions (currently DFlow prediction only), including closed positions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v0",
+                "positions",
+                "pnl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "walletAddresses",
+                  "value": "6JpNV6DK88auwzKVizdeT4Bw3D44sam5GqjcPCJ7y176",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e47e62e4-4d7b-4d7b-80d1-a0ead6e854e2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v0",
+                    "positions",
+                    "pnl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "walletAddresses",
+                      "value": "6JpNV6DK88auwzKVizdeT4Bw3D44sam5GqjcPCJ7y176"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currency\": {},\n  \"total\": 3981.011238878778,\n  \"realized\": 6947.763772482105,\n  \"unrealized\": 5421.0887036794475,\n  \"realizedLifetime\": 3767.402138305359,\n  \"totalLifetime\": 878.2343613607857,\n  \"positions\": [\n    {\n      \"positionId\": \"string\",\n      \"marketId\": \"string\",\n      \"ownerAddress\": \"string\",\n      \"total\": 416.24125323270755,\n      \"realized\": 607.2961692446654,\n      \"realizedLifetime\": 7852.568058697784,\n      \"totalLifetime\": 9298.572621886024,\n      \"unrealized\": 9827.438229390757,\n      \"capital\": {\n        \"invested\": 994.9857083605751,\n        \"investedLifetime\": 1486.4656862484694,\n        \"netFlow\": 4491.667627503008,\n        \"netFlowLifetime\": 6239.83586244068\n      }\n    },\n    {\n      \"positionId\": \"string\",\n      \"marketId\": \"string\",\n      \"ownerAddress\": \"string\",\n      \"total\": 6429.606371077737,\n      \"realized\": 8429.864289929457,\n      \"realizedLifetime\": 3868.788845269757,\n      \"totalLifetime\": 3479.02660294761,\n      \"unrealized\": 1746.4101542269427,\n      \"capital\": {\n        \"invested\": 2411.8080116942174,\n        \"investedLifetime\": 8264.017257844056,\n        \"netFlow\": 4588.151812022829,\n        \"netFlowLifetime\": 1389.3434186581544\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://alerts-api.dial.to",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cacc67bd-e0a7-41cd-bfba-e9059ebae021",
+    "name": "Dialect Alerts V2 Blink Positions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Dialect Alerts API supporting both subscriber and app authentication methods.",
+      "type": "text/plain"
+    }
+  }
+}

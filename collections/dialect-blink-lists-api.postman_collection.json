@@ -1,0 +1,233 @@
+{
+  "item": [
+    {
+      "id": "598420c7-aaba-4e62-a878-c5c3c01a74a2",
+      "name": "Blink Lists",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c9c05f55-09cc-44ed-9588-dc6b4156b80f",
+          "name": "Get Blink List",
+          "request": {
+            "name": "Get Blink List",
+            "description": {
+              "content": "Retrieve curated list of Blinks by ID from the terminal",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "blink-lists",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a646ece-6b23-4a3d-8ebd-c0d1dcf773cc",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blink-lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"entries\": [\n    {\n      \"image\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"context\": {\n        \"url\": \"string\",\n        \"websiteUrl\": \"string\",\n        \"category\": \"string\",\n        \"provider\": {\n          \"name\": \"string\",\n          \"icon\": \"string\"\n        }\n      },\n      \"links\": {\n        \"blink\": \"string\",\n        \"dataTable\": \"string\"\n      },\n      \"cta\": \"string\"\n    },\n    {\n      \"image\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"context\": {\n        \"url\": \"string\",\n        \"websiteUrl\": \"string\",\n        \"category\": \"string\",\n        \"provider\": {\n          \"name\": \"string\",\n          \"icon\": \"string\"\n        }\n      },\n      \"links\": {\n        \"blink\": \"string\",\n        \"dataTable\": \"string\"\n      },\n      \"cta\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "020dadd4-3207-4e93-b5aa-c79d44c970cc",
+              "name": "Client Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blink-lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8ef0b04-1e2f-4277-af18-5ddbfd1ab42b",
+              "name": "List not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blink-lists",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://alerts-api.dial.to",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7de2e734-0064-4009-8fc3-6fd8568ba9fb",
+    "name": "Dialect Alerts V2 Blink Blink Lists API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Dialect Alerts API supporting both subscriber and app authentication methods.",
+      "type": "text/plain"
+    }
+  }
+}

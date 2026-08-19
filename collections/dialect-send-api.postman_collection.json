@@ -1,0 +1,1086 @@
+{
+  "item": [
+    {
+      "id": "aa0d16cd-fe56-435f-9cab-e039bb888b1e",
+      "name": "Send",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "226d131a-e1c0-49e0-81c8-f46d073be8ce",
+          "name": "post V2By App Id Send",
+          "request": {
+            "name": "post V2By App Id Send",
+            "description": {
+              "content": "Send an Alert",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                ":appId",
+                "send"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "appId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-dialect-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channels\": [\n    \"<string>\"\n  ],\n  \"message\": {\n    \"title\": \"<string>\",\n    \"body\": \"<string>\",\n    \"image\": \"<uri>\",\n    \"actions\": [\n      {\n        \"type\": \"<string>\",\n        \"label\": \"<string>\",\n        \"url\": \"<uri>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"label\": \"<string>\",\n        \"url\": \"<uri>\"\n      }\n    ]\n  },\n  \"recipient\": {\n    \"type\": \"<string>\",\n    \"walletAddress\": \"<string>\"\n  },\n  \"topicId\": \"<string,null-uuid>\",\n  \"data\": {\n    \"key_0\": \"<string>\"\n  },\n  \"push\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d1a9c8aa-f660-444e-8630-301bbedc329c",
+              "name": "Message sent successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":appId",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "appId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-dialect-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channels\": [\n    \"<string>\"\n  ],\n  \"message\": {\n    \"title\": \"Alert Title\",\n    \"body\": \"Alert body\",\n    \"image\": \"https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png\",\n    \"actions\": [\n      {\n        \"type\": \"link\",\n        \"label\": \"Open Link\",\n        \"url\": \"https://dialect.to\"\n      }\n    ]\n  },\n  \"recipient\": {\n    \"type\": \"subscriber\",\n    \"walletAddress\": \"6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7\"\n  },\n  \"topicId\": \"<string,null-uuid>\",\n  \"data\": {\n    \"type\": \"transaction\",\n    \"transactionId\": \"123\",\n    \"amount\": \"100\"\n  },\n  \"push\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "232ababd-e84a-40c6-9841-5fbedb6f8c96",
+              "name": "Request validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":appId",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "appId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-dialect-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channels\": [\n    \"<string>\"\n  ],\n  \"message\": {\n    \"title\": \"Alert Title\",\n    \"body\": \"Alert body\",\n    \"image\": \"https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png\",\n    \"actions\": [\n      {\n        \"type\": \"link\",\n        \"label\": \"Open Link\",\n        \"url\": \"https://dialect.to\"\n      }\n    ]\n  },\n  \"recipient\": {\n    \"type\": \"subscriber\",\n    \"walletAddress\": \"6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7\"\n  },\n  \"topicId\": \"<string,null-uuid>\",\n  \"data\": {\n    \"type\": \"transaction\",\n    \"transactionId\": \"123\",\n    \"amount\": \"100\"\n  },\n  \"push\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65bb02d4-4471-4aaa-9558-16dc8cb2bc10",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":appId",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "appId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-dialect-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channels\": [\n    \"<string>\"\n  ],\n  \"message\": {\n    \"title\": \"Alert Title\",\n    \"body\": \"Alert body\",\n    \"image\": \"https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png\",\n    \"actions\": [\n      {\n        \"type\": \"link\",\n        \"label\": \"Open Link\",\n        \"url\": \"https://dialect.to\"\n      }\n    ]\n  },\n  \"recipient\": {\n    \"type\": \"subscriber\",\n    \"walletAddress\": \"6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7\"\n  },\n  \"topicId\": \"<string,null-uuid>\",\n  \"data\": {\n    \"type\": \"transaction\",\n    \"transactionId\": \"123\",\n    \"amount\": \"100\"\n  },\n  \"push\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f57dcf2-cac6-4575-9938-84df77dd9ac9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":appId",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "appId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-dialect-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channels\": [\n    \"<string>\"\n  ],\n  \"message\": {\n    \"title\": \"Alert Title\",\n    \"body\": \"Alert body\",\n    \"image\": \"https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png\",\n    \"actions\": [\n      {\n        \"type\": \"link\",\n        \"label\": \"Open Link\",\n        \"url\": \"https://dialect.to\"\n      }\n    ]\n  },\n  \"recipient\": {\n    \"type\": \"subscriber\",\n    \"walletAddress\": \"6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7\"\n  },\n  \"topicId\": \"<string,null-uuid>\",\n  \"data\": {\n    \"type\": \"transaction\",\n    \"transactionId\": \"123\",\n    \"amount\": \"100\"\n  },\n  \"push\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad17327b-65a7-4697-9c21-99b483300234",
+          "name": "post V2By App Id Send-batch",
+          "request": {
+            "name": "post V2By App Id Send-batch",
+            "description": {
+              "content": "Batch send multiple Alerts",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                ":appId",
+                "send-batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "appId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-dialect-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alerts\": [\n    {\n      \"channels\": [\n        \"<string>\"\n      ],\n      \"message\": {\n        \"title\": \"<string>\",\n        \"body\": \"<string>\",\n        \"image\": \"<uri>\",\n        \"actions\": [\n          {\n            \"type\": \"<string>\",\n            \"label\": \"<string>\",\n            \"url\": \"<uri>\"\n          },\n          {\n            \"type\": \"<string>\",\n            \"label\": \"<string>\",\n            \"url\": \"<uri>\"\n          }\n        ]\n      },\n      \"recipient\": {\n        \"type\": \"<string>\",\n        \"walletAddress\": \"<string>\"\n      },\n      \"topicId\": \"<string,null-uuid>\",\n      \"data\": {\n        \"key_0\": \"<string>\"\n      },\n      \"push\": {}\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a0b9ca14-215b-40c3-8c4d-efd33e5c3342",
+              "name": "Batch messages sent successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":appId",
+                    "send-batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "appId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-dialect-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alerts\": [\n    {\n      \"channels\": [\n        \"<string>\"\n      ],\n      \"message\": {\n        \"title\": \"Alert Title\",\n        \"body\": \"Alert body\",\n        \"image\": \"https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png\",\n        \"actions\": [\n          {\n            \"type\": \"link\",\n            \"label\": \"Open Link\",\n            \"url\": \"https://dialect.to\"\n          }\n        ]\n      },\n      \"recipient\": {\n        \"type\": \"subscriber\",\n        \"walletAddress\": \"6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7\"\n      },\n      \"topicId\": \"<string,null-uuid>\",\n      \"data\": {\n        \"type\": \"transaction\",\n        \"transactionId\": \"123\",\n        \"amount\": \"100\"\n      },\n      \"push\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e5c35a7-975b-453d-b253-ed4196a1b828",
+              "name": "Request validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":appId",
+                    "send-batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "appId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-dialect-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alerts\": [\n    {\n      \"channels\": [\n        \"<string>\"\n      ],\n      \"message\": {\n        \"title\": \"Alert Title\",\n        \"body\": \"Alert body\",\n        \"image\": \"https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png\",\n        \"actions\": [\n          {\n            \"type\": \"link\",\n            \"label\": \"Open Link\",\n            \"url\": \"https://dialect.to\"\n          }\n        ]\n      },\n      \"recipient\": {\n        \"type\": \"subscriber\",\n        \"walletAddress\": \"6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7\"\n      },\n      \"topicId\": \"<string,null-uuid>\",\n      \"data\": {\n        \"type\": \"transaction\",\n        \"transactionId\": \"123\",\n        \"amount\": \"100\"\n      },\n      \"push\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a4dfb8f-16f5-4464-9857-2beea09fae4a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":appId",
+                    "send-batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "appId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-dialect-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alerts\": [\n    {\n      \"channels\": [\n        \"<string>\"\n      ],\n      \"message\": {\n        \"title\": \"Alert Title\",\n        \"body\": \"Alert body\",\n        \"image\": \"https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png\",\n        \"actions\": [\n          {\n            \"type\": \"link\",\n            \"label\": \"Open Link\",\n            \"url\": \"https://dialect.to\"\n          }\n        ]\n      },\n      \"recipient\": {\n        \"type\": \"subscriber\",\n        \"walletAddress\": \"6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7\"\n      },\n      \"topicId\": \"<string,null-uuid>\",\n      \"data\": {\n        \"type\": \"transaction\",\n        \"transactionId\": \"123\",\n        \"amount\": \"100\"\n      },\n      \"push\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "659f543e-2f29-4cc9-bdc1-35acc4fbb108",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":appId",
+                    "send-batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "appId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-dialect-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alerts\": [\n    {\n      \"channels\": [\n        \"<string>\"\n      ],\n      \"message\": {\n        \"title\": \"Alert Title\",\n        \"body\": \"Alert body\",\n        \"image\": \"https://dialect-file-storage.s3.us-west-2.amazonaws.com/avatars/dialect-logo.png\",\n        \"actions\": [\n          {\n            \"type\": \"link\",\n            \"label\": \"Open Link\",\n            \"url\": \"https://dialect.to\"\n          }\n        ]\n      },\n      \"recipient\": {\n        \"type\": \"subscriber\",\n        \"walletAddress\": \"6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7\"\n      },\n      \"topicId\": \"<string,null-uuid>\",\n      \"data\": {\n        \"type\": \"transaction\",\n        \"transactionId\": \"123\",\n        \"amount\": \"100\"\n      },\n      \"push\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95b0fd9d-4d28-4a07-90cb-ed87c0fba444",
+          "name": "get V2By App Id Subscribers",
+          "request": {
+            "name": "get V2By App Id Subscribers",
+            "description": {
+              "content": "Get all subscribers for the app",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                ":appId",
+                "subscribers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "walletAddress",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "appId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-dialect-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "95f57ef7-6e14-486f-8c25-42b37fb095cc",
+              "name": "List of subscribers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":appId",
+                    "subscribers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "walletAddress",
+                      "value": "6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "appId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-dialect-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"subscribers\": [\n    {\n      \"walletAddress\": \"6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7\"\n    },\n    {\n      \"walletAddress\": \"6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7\"\n    }\n  ],\n  \"offset\": 0,\n  \"limit\": 100,\n  \"count\": 25\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e29a2217-1d56-4e15-8902-539b699edd59",
+              "name": "Request validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":appId",
+                    "subscribers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "walletAddress",
+                      "value": "6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "appId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-dialect-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2748d3c9-e418-4c36-b9cc-f72f5f10fc4a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":appId",
+                    "subscribers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "walletAddress",
+                      "value": "6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "appId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-dialect-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32eefd8a-46d4-4475-8619-21ca6a44c3b6",
+          "name": "get V2By App Id Topics",
+          "request": {
+            "name": "get V2By App Id Topics",
+            "description": {
+              "content": "Get all topics for the app",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                ":appId",
+                "topics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "appId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-dialect-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d6fcb692-fe4c-4dd7-96d9-74b53c77e5e1",
+              "name": "List of topics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":appId",
+                    "topics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "appId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-dialect-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"name\": \"Price Alerts\",\n      \"slug\": \"price-alerts\",\n      \"description\": \"Receive alerts when prices drop below a certain threshold\"\n    },\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"name\": \"Price Alerts\",\n      \"slug\": \"price-alerts\",\n      \"description\": \"Receive alerts when prices drop below a certain threshold\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b08b7ea-b737-4023-94f5-6ecc1401d9c1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    ":appId",
+                    "topics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "appId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-dialect-api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://alerts-api.dial.to",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "16b506c2-a2b5-4934-984c-510eacce592e",
+    "name": "Dialect Alerts V2 Blink Send API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Dialect Alerts API supporting both subscriber and app authentication methods.",
+      "type": "text/plain"
+    }
+  }
+}

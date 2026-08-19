@@ -1,0 +1,164 @@
+{
+  "item": [
+    {
+      "id": "ce2920b5-a2b9-48b3-b1c5-d230d5a8bd62",
+      "name": "Blink Data Table",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "18f42351-51a9-447b-8521-221dbc4d5ac0",
+          "name": "Get Blink Data Table",
+          "request": {
+            "name": "Get Blink Data Table",
+            "description": {
+              "content": "Retrieve structured data in table format. Great for displaying key data, such as APY, available balance, etc.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "blink-data-table"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "apiUrl",
+                  "value": "https://jito.dial.to/stake",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c0e2e328-aef7-4a0a-9498-9ea8a9617a82",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blink-data-table"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiUrl",
+                      "value": "https://jito.dial.to/stake"
+                    },
+                    {
+                      "key": "account",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rows\": [\n    {\n      \"key\": \"string\",\n      \"title\": \"string\",\n      \"value\": \"string\",\n      \"icon\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"key\": \"string\",\n      \"title\": \"string\",\n      \"value\": \"string\",\n      \"icon\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"context\": {\n    \"url\": \"string\",\n    \"websiteUrl\": \"string\",\n    \"category\": \"string\",\n    \"provider\": {\n      \"name\": \"string\",\n      \"icon\": \"string\"\n    }\n  },\n  \"links\": {\n    \"blink\": \"string\",\n    \"preview\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7bbaca03-7fa2-44bd-b097-be786f89a479",
+              "name": "Failed to fetch data from Blink Provider",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "blink-data-table"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apiUrl",
+                      "value": "https://jito.dial.to/stake"
+                    },
+                    {
+                      "key": "account",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Gateway",
+              "code": 502,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://alerts-api.dial.to",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c95f9a1d-9433-46a3-abf4-3b2218012eb1",
+    "name": "Dialect Alerts V2 Blink Blink Data Table API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Dialect Alerts API supporting both subscriber and app authentication methods.",
+      "type": "text/plain"
+    }
+  }
+}

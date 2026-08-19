@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dialect Alerts V2 Blink API",
+    "version": "2.2.0-beta"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Blink",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Full Blink",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://alerts-api.dial.to/v1/blink",
+            "params": [
+              {
+                "name": "apiUrl",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve complete interactive Blink with all available actions and metadata"
+        },
+        {
+          "info": {
+            "name": "Execute Blink Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v1/blink",
+            "params": [
+              {
+                "name": "apiUrl",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a ready-to-sign transaction"
+        },
+        {
+          "info": {
+            "name": "Execute Chained Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://alerts-api.dial.to/v1/blink/chain",
+            "params": [
+              {
+                "name": "apiUrl",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Endpoint for action chaining (multi-step workflows)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

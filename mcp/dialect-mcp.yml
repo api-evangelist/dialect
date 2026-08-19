@@ -11,11 +11,9 @@ server:
   - Cursor
   - Claude Code
   - Claude Desktop
-description: >-
-  Official hosted MCP server for Dialect. Gives agents access to Blinks creation,
-  the Standard Blinks Library (40+ protocol integrations), the Markets API
-  (real-time rates, TVL, protocol metrics), the Alerts & Notifications stack, and
-  indexed documentation search. Connect over HTTP at https://docs.dialect.to/mcp
+description: Official hosted MCP server for Dialect. Gives agents access to Blinks creation, the Standard
+  Blinks Library (40+ protocol integrations), the Markets API (real-time rates, TVL, protocol metrics),
+  the Alerts & Notifications stack, and indexed documentation search. Connect over HTTP at https://docs.dialect.to/mcp
   or install locally with `npx mint-mcp add dialect`.
 capabilities:
 - name: Blinks
@@ -30,3 +28,8 @@ capabilities:
   description: Indexed guides and examples for context retrieval.
 - name: API Integration
   description: Complete Dialect endpoint access with usage guidance.
+deployment:
+  mode: local-stdio
+  verified: searched
+  checked: '2026-08-12'
+  source: catalog MCP census
