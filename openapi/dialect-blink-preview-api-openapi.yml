@@ -1,14 +1,15 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Dialect Alerts V2 Blink Blink Preview API
-  description: Dialect Alerts API supporting both subscriber and app authentication methods.
-  version: 2.2.0-beta
+  title: Dialect Blinks Blink Preview API
+  description: Blockchain Links (Blinks) are the fastest way to take onchain experiences and make them distributable and actionable everywhere. This API enables applications to unbundle their product experiences from their apps and sites, allowing users to take instant, no-redirect actions wherever they are. Blinks transform URLs into complete, interactive blockchain experiences that can be embedded in any client application with automatic unfurling and transaction capabilities.
+  version: 0.1.0
 servers:
-- url: https://alerts-api.dial.to
+- url: https://api.dial.to
   description: Dialect Production
-- url: https://alerts.dialectapi.to
-  description: Dialect Production
-security: []
+- url: http://localhost:8770
+  description: Local Server
+security:
+- clientKey: []
 tags:
 - name: Blink Preview
 paths:
@@ -48,6 +49,20 @@ components:
       required:
       - message
       description: Error
+    BlinkContext:
+      type: object
+      properties:
+        url:
+          type: string
+        websiteUrl:
+          type: string
+        category:
+          type: string
+        provider:
+          $ref: '#/components/schemas/BlinkProvider'
+      required:
+      - url
+      description: Blink Context
     BlinkProvider:
       type: object
       properties:
@@ -93,28 +108,11 @@ components:
       - context
       - links
       description: Blink Preview Response
-    BlinkContext:
-      type: object
-      properties:
-        url:
-          type: string
-        websiteUrl:
-          type: string
-        category:
-          type: string
-        provider:
-          $ref: '#/components/schemas/BlinkProvider'
-      required:
-      - url
-      description: Blink Context
   securitySchemes:
-    subscriber:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Bearer token authentication for subscriber calls.
-    application:
+    clientKey:
       type: apiKey
-      description: API key to authorize app-level requests.
-      name: x-dialect-api-key
+      description: Client key to authorize requests.
+      name: x-blink-client-key
       in: header
+x-mcp:
+  enabled: true

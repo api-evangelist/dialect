@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Dialect Alerts V2 Blink Send API
+  title: Dialect Alerts V2 Send API
   description: Dialect Alerts API supporting both subscriber and app authentication methods.
   version: 2.2.0-beta
 servers:
@@ -205,6 +205,8 @@ paths:
               - channels
               - message
               - recipient
+      summary: Post V2 by app id send
+      x-summary-source: derived
   /v2/{appId}/send-batch:
     post:
       responses:
@@ -376,6 +378,8 @@ paths:
                   maxItems: 500
               required:
               - alerts
+      summary: Post V2 by app id send batch
+      x-summary-source: derived
   /v2/{appId}/subscribers:
     get:
       responses:
@@ -473,6 +477,8 @@ paths:
       description: Get all subscribers for the app
       security:
       - application: []
+      summary: Get V2 by app id subscribers
+      x-summary-source: derived
   /v2/{appId}/topics:
     get:
       responses:
@@ -529,6 +535,8 @@ paths:
       description: Get all topics for the app
       security:
       - application: []
+      summary: Get V2 by app id topics
+      x-summary-source: derived
 components:
   securitySchemes:
     subscriber:

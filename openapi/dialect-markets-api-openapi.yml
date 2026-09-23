@@ -1,14 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Dialect Alerts V2 Blink Markets API
-  description: Dialect Alerts API supporting both subscriber and app authentication methods.
-  version: 2.2.0-beta
+  title: Positions API (Beta) Markets API
+  version: 0.0.1
 servers:
-- url: https://alerts-api.dial.to
-  description: Dialect Production
-- url: https://alerts.dialectapi.to
-  description: Dialect Production
-security: []
+- url: https://markets.dial.to/api
+security:
+- apiKey: []
 tags:
 - name: Markets
 paths:
@@ -16,7 +13,7 @@ paths:
     get:
       operationId: markets-positions.marketsV0Api.listMarkets
       summary: List all markets
-      description: 'Returns real-time market data from supported protocols, such as Jupiter, Kamino, MarginFi, Lulo and many more. For more information, please check our [Protocol Support Roadmap](/markets/supported-protocols).
+      description: 'Returns real-time market data from supported protocols, such as Jupiter, Kamino, MarginFi, Lulo and many more. For more information, please check our Protocol Support Roadmap.
 
 
         Note: Some providers (e.g. Kamino) may return large responses with 100+ markets. For better performance in the API playground, consider filtering by both `type` and `provider` parameters.'
@@ -610,189 +607,6 @@ components:
       - totalBorrow
       - maxBorrow
       - actions
-    YieldMarket:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          const: yield
-        productName:
-          type: string
-        provider:
-          type: object
-          properties:
-            id:
-              enum:
-              - kamino
-              - lulo
-              - marginfi
-              - jupiter
-              - defituna
-              - carrot
-              - dflow
-            name:
-              type: string
-            icon:
-              type: string
-          required:
-          - id
-          - name
-          - icon
-        token:
-          type: object
-          properties:
-            address:
-              type: string
-            symbol:
-              type: string
-            decimals:
-              type: number
-            icon:
-              anyOf:
-              - type: string
-              - type: 'null'
-          required:
-          - address
-          - symbol
-          - decimals
-          - icon
-        websiteUrl:
-          type: string
-          format: uri
-        depositApy:
-          type: number
-        baseDepositApy:
-          type: number
-        baseDepositApy30d:
-          type: number
-        baseDepositApy90d:
-          type: number
-        baseDepositApy180d:
-          type: number
-        totalDeposit:
-          type: number
-        totalDepositUsd:
-          type: number
-        rewards:
-          type: array
-          items:
-            anyOf:
-            - type: object
-              properties:
-                type:
-                  const: deposit
-                apy:
-                  type: number
-                token:
-                  type: object
-                  properties:
-                    address:
-                      type: string
-                    symbol:
-                      type: string
-                    decimals:
-                      type: number
-                    icon:
-                      anyOf:
-                      - type: string
-                      - type: 'null'
-                  required:
-                  - address
-                  - symbol
-                  - decimals
-                  - icon
-                marketAction:
-                  type: string
-              required:
-              - type
-              - apy
-              - token
-              - marketAction
-              title: Deposit Reward
-              description: Reward for depositing
-            - type: object
-              properties:
-                type:
-                  const: borrow
-                apy:
-                  type: number
-                token:
-                  type: object
-                  properties:
-                    address:
-                      type: string
-                    symbol:
-                      type: string
-                    decimals:
-                      type: number
-                    icon:
-                      anyOf:
-                      - type: string
-                      - type: 'null'
-                  required:
-                  - address
-                  - symbol
-                  - decimals
-                  - icon
-                marketAction:
-                  type: string
-              required:
-              - type
-              - apy
-              - token
-              - marketAction
-              title: Borrow Reward
-              description: Reward for borrowing
-        additionalData:
-          type: object
-          propertyNames:
-            type: string
-          additionalProperties: {}
-        actions:
-          type: object
-          properties:
-            deposit:
-              type: object
-              properties:
-                blinkUrl:
-                  type: string
-                  pattern: ^blink:.*
-              required:
-              - blinkUrl
-            withdraw:
-              type: object
-              properties:
-                blinkUrl:
-                  type: string
-                  pattern: ^blink:.*
-              required:
-              - blinkUrl
-            withdrawComplete:
-              type: object
-              properties:
-                blinkUrl:
-                  type: string
-                  pattern: ^blink:.*
-              required:
-              - blinkUrl
-            claimRewards:
-              type: object
-              properties:
-                blinkUrl:
-                  type: string
-                  pattern: ^blink:.*
-              required:
-              - blinkUrl
-      required:
-      - id
-      - type
-      - productName
-      - provider
-      - token
-      - depositApy
-      - baseDepositApy
-      - actions
     PerpetualMarket:
       type: object
       properties:
@@ -1048,14 +862,195 @@ components:
       - maxLtv
       - liquidationLtv
       - actions
+    YieldMarket:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          const: yield
+        productName:
+          type: string
+        provider:
+          type: object
+          properties:
+            id:
+              enum:
+              - kamino
+              - lulo
+              - marginfi
+              - jupiter
+              - defituna
+              - carrot
+              - dflow
+            name:
+              type: string
+            icon:
+              type: string
+          required:
+          - id
+          - name
+          - icon
+        token:
+          type: object
+          properties:
+            address:
+              type: string
+            symbol:
+              type: string
+            decimals:
+              type: number
+            icon:
+              anyOf:
+              - type: string
+              - type: 'null'
+          required:
+          - address
+          - symbol
+          - decimals
+          - icon
+        websiteUrl:
+          type: string
+          format: uri
+        depositApy:
+          type: number
+        baseDepositApy:
+          type: number
+        baseDepositApy30d:
+          type: number
+        baseDepositApy90d:
+          type: number
+        baseDepositApy180d:
+          type: number
+        totalDeposit:
+          type: number
+        totalDepositUsd:
+          type: number
+        rewards:
+          type: array
+          items:
+            anyOf:
+            - type: object
+              properties:
+                type:
+                  const: deposit
+                apy:
+                  type: number
+                token:
+                  type: object
+                  properties:
+                    address:
+                      type: string
+                    symbol:
+                      type: string
+                    decimals:
+                      type: number
+                    icon:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                  required:
+                  - address
+                  - symbol
+                  - decimals
+                  - icon
+                marketAction:
+                  type: string
+              required:
+              - type
+              - apy
+              - token
+              - marketAction
+              title: Deposit Reward
+              description: Reward for depositing
+            - type: object
+              properties:
+                type:
+                  const: borrow
+                apy:
+                  type: number
+                token:
+                  type: object
+                  properties:
+                    address:
+                      type: string
+                    symbol:
+                      type: string
+                    decimals:
+                      type: number
+                    icon:
+                      anyOf:
+                      - type: string
+                      - type: 'null'
+                  required:
+                  - address
+                  - symbol
+                  - decimals
+                  - icon
+                marketAction:
+                  type: string
+              required:
+              - type
+              - apy
+              - token
+              - marketAction
+              title: Borrow Reward
+              description: Reward for borrowing
+        additionalData:
+          type: object
+          propertyNames:
+            type: string
+          additionalProperties: {}
+        actions:
+          type: object
+          properties:
+            deposit:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            withdraw:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            withdrawComplete:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            claimRewards:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+      required:
+      - id
+      - type
+      - productName
+      - provider
+      - token
+      - depositApy
+      - baseDepositApy
+      - actions
   securitySchemes:
-    subscriber:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Bearer token authentication for subscriber calls.
-    application:
+    apiKey:
       type: apiKey
-      description: API key to authorize app-level requests.
-      name: x-dialect-api-key
+      name: x-dialect-client-key
       in: header
+      description: Client key for the Markets API
+      x-default: pk_demo
+x-mcp:
+  enabled: true

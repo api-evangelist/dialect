@@ -1,30 +1,49 @@
 {
   "provider": "dialect",
   "sources": [
-    "dialect-blink-api-openapi.yml",
-    "dialect-blink-data-table-api-openapi.yml",
-    "dialect-blink-lists-api-openapi.yml",
-    "dialect-blink-preview-api-openapi.yml",
-    "dialect-channels-api-openapi.yml",
-    "dialect-inbox-api-openapi.yml",
-    "dialect-markets-api-openapi.yml",
-    "dialect-positions-api-openapi.yml",
-    "dialect-send-api-openapi.yml"
+    "_original/dialect-alerts-openapi.json",
+    "_original/dialect-blinks-openapi.json",
+    "_original/dialect-markets-openapi.json"
   ],
   "outputs": [
+    "dialect-channels-api-openapi.yml",
+    "dialect-inbox-api-openapi.yml",
+    "dialect-send-api-openapi.yml",
     "dialect-blink-api-openapi.yml",
     "dialect-blink-data-table-api-openapi.yml",
     "dialect-blink-lists-api-openapi.yml",
     "dialect-blink-preview-api-openapi.yml",
-    "dialect-channels-api-openapi.yml",
-    "dialect-inbox-api-openapi.yml",
     "dialect-markets-api-openapi.yml",
-    "dialect-positions-api-openapi.yml",
-    "dialect-send-api-openapi.yml"
+    "dialect-positions-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "dialect-alerts-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "dialect-alerts-openapi.json: declared missing tag: Channels",
+    "dialect-alerts-openapi.json: declared missing tag: Inbox",
+    "dialect-alerts-openapi.json: declared missing tag: Send",
+    "dialect-blinks-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "dialect-blinks-openapi.json: declared missing tag: Blink",
+    "dialect-blinks-openapi.json: declared missing tag: Blink Data Table",
+    "dialect-blinks-openapi.json: declared missing tag: Blink Lists",
+    "dialect-blinks-openapi.json: declared missing tag: Blink Preview",
+    "dialect-markets-openapi.json: upgraded openapi 3.1.1 -> OpenAPI 3.2.0",
+    "dialect-markets-openapi.json: declared missing tag: Markets",
+    "dialect-markets-openapi.json: declared missing tag: Positions",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "dialect-blink-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dialect-blink-data-table-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dialect-blink-lists-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dialect-blink-preview-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dialect-channels-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dialect-inbox-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dialect-markets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dialect-positions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dialect-send-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

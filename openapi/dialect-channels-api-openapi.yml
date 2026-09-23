@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Dialect Alerts V2 Blink Channels API
+  title: Dialect Alerts V2 Channels API
   description: Dialect Alerts API supporting both subscriber and app authentication methods.
   version: 2.2.0-beta
 servers:
@@ -112,6 +112,8 @@ paths:
                 version: 1
                 vendor: zod
               _cached: null
+      summary: Post V2 channel email prepare
+      x-summary-source: derived
   /v2/channel/telegram/prepare:
     post:
       responses:
@@ -192,6 +194,8 @@ paths:
       description: Prepare telegram channel for a subscriber
       security:
       - subscriber: []
+      summary: Post V2 channel telegram prepare
+      x-summary-source: derived
   /v2/channel/email/verify:
     post:
       responses:
@@ -281,6 +285,8 @@ paths:
         content:
           application/json:
             schema: {}
+      summary: Post V2 channel email verify
+      x-summary-source: derived
   /v2/channel/email/resend:
     post:
       responses:
@@ -328,6 +334,8 @@ paths:
       description: Resend email verification for a subscriber
       security:
       - subscriber: []
+      summary: Post V2 channel email resend
+      x-summary-source: derived
   /v2/channel/email/delete:
     post:
       responses:
@@ -353,6 +361,8 @@ paths:
       description: Delete email channel for a subscriber
       security:
       - subscriber: []
+      summary: Post V2 channel email delete
+      x-summary-source: derived
   /v2/channel/telegram/delete:
     post:
       responses:
@@ -378,6 +388,8 @@ paths:
       description: Delete telegram channel for a subscriber
       security:
       - subscriber: []
+      summary: Post V2 channel telegram delete
+      x-summary-source: derived
   /v2/channels:
     get:
       responses:
@@ -499,6 +511,8 @@ paths:
       description: Get user's channels and channel subscriptions
       security:
       - subscriber: []
+      summary: Get V2 channels
+      x-summary-source: derived
 components:
   securitySchemes:
     subscriber:

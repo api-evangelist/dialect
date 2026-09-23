@@ -1,14 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Dialect Alerts V2 Blink Positions API
-  description: Dialect Alerts API supporting both subscriber and app authentication methods.
-  version: 2.2.0-beta
+  title: Markets & API (Beta) Positions API
+  version: 0.0.1
 servers:
-- url: https://alerts-api.dial.to
-  description: Dialect Production
-- url: https://alerts.dialectapi.to
-  description: Dialect Production
-security: []
+- url: https://markets.dial.to/api
+security:
+- apiKey: []
 tags:
 - name: Positions
 paths:
@@ -669,6 +666,226 @@ paths:
                 - positions
 components:
   schemas:
+    PerpetualMarket:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          const: perpetual
+        productName:
+          type: string
+        provider:
+          type: object
+          properties:
+            id:
+              enum:
+              - kamino
+              - lulo
+              - marginfi
+              - jupiter
+              - defituna
+              - carrot
+              - dflow
+            name:
+              type: string
+            icon:
+              type: string
+          required:
+          - id
+          - name
+          - icon
+        tokenA:
+          type: object
+          properties:
+            address:
+              type: string
+            symbol:
+              type: string
+            decimals:
+              type: number
+            icon:
+              anyOf:
+              - type: string
+              - type: 'null'
+          required:
+          - address
+          - symbol
+          - decimals
+          - icon
+        tokenB:
+          type: object
+          properties:
+            address:
+              type: string
+            symbol:
+              type: string
+            decimals:
+              type: number
+            icon:
+              anyOf:
+              - type: string
+              - type: 'null'
+          required:
+          - address
+          - symbol
+          - decimals
+          - icon
+        websiteUrl:
+          type: string
+          format: uri
+        liquidity:
+          type: object
+          properties:
+            longUsd:
+              type: number
+            shortUsd:
+              type: number
+          required:
+          - longUsd
+          - shortUsd
+        maxLeverage:
+          type: number
+        additionalData:
+          type: object
+          propertyNames:
+            type: string
+          additionalProperties: {}
+        actions:
+          type: object
+          properties:
+            setup:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            openPosition:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            closePosition:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+      required:
+      - id
+      - type
+      - productName
+      - provider
+      - tokenA
+      - tokenB
+      - liquidity
+      - maxLeverage
+      - actions
+    LendingPositionWithMarket:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          const: lending
+        marketId:
+          type: string
+        ownerAddress:
+          type: string
+        bundleId:
+          type: string
+          description: Identifier for positions bundled into one logical structure, such as position or market
+        websiteUrl:
+          type: string
+          format: uri
+        side:
+          enum:
+          - deposit
+          - borrow
+          type: string
+        rewards:
+          type: array
+          items:
+            type: object
+            properties:
+              tokenAddress:
+                type: string
+              amount:
+                type: number
+              amountUsd:
+                type: number
+            required:
+            - tokenAddress
+            - amount
+        additionalData:
+          type: object
+          propertyNames:
+            type: string
+          additionalProperties: {}
+        actions:
+          type: object
+          properties:
+            deposit:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            withdraw:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            borrow:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            repay:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+        amount:
+          type: number
+        amountUsd:
+          type: number
+        ltv:
+          type: number
+          minimum: 0
+          maximum: 100
+          description: Current Loan-to-Value of the position, expressed as a percentage ratio of deposited value
+        liquidationPrice:
+          type: number
+          description: Deposited token price expressed in borrowed token units at which the position becomes liquidatable
+        market:
+          $ref: '#/components/schemas/LendingMarket'
+      required:
+      - id
+      - type
+      - marketId
+      - ownerAddress
+      - side
+      - amount
+      - market
     LendingMarket:
       type: object
       properties:
@@ -934,62 +1151,13 @@ components:
       - totalBorrow
       - maxBorrow
       - actions
-    YieldPositionWithMarket:
+    LoopMarket:
       type: object
       properties:
         id:
           type: string
         type:
-          const: yield
-        marketId:
-          type: string
-        ownerAddress:
-          type: string
-        websiteUrl:
-          type: string
-          format: uri
-        bundleId:
-          type: string
-          description: Identifier for positions bundled into one logical structure, such as position or market
-        rewards:
-          type: array
-          items:
-            type: object
-            properties:
-              tokenAddress:
-                type: string
-              amount:
-                type: number
-              amountUsd:
-                type: number
-            required:
-            - tokenAddress
-            - amount
-        additionalData:
-          type: object
-          propertyNames:
-            type: string
-          additionalProperties: {}
-        amount:
-          type: number
-        amountUsd:
-          type: number
-        market:
-          $ref: '#/components/schemas/YieldMarket'
-      required:
-      - id
-      - type
-      - marketId
-      - ownerAddress
-      - amount
-      - market
-    PerpetualMarket:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          const: perpetual
+          const: loop
         productName:
           type: string
         provider:
@@ -1051,18 +1219,27 @@ components:
         websiteUrl:
           type: string
           format: uri
-        liquidity:
-          type: object
-          properties:
-            longUsd:
-              type: number
-            shortUsd:
-              type: number
-          required:
-          - longUsd
-          - shortUsd
+        depositApy:
+          type: number
+        depositApy30d:
+          type: number
+        depositApy90d:
+          type: number
+        depositApy180d:
+          type: number
         maxLeverage:
           type: number
+          description: Maximum leverage allowed when depositing, expressed as a multiplier
+        maxLtv:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Maximum Loan-to-Value before either full/partial liquidation commences (depending on the provider), expressed as a percentage ratio of deposited value
+        liquidationLtv:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Loan-to-Value percentage ratio of deposited value at which the position becomes liquidatable, fully or partially.
         additionalData:
           type: object
           propertyNames:
@@ -1079,76 +1256,6 @@ components:
                   pattern: ^blink:.*
               required:
               - blinkUrl
-            openPosition:
-              type: object
-              properties:
-                blinkUrl:
-                  type: string
-                  pattern: ^blink:.*
-              required:
-              - blinkUrl
-            closePosition:
-              type: object
-              properties:
-                blinkUrl:
-                  type: string
-                  pattern: ^blink:.*
-              required:
-              - blinkUrl
-      required:
-      - id
-      - type
-      - productName
-      - provider
-      - tokenA
-      - tokenB
-      - liquidity
-      - maxLeverage
-      - actions
-    LendingPositionWithMarket:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          const: lending
-        marketId:
-          type: string
-        ownerAddress:
-          type: string
-        bundleId:
-          type: string
-          description: Identifier for positions bundled into one logical structure, such as position or market
-        websiteUrl:
-          type: string
-          format: uri
-        side:
-          enum:
-          - deposit
-          - borrow
-          type: string
-        rewards:
-          type: array
-          items:
-            type: object
-            properties:
-              tokenAddress:
-                type: string
-              amount:
-                type: number
-              amountUsd:
-                type: number
-            required:
-            - tokenAddress
-            - amount
-        additionalData:
-          type: object
-          propertyNames:
-            type: string
-          additionalProperties: {}
-        actions:
-          type: object
-          properties:
             deposit:
               type: object
               properties:
@@ -1165,44 +1272,18 @@ components:
                   pattern: ^blink:.*
               required:
               - blinkUrl
-            borrow:
-              type: object
-              properties:
-                blinkUrl:
-                  type: string
-                  pattern: ^blink:.*
-              required:
-              - blinkUrl
-            repay:
-              type: object
-              properties:
-                blinkUrl:
-                  type: string
-                  pattern: ^blink:.*
-              required:
-              - blinkUrl
-        amount:
-          type: number
-        amountUsd:
-          type: number
-        ltv:
-          type: number
-          minimum: 0
-          maximum: 100
-          description: Current Loan-to-Value of the position, expressed as a percentage ratio of deposited value
-        liquidationPrice:
-          type: number
-          description: Deposited token price expressed in borrowed token units at which the position becomes liquidatable
-        market:
-          $ref: '#/components/schemas/LendingMarket'
       required:
       - id
       - type
-      - marketId
-      - ownerAddress
-      - side
-      - amount
-      - market
+      - productName
+      - provider
+      - tokenA
+      - tokenB
+      - depositApy
+      - maxLeverage
+      - maxLtv
+      - liquidationLtv
+      - actions
     YieldMarket:
       type: object
       properties:
@@ -1386,147 +1467,61 @@ components:
       - depositApy
       - baseDepositApy
       - actions
-    LoopMarket:
+    YieldPositionWithMarket:
       type: object
       properties:
         id:
           type: string
         type:
-          const: loop
-        productName:
+          const: yield
+        marketId:
           type: string
-        provider:
-          type: object
-          properties:
-            id:
-              enum:
-              - kamino
-              - lulo
-              - marginfi
-              - jupiter
-              - defituna
-              - carrot
-              - dflow
-            name:
-              type: string
-            icon:
-              type: string
-          required:
-          - id
-          - name
-          - icon
-        tokenA:
-          type: object
-          properties:
-            address:
-              type: string
-            symbol:
-              type: string
-            decimals:
-              type: number
-            icon:
-              anyOf:
-              - type: string
-              - type: 'null'
-          required:
-          - address
-          - symbol
-          - decimals
-          - icon
-        tokenB:
-          type: object
-          properties:
-            address:
-              type: string
-            symbol:
-              type: string
-            decimals:
-              type: number
-            icon:
-              anyOf:
-              - type: string
-              - type: 'null'
-          required:
-          - address
-          - symbol
-          - decimals
-          - icon
+        ownerAddress:
+          type: string
         websiteUrl:
           type: string
           format: uri
-        depositApy:
-          type: number
-        depositApy30d:
-          type: number
-        depositApy90d:
-          type: number
-        depositApy180d:
-          type: number
-        maxLeverage:
-          type: number
-          description: Maximum leverage allowed when depositing, expressed as a multiplier
-        maxLtv:
-          type: number
-          minimum: 0
-          maximum: 1
-          description: Maximum Loan-to-Value before either full/partial liquidation commences (depending on the provider), expressed as a percentage ratio of deposited value
-        liquidationLtv:
-          type: number
-          minimum: 0
-          maximum: 1
-          description: Loan-to-Value percentage ratio of deposited value at which the position becomes liquidatable, fully or partially.
+        bundleId:
+          type: string
+          description: Identifier for positions bundled into one logical structure, such as position or market
+        rewards:
+          type: array
+          items:
+            type: object
+            properties:
+              tokenAddress:
+                type: string
+              amount:
+                type: number
+              amountUsd:
+                type: number
+            required:
+            - tokenAddress
+            - amount
         additionalData:
           type: object
           propertyNames:
             type: string
           additionalProperties: {}
-        actions:
-          type: object
-          properties:
-            setup:
-              type: object
-              properties:
-                blinkUrl:
-                  type: string
-                  pattern: ^blink:.*
-              required:
-              - blinkUrl
-            deposit:
-              type: object
-              properties:
-                blinkUrl:
-                  type: string
-                  pattern: ^blink:.*
-              required:
-              - blinkUrl
-            withdraw:
-              type: object
-              properties:
-                blinkUrl:
-                  type: string
-                  pattern: ^blink:.*
-              required:
-              - blinkUrl
+        amount:
+          type: number
+        amountUsd:
+          type: number
+        market:
+          $ref: '#/components/schemas/YieldMarket'
       required:
       - id
       - type
-      - productName
-      - provider
-      - tokenA
-      - tokenB
-      - depositApy
-      - maxLeverage
-      - maxLtv
-      - liquidationLtv
-      - actions
+      - marketId
+      - ownerAddress
+      - amount
+      - market
   securitySchemes:
-    subscriber:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Bearer token authentication for subscriber calls.
-    application:
+    apiKey:
       type: apiKey
-      description: API key to authorize app-level requests.
-      name: x-dialect-api-key
+      name: x-dialect-client-key
       in: header
+      description: Client key for the Markets API
+      x-default: pk_demo
+x-mcp:
+  enabled: true
