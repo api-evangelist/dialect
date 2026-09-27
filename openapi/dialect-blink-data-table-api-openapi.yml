@@ -47,16 +47,20 @@ paths:
         required: false
 components:
   schemas:
-    BlinkProvider:
+    BlinkContext:
       type: object
       properties:
-        name:
+        url:
           type: string
-        icon:
+        websiteUrl:
           type: string
+        category:
+          type: string
+        provider:
+          $ref: '#/components/schemas/BlinkProvider'
       required:
-      - name
-      description: Blink Provider
+      - url
+      description: Blink Context
     BlinkDataTable:
       type: object
       properties:
@@ -96,20 +100,16 @@ components:
       - context
       - links
       description: Blink Data Table
-    BlinkContext:
+    BlinkProvider:
       type: object
       properties:
-        url:
+        name:
           type: string
-        websiteUrl:
+        icon:
           type: string
-        category:
-          type: string
-        provider:
-          $ref: '#/components/schemas/BlinkProvider'
       required:
-      - url
-      description: Blink Context
+      - name
+      description: Blink Provider
   securitySchemes:
     clientKey:
       type: apiKey

@@ -139,6 +139,20 @@ paths:
               - $ref: '#/components/schemas/MessageNextActionPostRequest'
 components:
   schemas:
+    BlinkContext:
+      type: object
+      properties:
+        url:
+          type: string
+        websiteUrl:
+          type: string
+        category:
+          type: string
+        provider:
+          $ref: '#/components/schemas/BlinkProvider'
+      required:
+      - url
+      description: Blink Context
     PostResponse:
       type: object
       properties:
@@ -157,143 +171,6 @@ components:
       required:
       - type
       description: Post Response
-    CompletedAction:
-      type: object
-      properties:
-        type:
-          type: string
-          const: completed
-        icon:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-        label:
-          type: string
-        disabled:
-          type: boolean
-        error:
-          type: string
-        message:
-          type: string
-      required:
-      - type
-      - icon
-      - title
-      - description
-      - label
-      description: Completed Action
-    ActionError:
-      type: object
-      properties:
-        message:
-          type: string
-      required:
-      - message
-      description: Error
-    BlinkContext:
-      type: object
-      properties:
-        url:
-          type: string
-        websiteUrl:
-          type: string
-        category:
-          type: string
-        provider:
-          $ref: '#/components/schemas/BlinkProvider'
-      required:
-      - url
-      description: Blink Context
-    SignMessageResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          const: message
-        message:
-          type: string
-        links:
-          type: object
-          properties:
-            next:
-              $ref: '#/components/schemas/PostNextActionLink'
-          required:
-          - next
-        data:
-          anyOf:
-          - type: string
-          - $ref: '#/components/schemas/SignMessageData'
-        state:
-          type: string
-      required:
-      - type
-      - links
-      - data
-      description: Sign Message Response
-    BlinkPreview:
-      type: object
-      properties:
-        image:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-        cta:
-          type: string
-        context:
-          $ref: '#/components/schemas/BlinkContext'
-      required:
-      - image
-      - title
-      - description
-      - context
-      description: Blink Preview
-    ActionPostRequest:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - transaction
-          - message
-          - post
-          - external-link
-        account:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            anyOf:
-            - type: string
-            - type: array
-              items:
-                type: string
-      required:
-      - account
-      description: Action Post Request
-    NextActionPostRequest:
-      type: object
-      properties:
-        signature:
-          type: string
-        state:
-          type: string
-        account:
-          type: string
-        data:
-          type: object
-          additionalProperties:
-            anyOf:
-            - type: string
-            - type: array
-              items:
-                type: string
-      required:
-      - account
-      description: Next Action Post Request
     NextActionLink:
       anyOf:
       - type: object
@@ -358,146 +235,6 @@ components:
         - type
         - action
       description: Next Action Link
-    LinkedAction:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/LinkedActionType'
-        href:
-          type: string
-        label:
-          type: string
-        parameters:
-          type: array
-          items: {}
-      required:
-      - type
-      - href
-      - label
-      description: Linked Action
-    BlinkProvider:
-      type: object
-      properties:
-        name:
-          type: string
-        icon:
-          type: string
-      required:
-      - name
-      description: Blink Provider
-    SignMessageData:
-      type: object
-      properties:
-        domain:
-          type: string
-        address:
-          type: string
-        statement:
-          type: string
-        nonce:
-          type: string
-          minLength: 8
-        issuedAt:
-          type: string
-        chainId:
-          type: string
-      required:
-      - domain
-      - address
-      - statement
-      - nonce
-      - issuedAt
-      description: Sign Message Data
-    MessageNextActionPostRequest:
-      type: object
-      properties:
-        account:
-          type: string
-        signature:
-          type: string
-        state:
-          type: string
-        data:
-          anyOf:
-          - type: string
-          - $ref: '#/components/schemas/SignMessageData'
-      required:
-      - account
-      - signature
-      - data
-      description: Message Next Action Post Request
-    PostNextActionLink:
-      type: object
-      properties:
-        type:
-          type: string
-          const: post
-        href:
-          type: string
-      required:
-      - type
-      - href
-      description: Post Next Action Link
-    TransactionResponse:
-      type: object
-      properties:
-        type:
-          type: string
-          const: transaction
-        message:
-          type: string
-        links:
-          type: object
-          properties:
-            next:
-              $ref: '#/components/schemas/NextActionLink'
-          required:
-          - next
-        transaction:
-          type: string
-        lifecycle:
-          type: object
-          properties:
-            executing:
-              type: object
-              properties:
-                message:
-                  type: string
-            success:
-              type: object
-              properties:
-                message:
-                  type: string
-                links:
-                  type: object
-                  properties:
-                    actions:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          type:
-                            type: string
-                            const: inline-link
-                          label:
-                            type: string
-                          link:
-                            type: string
-                        required:
-                        - type
-                        - label
-                        - link
-                  required:
-                  - actions
-            error:
-              type: object
-              properties:
-                message:
-                  type: string
-      required:
-      - type
-      - transaction
-      description: Transaction Response
     Blink:
       type: object
       properties:
@@ -565,6 +302,51 @@ components:
       - type
       - externalLink
       description: External Link Response
+    SignMessageResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          const: message
+        message:
+          type: string
+        links:
+          type: object
+          properties:
+            next:
+              $ref: '#/components/schemas/PostNextActionLink'
+          required:
+          - next
+        data:
+          anyOf:
+          - type: string
+          - $ref: '#/components/schemas/SignMessageData'
+        state:
+          type: string
+      required:
+      - type
+      - links
+      - data
+      description: Sign Message Response
+    BlinkPreview:
+      type: object
+      properties:
+        image:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        cta:
+          type: string
+        context:
+          $ref: '#/components/schemas/BlinkContext'
+      required:
+      - image
+      - title
+      - description
+      - context
+      description: Blink Preview
     LinkedActionType:
       type: string
       enum:
@@ -574,6 +356,224 @@ components:
       - external-link
       - inline-link
       description: Linked Action Type
+    PostNextActionLink:
+      type: object
+      properties:
+        type:
+          type: string
+          const: post
+        href:
+          type: string
+      required:
+      - type
+      - href
+      description: Post Next Action Link
+    MessageNextActionPostRequest:
+      type: object
+      properties:
+        account:
+          type: string
+        signature:
+          type: string
+        state:
+          type: string
+        data:
+          anyOf:
+          - type: string
+          - $ref: '#/components/schemas/SignMessageData'
+      required:
+      - account
+      - signature
+      - data
+      description: Message Next Action Post Request
+    SignMessageData:
+      type: object
+      properties:
+        domain:
+          type: string
+        address:
+          type: string
+        statement:
+          type: string
+        nonce:
+          type: string
+          minLength: 8
+        issuedAt:
+          type: string
+        chainId:
+          type: string
+      required:
+      - domain
+      - address
+      - statement
+      - nonce
+      - issuedAt
+      description: Sign Message Data
+    ActionPostRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - transaction
+          - message
+          - post
+          - external-link
+        account:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            anyOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+      required:
+      - account
+      description: Action Post Request
+    TransactionResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          const: transaction
+        message:
+          type: string
+        links:
+          type: object
+          properties:
+            next:
+              $ref: '#/components/schemas/NextActionLink'
+          required:
+          - next
+        transaction:
+          type: string
+        lifecycle:
+          type: object
+          properties:
+            executing:
+              type: object
+              properties:
+                message:
+                  type: string
+            success:
+              type: object
+              properties:
+                message:
+                  type: string
+                links:
+                  type: object
+                  properties:
+                    actions:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            const: inline-link
+                          label:
+                            type: string
+                          link:
+                            type: string
+                        required:
+                        - type
+                        - label
+                        - link
+                  required:
+                  - actions
+            error:
+              type: object
+              properties:
+                message:
+                  type: string
+      required:
+      - type
+      - transaction
+      description: Transaction Response
+    LinkedAction:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/LinkedActionType'
+        href:
+          type: string
+        label:
+          type: string
+        parameters:
+          type: array
+          items: {}
+      required:
+      - type
+      - href
+      - label
+      description: Linked Action
+    ActionError:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
+      description: Error
+    NextActionPostRequest:
+      type: object
+      properties:
+        signature:
+          type: string
+        state:
+          type: string
+        account:
+          type: string
+        data:
+          type: object
+          additionalProperties:
+            anyOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+      required:
+      - account
+      description: Next Action Post Request
+    CompletedAction:
+      type: object
+      properties:
+        type:
+          type: string
+          const: completed
+        icon:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        label:
+          type: string
+        disabled:
+          type: boolean
+        error:
+          type: string
+        message:
+          type: string
+      required:
+      - type
+      - icon
+      - title
+      - description
+      - label
+      description: Completed Action
+    BlinkProvider:
+      type: object
+      properties:
+        name:
+          type: string
+        icon:
+          type: string
+      required:
+      - name
+      description: Blink Provider
   securitySchemes:
     clientKey:
       type: apiKey

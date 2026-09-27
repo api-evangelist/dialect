@@ -41,6 +41,12 @@ paths:
         required: true
 components:
   schemas:
+    BlinkPreviewQuery:
+      type: string
+      format: uri
+      description: Blink API URL
+      default: https://jito.dial.to/stake
+      example: https://jito.dial.to/stake
     ActionError:
       type: object
       properties:
@@ -63,22 +69,6 @@ components:
       required:
       - url
       description: Blink Context
-    BlinkProvider:
-      type: object
-      properties:
-        name:
-          type: string
-        icon:
-          type: string
-      required:
-      - name
-      description: Blink Provider
-    BlinkPreviewQuery:
-      type: string
-      format: uri
-      description: Blink API URL
-      default: https://jito.dial.to/stake
-      example: https://jito.dial.to/stake
     BlinkPreviewResponse:
       type: object
       properties:
@@ -108,6 +98,16 @@ components:
       - context
       - links
       description: Blink Preview Response
+    BlinkProvider:
+      type: object
+      properties:
+        name:
+          type: string
+        icon:
+          type: string
+      required:
+      - name
+      description: Blink Provider
   securitySchemes:
     clientKey:
       type: apiKey

@@ -52,6 +52,51 @@ paths:
         required: true
 components:
   schemas:
+    BlinkListEntry:
+      type: object
+      properties:
+        image:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        cta:
+          type: string
+        context:
+          $ref: '#/components/schemas/BlinkContext'
+        links:
+          type: object
+          properties:
+            blink:
+              type: string
+            dataTable:
+              type: string
+          required:
+          - blink
+      required:
+      - image
+      - title
+      - description
+      - context
+      - links
+      description: Blink List Entry
+    BlinkList:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlinkListEntry'
+      required:
+      - id
+      - name
+      - entries
+      description: Blink List
     ActionError:
       type: object
       properties:
@@ -84,51 +129,6 @@ components:
       required:
       - name
       description: Blink Provider
-    BlinkList:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/BlinkListEntry'
-      required:
-      - id
-      - name
-      - entries
-      description: Blink List
-    BlinkListEntry:
-      type: object
-      properties:
-        image:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-        cta:
-          type: string
-        context:
-          $ref: '#/components/schemas/BlinkContext'
-        links:
-          type: object
-          properties:
-            blink:
-              type: string
-            dataTable:
-              type: string
-          required:
-          - blink
-      required:
-      - image
-      - title
-      - description
-      - context
-      - links
-      description: Blink List Entry
   securitySchemes:
     clientKey:
       type: apiKey
