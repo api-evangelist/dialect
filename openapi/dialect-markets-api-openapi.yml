@@ -342,6 +342,139 @@ paths:
                 - data
 components:
   schemas:
+    LoopMarket:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          const: loop
+        productName:
+          type: string
+        provider:
+          type: object
+          properties:
+            id:
+              enum:
+              - kamino
+              - lulo
+              - marginfi
+              - jupiter
+              - defituna
+              - carrot
+              - dflow
+            name:
+              type: string
+            icon:
+              type: string
+          required:
+          - id
+          - name
+          - icon
+        tokenA:
+          type: object
+          properties:
+            address:
+              type: string
+            symbol:
+              type: string
+            decimals:
+              type: number
+            icon:
+              anyOf:
+              - type: string
+              - type: 'null'
+          required:
+          - address
+          - symbol
+          - decimals
+          - icon
+        tokenB:
+          type: object
+          properties:
+            address:
+              type: string
+            symbol:
+              type: string
+            decimals:
+              type: number
+            icon:
+              anyOf:
+              - type: string
+              - type: 'null'
+          required:
+          - address
+          - symbol
+          - decimals
+          - icon
+        websiteUrl:
+          type: string
+          format: uri
+        depositApy:
+          type: number
+        depositApy30d:
+          type: number
+        depositApy90d:
+          type: number
+        depositApy180d:
+          type: number
+        maxLeverage:
+          type: number
+          description: Maximum leverage allowed when depositing, expressed as a multiplier
+        maxLtv:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Maximum Loan-to-Value before either full/partial liquidation commences (depending on the provider), expressed as a percentage ratio of deposited value
+        liquidationLtv:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Loan-to-Value percentage ratio of deposited value at which the position becomes liquidatable, fully or partially.
+        additionalData:
+          type: object
+          propertyNames:
+            type: string
+          additionalProperties: {}
+        actions:
+          type: object
+          properties:
+            setup:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            deposit:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+            withdraw:
+              type: object
+              properties:
+                blinkUrl:
+                  type: string
+                  pattern: ^blink:.*
+              required:
+              - blinkUrl
+      required:
+      - id
+      - type
+      - productName
+      - provider
+      - tokenA
+      - tokenB
+      - depositApy
+      - maxLeverage
+      - maxLtv
+      - liquidationLtv
+      - actions
     YieldMarket:
       type: object
       properties:
@@ -524,128 +657,6 @@ components:
       - token
       - depositApy
       - baseDepositApy
-      - actions
-    PerpetualMarket:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          const: perpetual
-        productName:
-          type: string
-        provider:
-          type: object
-          properties:
-            id:
-              enum:
-              - kamino
-              - lulo
-              - marginfi
-              - jupiter
-              - defituna
-              - carrot
-              - dflow
-            name:
-              type: string
-            icon:
-              type: string
-          required:
-          - id
-          - name
-          - icon
-        tokenA:
-          type: object
-          properties:
-            address:
-              type: string
-            symbol:
-              type: string
-            decimals:
-              type: number
-            icon:
-              anyOf:
-              - type: string
-              - type: 'null'
-          required:
-          - address
-          - symbol
-          - decimals
-          - icon
-        tokenB:
-          type: object
-          properties:
-            address:
-              type: string
-            symbol:
-              type: string
-            decimals:
-              type: number
-            icon:
-              anyOf:
-              - type: string
-              - type: 'null'
-          required:
-          - address
-          - symbol
-          - decimals
-          - icon
-        websiteUrl:
-          type: string
-          format: uri
-        liquidity:
-          type: object
-          properties:
-            longUsd:
-              type: number
-            shortUsd:
-              type: number
-          required:
-          - longUsd
-          - shortUsd
-        maxLeverage:
-          type: number
-        additionalData:
-          type: object
-          propertyNames:
-            type: string
-          additionalProperties: {}
-        actions:
-          type: object
-          properties:
-            setup:
-              type: object
-              properties:
-                blinkUrl:
-                  type: string
-                  pattern: ^blink:.*
-              required:
-              - blinkUrl
-            openPosition:
-              type: object
-              properties:
-                blinkUrl:
-                  type: string
-                  pattern: ^blink:.*
-              required:
-              - blinkUrl
-            closePosition:
-              type: object
-              properties:
-                blinkUrl:
-                  type: string
-                  pattern: ^blink:.*
-              required:
-              - blinkUrl
-      required:
-      - id
-      - type
-      - productName
-      - provider
-      - tokenA
-      - tokenB
-      - liquidity
-      - maxLeverage
       - actions
     LendingMarket:
       type: object
@@ -912,13 +923,13 @@ components:
       - totalBorrow
       - maxBorrow
       - actions
-    LoopMarket:
+    PerpetualMarket:
       type: object
       properties:
         id:
           type: string
         type:
-          const: loop
+          const: perpetual
         productName:
           type: string
         provider:
@@ -980,27 +991,18 @@ components:
         websiteUrl:
           type: string
           format: uri
-        depositApy:
-          type: number
-        depositApy30d:
-          type: number
-        depositApy90d:
-          type: number
-        depositApy180d:
-          type: number
+        liquidity:
+          type: object
+          properties:
+            longUsd:
+              type: number
+            shortUsd:
+              type: number
+          required:
+          - longUsd
+          - shortUsd
         maxLeverage:
           type: number
-          description: Maximum leverage allowed when depositing, expressed as a multiplier
-        maxLtv:
-          type: number
-          minimum: 0
-          maximum: 1
-          description: Maximum Loan-to-Value before either full/partial liquidation commences (depending on the provider), expressed as a percentage ratio of deposited value
-        liquidationLtv:
-          type: number
-          minimum: 0
-          maximum: 1
-          description: Loan-to-Value percentage ratio of deposited value at which the position becomes liquidatable, fully or partially.
         additionalData:
           type: object
           propertyNames:
@@ -1017,7 +1019,7 @@ components:
                   pattern: ^blink:.*
               required:
               - blinkUrl
-            deposit:
+            openPosition:
               type: object
               properties:
                 blinkUrl:
@@ -1025,7 +1027,7 @@ components:
                   pattern: ^blink:.*
               required:
               - blinkUrl
-            withdraw:
+            closePosition:
               type: object
               properties:
                 blinkUrl:
@@ -1040,10 +1042,8 @@ components:
       - provider
       - tokenA
       - tokenB
-      - depositApy
+      - liquidity
       - maxLeverage
-      - maxLtv
-      - liquidationLtv
       - actions
   securitySchemes:
     apiKey:

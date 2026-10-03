@@ -47,6 +47,16 @@ components:
       description: Blink API URL
       default: https://jito.dial.to/stake
       example: https://jito.dial.to/stake
+    BlinkProvider:
+      type: object
+      properties:
+        name:
+          type: string
+        icon:
+          type: string
+      required:
+      - name
+      description: Blink Provider
     ActionError:
       type: object
       properties:
@@ -98,16 +108,6 @@ components:
       - context
       - links
       description: Blink Preview Response
-    BlinkProvider:
-      type: object
-      properties:
-        name:
-          type: string
-        icon:
-          type: string
-      required:
-      - name
-      description: Blink Provider
   securitySchemes:
     clientKey:
       type: apiKey

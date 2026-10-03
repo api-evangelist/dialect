@@ -52,6 +52,24 @@ paths:
         required: true
 components:
   schemas:
+    BlinkProvider:
+      type: object
+      properties:
+        name:
+          type: string
+        icon:
+          type: string
+      required:
+      - name
+      description: Blink Provider
+    ActionError:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
+      description: Error
     BlinkListEntry:
       type: object
       properties:
@@ -97,14 +115,6 @@ components:
       - name
       - entries
       description: Blink List
-    ActionError:
-      type: object
-      properties:
-        message:
-          type: string
-      required:
-      - message
-      description: Error
     BlinkContext:
       type: object
       properties:
@@ -119,16 +129,6 @@ components:
       required:
       - url
       description: Blink Context
-    BlinkProvider:
-      type: object
-      properties:
-        name:
-          type: string
-        icon:
-          type: string
-      required:
-      - name
-      description: Blink Provider
   securitySchemes:
     clientKey:
       type: apiKey
