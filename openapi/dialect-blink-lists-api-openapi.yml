@@ -52,53 +52,6 @@ paths:
         required: true
 components:
   schemas:
-    BlinkProvider:
-      type: object
-      properties:
-        name:
-          type: string
-        icon:
-          type: string
-      required:
-      - name
-      description: Blink Provider
-    ActionError:
-      type: object
-      properties:
-        message:
-          type: string
-      required:
-      - message
-      description: Error
-    BlinkListEntry:
-      type: object
-      properties:
-        image:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-        cta:
-          type: string
-        context:
-          $ref: '#/components/schemas/BlinkContext'
-        links:
-          type: object
-          properties:
-            blink:
-              type: string
-            dataTable:
-              type: string
-          required:
-          - blink
-      required:
-      - image
-      - title
-      - description
-      - context
-      - links
-      description: Blink List Entry
     BlinkList:
       type: object
       properties:
@@ -129,6 +82,53 @@ components:
       required:
       - url
       description: Blink Context
+    ActionError:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+      - message
+      description: Error
+    BlinkProvider:
+      type: object
+      properties:
+        name:
+          type: string
+        icon:
+          type: string
+      required:
+      - name
+      description: Blink Provider
+    BlinkListEntry:
+      type: object
+      properties:
+        image:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        cta:
+          type: string
+        context:
+          $ref: '#/components/schemas/BlinkContext'
+        links:
+          type: object
+          properties:
+            blink:
+              type: string
+            dataTable:
+              type: string
+          required:
+          - blink
+      required:
+      - image
+      - title
+      - description
+      - context
+      - links
+      description: Blink List Entry
   securitySchemes:
     clientKey:
       type: apiKey
