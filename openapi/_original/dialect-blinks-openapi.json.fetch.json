@@ -1,0 +1,12 @@
+{
+ "url": "https://docs.dialect.to/openapi/blinks.json",
+ "requested_url": "https://docs.dialect.to/openapi/blinks.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 31000,
+ "sha256": "31b4e8ad4e8e71ab9cda0d8e89bb0f76d186aba54257af616c135ebf9b5c98d3",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}

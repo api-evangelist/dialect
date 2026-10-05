@@ -1,0 +1,12 @@
+{
+ "url": "https://markets.dial.to/api/openapi.json",
+ "requested_url": "https://markets.dial.to/api/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 34320,
+ "sha256": "ac1db47be3741ac5208dc8acb9842aa6a6f74afa80f08729d0a918b84043e9a8",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
