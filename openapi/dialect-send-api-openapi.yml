@@ -205,7 +205,7 @@ paths:
               - channels
               - message
               - recipient
-      summary: Post V2 by app id send
+      summary: Post V2By app id send
       x-summary-source: derived
   /v2/{appId}/send-batch:
     post:
@@ -378,7 +378,7 @@ paths:
                   maxItems: 500
               required:
               - alerts
-      summary: Post V2 by app id send batch
+      summary: Post V2By app id send batch
       x-summary-source: derived
   /v2/{appId}/subscribers:
     get:
@@ -477,7 +477,7 @@ paths:
       description: Get all subscribers for the app
       security:
       - application: []
-      summary: Get V2 by app id subscribers
+      summary: Get V2By app id subscribers
       x-summary-source: derived
   /v2/{appId}/topics:
     get:
@@ -535,7 +535,7 @@ paths:
       description: Get all topics for the app
       security:
       - application: []
-      summary: Get V2 by app id topics
+      summary: Get V2By app id topics
       x-summary-source: derived
 components:
   securitySchemes:

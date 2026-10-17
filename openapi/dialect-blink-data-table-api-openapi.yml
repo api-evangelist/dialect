@@ -47,16 +47,6 @@ paths:
         required: false
 components:
   schemas:
-    BlinkProvider:
-      type: object
-      properties:
-        name:
-          type: string
-        icon:
-          type: string
-      required:
-      - name
-      description: Blink Provider
     BlinkDataTable:
       type: object
       properties:
@@ -110,6 +100,16 @@ components:
       required:
       - url
       description: Blink Context
+    BlinkProvider:
+      type: object
+      properties:
+        name:
+          type: string
+        icon:
+          type: string
+      required:
+      - name
+      description: Blink Provider
   securitySchemes:
     clientKey:
       type: apiKey

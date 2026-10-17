@@ -40,7 +40,7 @@ paths:
           description: Client Key used to uniquely identify the client
           example: dk_gyh2eqzfkc4mhp5eiahnndkz
       description: Returns the currently authenticated user based on session data. If unauthorized, returns 401.
-      summary: Get V2 auth
+      summary: Get V2Auth
       x-summary-source: derived
   /v2/auth/solana/prepare:
     post:
@@ -91,7 +91,7 @@ paths:
                   example: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
               required:
               - walletAddress
-      summary: Post V2 auth solana prepare
+      summary: Post V2Auth solana prepare
       x-summary-source: derived
   /v2/auth/solana/verify:
     post:
@@ -158,7 +158,7 @@ paths:
               required:
               - message
               - signature
-      summary: Post V2 auth solana verify
+      summary: Post V2Auth solana verify
       x-summary-source: derived
   /v2/auth/solana-tx/prepare:
     post:
@@ -208,7 +208,7 @@ paths:
                   example: 6CxnSjtasq5Tzwb4b93AhLofXtiDvMpQ2vTkWdSZqTH7
               required:
               - walletAddress
-      summary: Post V2 auth solana tx prepare
+      summary: Post V2Auth solana tx prepare
       x-summary-source: derived
   /v2/auth/solana-tx/verify:
     post:
@@ -269,7 +269,7 @@ paths:
                   description: Signed base64-encoded transaction signed by the user
               required:
               - transaction
-      summary: Post V2 auth solana tx verify
+      summary: Post V2Auth solana tx verify
       x-summary-source: derived
   /v2/history:
     get:
@@ -501,7 +501,7 @@ paths:
       description: Fetches alert history for a user, including unread count and last unread alert data.
       security:
       - subscriber: []
-      summary: Get V2 history
+      summary: Get V2History
       x-summary-source: derived
   /v2/history/summary:
     get:
@@ -573,7 +573,7 @@ paths:
       description: Fetches summary of alert history for a user, including unread count and last unread alert data.
       security:
       - subscriber: []
-      summary: Get V2 history summary
+      summary: Get V2History summary
       x-summary-source: derived
   /v2/history/read:
     post:
@@ -632,7 +632,7 @@ paths:
                   format: uuid
                   description: Application ID
                   example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
-      summary: Post V2 history read
+      summary: Post V2History read
       x-summary-source: derived
   /v2/history/clear:
     post:
@@ -700,7 +700,7 @@ paths:
                       example: 255d6163-7e25-43e9-a188-c2f8d0980a4a
                   description: App ID or an array of App IDs. If empty or omitted, targets all apps available (owned or whitelisted) for the client.
                   example: 123e4567-e89b-12d3-a456-426614174000
-      summary: Post V2 history clear
+      summary: Post V2History clear
       x-summary-source: derived
   /v2/push/subscribe:
     post:
@@ -766,7 +766,7 @@ paths:
                   minLength: 1
               required:
               - fcmToken
-      summary: Post V2 push subscribe
+      summary: Post V2Push subscribe
       x-summary-source: derived
   /v2/push/unsubscribe:
     post:
@@ -832,7 +832,7 @@ paths:
                   minLength: 1
               required:
               - fcmToken
-      summary: Post V2 push unsubscribe
+      summary: Post V2Push unsubscribe
       x-summary-source: derived
   /v2/subscribe:
     post:
@@ -917,7 +917,7 @@ paths:
                       - TELEGRAM
                   description: Channel or an array of channels (IN_APP, TELEGRAM, EMAIL). If empty or omitted, targets all channels available for the subscriber
                   example: IN_APP
-      summary: Post V2 subscribe
+      summary: Post V2Subscribe
       x-summary-source: derived
   /v2/unsubscribe:
     post:
@@ -1002,7 +1002,7 @@ paths:
                       - TELEGRAM
                   description: Channel or an array of channels (IN_APP, TELEGRAM, EMAIL). If empty or omitted, targets all channels available for the subscriber
                   example: IN_APP
-      summary: Post V2 unsubscribe
+      summary: Post V2Unsubscribe
       x-summary-source: derived
   /v2/topics:
     get:
@@ -1094,7 +1094,7 @@ paths:
       description: Fetches all alert topics for a subscriber, optionally filtered by appId
       security:
       - subscriber: []
-      summary: Get V2 topics
+      summary: Get V2Topics
       x-summary-source: derived
   /v2/topics/subscribe:
     post:
@@ -1167,7 +1167,7 @@ paths:
                   example: 123e4567-e89b-12d3-a456-426614174000
               required:
               - topicId
-      summary: Post V2 topics subscribe
+      summary: Post V2Topics subscribe
       x-summary-source: derived
   /v2/topics/unsubscribe:
     post:
@@ -1240,7 +1240,7 @@ paths:
                   example: 123e4567-e89b-12d3-a456-426614174000
               required:
               - topicId
-      summary: Post V2 topics unsubscribe
+      summary: Post V2Topics unsubscribe
       x-summary-source: derived
   /v2/apps:
     get:
@@ -1343,7 +1343,7 @@ paths:
       description: Returns a list of apps that the subscriber can subscribe to, including their subscription status and topics.
       security:
       - subscriber: []
-      summary: Get V2 apps
+      summary: Get V2Apps
       x-summary-source: derived
 components:
   securitySchemes:

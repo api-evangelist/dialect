@@ -112,7 +112,7 @@ paths:
                 version: 1
                 vendor: zod
               _cached: null
-      summary: Post V2 channel email prepare
+      summary: Post V2Channel email prepare
       x-summary-source: derived
   /v2/channel/telegram/prepare:
     post:
@@ -194,7 +194,7 @@ paths:
       description: Prepare telegram channel for a subscriber
       security:
       - subscriber: []
-      summary: Post V2 channel telegram prepare
+      summary: Post V2Channel telegram prepare
       x-summary-source: derived
   /v2/channel/email/verify:
     post:
@@ -285,7 +285,7 @@ paths:
         content:
           application/json:
             schema: {}
-      summary: Post V2 channel email verify
+      summary: Post V2Channel email verify
       x-summary-source: derived
   /v2/channel/email/resend:
     post:
@@ -334,7 +334,7 @@ paths:
       description: Resend email verification for a subscriber
       security:
       - subscriber: []
-      summary: Post V2 channel email resend
+      summary: Post V2Channel email resend
       x-summary-source: derived
   /v2/channel/email/delete:
     post:
@@ -361,7 +361,7 @@ paths:
       description: Delete email channel for a subscriber
       security:
       - subscriber: []
-      summary: Post V2 channel email delete
+      summary: Post V2Channel email delete
       x-summary-source: derived
   /v2/channel/telegram/delete:
     post:
@@ -388,7 +388,7 @@ paths:
       description: Delete telegram channel for a subscriber
       security:
       - subscriber: []
-      summary: Post V2 channel telegram delete
+      summary: Post V2Channel telegram delete
       x-summary-source: derived
   /v2/channels:
     get:
@@ -511,7 +511,7 @@ paths:
       description: Get user's channels and channel subscriptions
       security:
       - subscriber: []
-      summary: Get V2 channels
+      summary: Get V2Channels
       x-summary-source: derived
 components:
   securitySchemes:
