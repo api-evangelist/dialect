@@ -1054,3 +1054,9 @@ components:
       x-default: pk_demo
 x-mcp:
   enabled: true
+x-provenance:
+  method: harvested
+  publisher: Dialect
+  source: https://markets.dial.to/api/openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
