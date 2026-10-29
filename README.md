@@ -64,6 +64,142 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Dialect is a company surfaced as a portfolio company of electric-capital, multicoin-capital and added to the API Evangelist network as a stub for enrichment. Sector: infrastructure. This profile is a lead awaiting the enrichment pipeline.
+Dialect is a Web3 UX infrastructure company on Solana that provides onchain transactions and notifications native to any digital experience. Its two flagship products are Blinks (Blockchain Links — one-click, embeddable onchain transactions powered by a Standard Blinks Library of 40+ protocol integrations including Jupiter, Kamino, Drift and DeFiTuna) and the Alerts Stack (real-time, multi-channel notifications across push, email, Telegram and an in-app universal inbox, with event detection for price-change and trending-token signals). Dialect also exposes a Markets & Positions API for real-time DeFi rates, TVL and wallet position tracking, plus a hosted MCP server for agents. The developer surface spans three REST APIs (Alerts V2, Blinks, Markets), TypeScript/React SDKs, a no-code dashboard, and an open-source monitor framework. Backed by Electric Capital and Multicoin Capital.
 
-Backed by: electric-capital, multicoin-capital — https://www.dialect.to/
+**Areas:** Company · Infrastructure · Web3 · Blockchain · Solana · Notification · Messaging · Alerts · DeFi · Payments · Agents · MCP
+
+## Dialect on APIs.io
+
+Everything profiled for Dialect is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/dialect/](https://apis.io/providers/dialect/)** — or go straight to one of the APIs or properties below.
+
+### APIs (9)
+
+- [Dialect Blink API](https://apis.io/apis/dialect/dialect-blink-api/) — The Blink API from Dialect — 2 operation(s) for blink.
+- [Dialect Blink Data Table API](https://apis.io/apis/dialect/dialect-blink-data-table-api/) — The Blink Data Table API from Dialect — 1 operation(s) for blink data table.
+- [Dialect Blink Lists API](https://apis.io/apis/dialect/dialect-blink-lists-api/) — The Blink Lists API from Dialect — 1 operation(s) for blink lists.
+- [Dialect Blink Preview API](https://apis.io/apis/dialect/dialect-blink-preview-api/) — The Blink Preview API from Dialect — 1 operation(s) for blink preview.
+- [Dialect Channels API](https://apis.io/apis/dialect/dialect-channels-api/) — The Channels API from Dialect — 7 operation(s) for channels.
+- [Dialect Inbox API](https://apis.io/apis/dialect/dialect-inbox-api/) — The Inbox API from Dialect — 17 operation(s) for inbox.
+- [Dialect Markets API](https://apis.io/apis/dialect/dialect-markets-api/) — The Markets API from Dialect — 3 operation(s) for markets.
+- [Dialect Positions API](https://apis.io/apis/dialect/dialect-positions-api/) — The Positions API from Dialect — 3 operation(s) for positions.
+- [Dialect Send API](https://apis.io/apis/dialect/dialect-send-api/) — The Send API from Dialect — 4 operation(s) for send.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Dialect Webhooks](https://apis.io/asyncapis/dialect/dialect-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [dialect](https://apis.io/servers/dialect/dialect/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Dialect Agentic Access](https://apis.io/agentic-access/dialect/dialect-agentic-access/)
+
+#### Collections (8)
+
+Postman and Open Collection request collections.
+
+- [Dialect Alerts V2 Blink API](https://apis.io/collections/dialect/open-dialect-blink-api/)
+- [Dialect Alerts V2 Blink Blink Data Table API](https://apis.io/collections/dialect/open-dialect-blink-data-table-api/)
+- [Dialect Alerts V2 Blink Blink Lists API](https://apis.io/collections/dialect/open-dialect-blink-lists-api/)
+- [Dialect Alerts V2 Blink Channels API](https://apis.io/collections/dialect/open-dialect-channels-api/)
+- [Dialect Alerts V2 Blink Inbox API](https://apis.io/collections/dialect/open-dialect-inbox-api/)
+- [Dialect Alerts V2 Blink Markets API](https://apis.io/collections/dialect/open-dialect-markets-api/)
+- [Dialect Alerts V2 Blink Positions API](https://apis.io/collections/dialect/open-dialect-positions-api/)
+- [Dialect Alerts V2 Blink Send API](https://apis.io/collections/dialect/open-dialect-send-api/)
+
+#### Overlays (3)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Dialect Alerts Overlay](https://apis.io/overlays/dialect/dialect-alerts-overlay/)
+- [Dialect Blinks Overlay](https://apis.io/overlays/dialect/dialect-blinks-overlay/)
+- [Dialect Markets Overlay](https://apis.io/overlays/dialect/dialect-markets-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Dialect Authentication](https://apis.io/security/dialect/dialect-authentication/)
+- [Dialect Domain Security](https://apis.io/security/dialect/dialect-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.dialect.to/)
+- [Documentation](https://docs.dialect.to/)
+- [Getting started](https://docs.dialect.to/alerts/quick-start)
+- [API reference](https://docs.dialect.to/api-reference/send-alerts/send-alert)
+- [Sign up](https://dashboard.dialect.to)
+- [Support](https://discord.gg/saydialect)
+- [Blog](https://www.dialect.to/blog)
+- [Terms of service](https://legal.dialect.to/tos)
+- [Privacy policy](https://legal.dialect.to/privacy)
+- [GitHub](https://github.com/dialectlabs)
+
+## API Evangelist rating
+
+**Kin Score 45.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 76.7 |
+| Contract quality | 55.7 |
+| Contract governance | 4.5 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 68.5 |
+| Access clarity | 34.2 |
+
+**Agent readiness 34.4** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 22.3** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/dialect/](https://apis.io/providers/dialect/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Dialect: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/dialect/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
